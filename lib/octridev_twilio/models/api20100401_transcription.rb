@@ -5,89 +5,88 @@
 
 # api20100401_transcription domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountTranscriptionMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    api_version: "api_version",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    duration: "duration",
-    price: "price",
-    price_unit: "price_unit",
-    recording_sid: "recording_sid",
-    sid: "sid",
-    status: "status",
-    transcription_text: "transcription_text",
-    type: "type",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevTwilio::TranscriptionEnumStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountTranscription.
-# Typed representation of the `ApiV2010AccountTranscription` API schema.
-class ApiV2010AccountTranscription
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountTranscriptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountTranscriptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountTranscriptionMetadata::DECODERS
-
-  # @return [String] The SID of the Account that created the Transcription resource.
-  attr_reader :account_sid
-  # @return [String] The API version used to create the transcription.
-  attr_reader :api_version
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The duration of the transcribed audio in seconds.
-  attr_reader :duration
-  # @return [Float] The charge for the transcript in the currency associated with the account. This value is populated after the transcript is complete so it may not be available immediately.
-  attr_reader :price
-  # @return [String] The currency in which `price` is measured, in ISO 4127 format (e.g. `usd`, `eur`, `jpy`).
-  attr_reader :price_unit
-  # @return [String] The SID of the Recording from which the transcription was created.
-  attr_reader :recording_sid
-  # @return [String] The unique string that that we created to identify the Transcription resource.
-  attr_reader :sid
-  # @return [TranscriptionEnumStatus] The status of the transcription. Can be: `in-progress`, `completed`, `failed`.
-  attr_reader :status
-  # @return [String] The text content of the transcription.
-  attr_reader :transcription_text
-  # @return [String] The transcription type. Can only be: `fast`.
-  attr_reader :type
-  # @return [String] The URI of the resource, relative to `api.twilio.com`.
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountTranscriptionMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      api_version: 'api_version',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      duration: 'duration',
+      price: 'price',
+      price_unit: 'price_unit',
+      recording_sid: 'recording_sid',
+      sid: 'sid',
+      status: 'status',
+      transcription_text: 'transcription_text',
+      type: 'type',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevTwilio::TranscriptionEnumStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountTranscription.
+  # Typed representation of the `ApiV2010AccountTranscription` API schema.
+  class ApiV2010AccountTranscription
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountTranscriptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountTranscriptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountTranscriptionMetadata::DECODERS
+
+    # @return [String] The SID of the Account that created the Transcription resource.
+    attr_reader :account_sid
+    # @return [String] The API version used to create the transcription.
+    attr_reader :api_version
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The duration of the transcribed audio in seconds.
+    attr_reader :duration
+    # @return [Float] The charge for the transcript in the currency associated with the account. This value is populated after the transcript is complete so it may not be available immediately.
+    attr_reader :price
+    # @return [String] The currency in which `price` is measured, in ISO 4127 format (e.g. `usd`, `eur`, `jpy`).
+    attr_reader :price_unit
+    # @return [String] The SID of the Recording from which the transcription was created.
+    attr_reader :recording_sid
+    # @return [String] The unique string that that we created to identify the Transcription resource.
+    attr_reader :sid
+    # @return [TranscriptionEnumStatus] The status of the transcription. Can be: `in-progress`, `completed`, `failed`.
+    attr_reader :status
+    # @return [String] The text content of the transcription.
+    attr_reader :transcription_text
+    # @return [String] The transcription type. Can only be: `fast`.
+    attr_reader :type
+    # @return [String] The URI of the resource, relative to `api.twilio.com`.
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the TranscriptionEnumStatus SDK namespace.
+  module TranscriptionEnumStatus
+    IN_PROGRESS = 'in-progress'
+    COMPLETED = 'completed'
+    FAILED = 'failed'
+    VALUES = %w[in-progress completed failed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the TranscriptionEnumStatus SDK namespace.
-module TranscriptionEnumStatus
-  IN_PROGRESS = 'in-progress'
-  COMPLETED = 'completed'
-  FAILED = 'failed'
-  VALUES = ['in-progress', 'completed', 'failed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

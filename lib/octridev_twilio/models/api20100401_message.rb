@@ -5,195 +5,194 @@
 
 # api20100401_message domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountMessageMetadata
-  FIELDS = {
-    body: "body",
-    num_segments: "num_segments",
-    direction: "direction",
-    from: "from",
-    to: "to",
-    date_updated: "date_updated",
-    price: "price",
-    error_message: "error_message",
-    uri: "uri",
-    account_sid: "account_sid",
-    num_media: "num_media",
-    status: "status",
-    messaging_service_sid: "messaging_service_sid",
-    sid: "sid",
-    date_sent: "date_sent",
-    date_created: "date_created",
-    error_code: "error_code",
-    price_unit: "price_unit",
-    api_version: "api_version",
-    subresource_uris: "subresource_uris",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    direction: lambda do |value|
-      ::OctridevTwilio::MessageEnumDirection.from_value(value)
-    end,
-    status: lambda do |value|
-      ::OctridevTwilio::MessageEnumStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountMessage.
-# Typed representation of the `ApiV2010AccountMessage` API schema.
-class ApiV2010AccountMessage
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountMessageMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountMessageMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountMessageMetadata::DECODERS
-
-  # @return [String] The text content of the message
-  attr_reader :body
-  # @return [String] The number of segments that make up the complete message. SMS message bodies that exceed the character limit are segmented and charged as multiple messages. Note: For messages sent via a Messaging Service, `num_segments` is initially `0`, since a sender hasn't yet been assigned.
-  attr_reader :num_segments
-  # @return [MessageEnumDirection] The direction of the message. Can be: `inbound` for incoming messages, `outbound-api` for messages created by the REST API, `outbound-call` for messages created during a call, or `outbound-reply` for messages created in response to an incoming message.
-  attr_reader :direction
-  # @return [String] The sender's phone number (in E.164 format), alphanumeric sender ID, Wireless SIM, short code, or channel address (e.g., `whatsapp:+15554449999`). For incoming messages, this is the number or channel address of the sender. For outgoing messages, this value is a Twilio phone number, alphanumeric sender ID, short code, or channel address from which the message is sent.
-  attr_reader :from
-  # @return [String] The recipient's phone number (in E.164 format) or channel address (e.g. `whatsapp:+15552229999`)
-  attr_reader :to
-  # @return [String] The RFC 2822 timestamp (in GMT) of when the Message resource was last updated
-  attr_reader :date_updated
-  # @return [String] The amount billed for the message in the currency specified by `price_unit`. The `price` is populated after the message has been sent/received, and may not be immediately availalble. View the Pricing page for more details.
-  attr_reader :price
-  # @return [String] The description of the `error_code` if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically.
-  attr_reader :error_message
-  # @return [String] The URI of the Message resource, relative to `api.twilio.com`.
-  attr_reader :uri
-  # @return [String] The SID of the Account associated with the Message resource
-  attr_reader :account_sid
-  # @return [String] The number of media files associated with the Message resource.
-  attr_reader :num_media
-  # @return [MessageEnumStatus] The status of the Message. Possible values: `accepted`, `scheduled`, `canceled`, `queued`, `sending`, `sent`, `failed`, `delivered`, `undelivered`, `receiving`, `received`, or `read` (WhatsApp only). For more information, See detailed descriptions.
-  attr_reader :status
-  # @return [String] The SID of the Messaging Service associated with the Message resource. A unique default value is assigned if a Messaging Service is not used.
-  attr_reader :messaging_service_sid
-  # @return [String] The unique, Twilio-provided string that identifies the Message resource.
-  attr_reader :sid
-  # @return [String] The RFC 2822 timestamp (in GMT) of when the Message was sent. For an outgoing message, this is when Twilio sent the message. For an incoming message, this is when Twilio sent the HTTP request to your incoming message webhook URL.
-  attr_reader :date_sent
-  # @return [String] The RFC 2822 timestamp (in GMT) of when the Message resource was created
-  attr_reader :date_created
-  # @return [Integer] The error code returned if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically.
-  attr_reader :error_code
-  # @return [String] The currency in which `price` is measured, in ISO 4127 format (e.g. `usd`, `eur`, `jpy`).
-  attr_reader :price_unit
-  # @return [String] The API version used to process the Message
-  attr_reader :api_version
-  # @return [Hash] A list of related resources identified by their URIs relative to `api.twilio.com`
-  attr_reader :subresource_uris
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountMessageMetadata
+    FIELDS = {
+      body: 'body',
+      num_segments: 'num_segments',
+      direction: 'direction',
+      from: 'from',
+      to: 'to',
+      date_updated: 'date_updated',
+      price: 'price',
+      error_message: 'error_message',
+      uri: 'uri',
+      account_sid: 'account_sid',
+      num_media: 'num_media',
+      status: 'status',
+      messaging_service_sid: 'messaging_service_sid',
+      sid: 'sid',
+      date_sent: 'date_sent',
+      date_created: 'date_created',
+      error_code: 'error_code',
+      price_unit: 'price_unit',
+      api_version: 'api_version',
+      subresource_uris: 'subresource_uris'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      direction: lambda do |value|
+        ::OctridevTwilio::MessageEnumDirection.from_value(value)
+      end,
+      status: lambda do |value|
+        ::OctridevTwilio::MessageEnumStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountMessage.
+  # Typed representation of the `ApiV2010AccountMessage` API schema.
+  class ApiV2010AccountMessage
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountMessageMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountMessageMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountMessageMetadata::DECODERS
+
+    # @return [String] The text content of the message
+    attr_reader :body
+    # @return [String] The number of segments that make up the complete message. SMS message bodies that exceed the character limit are segmented and charged as multiple messages. Note: For messages sent via a Messaging Service, `num_segments` is initially `0`, since a sender hasn't yet been assigned.
+    attr_reader :num_segments
+    # @return [MessageEnumDirection] The direction of the message. Can be: `inbound` for incoming messages, `outbound-api` for messages created by the REST API, `outbound-call` for messages created during a call, or `outbound-reply` for messages created in response to an incoming message.
+    attr_reader :direction
+    # @return [String] The sender's phone number (in E.164 format), alphanumeric sender ID, Wireless SIM, short code, or channel address (e.g., `whatsapp:+15554449999`). For incoming messages, this is the number or channel address of the sender. For outgoing messages, this value is a Twilio phone number, alphanumeric sender ID, short code, or channel address from which the message is sent.
+    attr_reader :from
+    # @return [String] The recipient's phone number (in E.164 format) or channel address (e.g. `whatsapp:+15552229999`)
+    attr_reader :to
+    # @return [String] The RFC 2822 timestamp (in GMT) of when the Message resource was last updated
+    attr_reader :date_updated
+    # @return [String] The amount billed for the message in the currency specified by `price_unit`. The `price` is populated after the message has been sent/received, and may not be immediately availalble. View the Pricing page for more details.
+    attr_reader :price
+    # @return [String] The description of the `error_code` if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically.
+    attr_reader :error_message
+    # @return [String] The URI of the Message resource, relative to `api.twilio.com`.
+    attr_reader :uri
+    # @return [String] The SID of the Account associated with the Message resource
+    attr_reader :account_sid
+    # @return [String] The number of media files associated with the Message resource.
+    attr_reader :num_media
+    # @return [MessageEnumStatus] The status of the Message. Possible values: `accepted`, `scheduled`, `canceled`, `queued`, `sending`, `sent`, `failed`, `delivered`, `undelivered`, `receiving`, `received`, or `read` (WhatsApp only). For more information, See detailed descriptions.
+    attr_reader :status
+    # @return [String] The SID of the Messaging Service associated with the Message resource. A unique default value is assigned if a Messaging Service is not used.
+    attr_reader :messaging_service_sid
+    # @return [String] The unique, Twilio-provided string that identifies the Message resource.
+    attr_reader :sid
+    # @return [String] The RFC 2822 timestamp (in GMT) of when the Message was sent. For an outgoing message, this is when Twilio sent the message. For an incoming message, this is when Twilio sent the HTTP request to your incoming message webhook URL.
+    attr_reader :date_sent
+    # @return [String] The RFC 2822 timestamp (in GMT) of when the Message resource was created
+    attr_reader :date_created
+    # @return [Integer] The error code returned if the Message `status` is `failed` or `undelivered`. If no error was encountered, the value is `null`. The value returned in this field for a specific error cause is subject to change as Twilio improves errors. Users should not use the `error_code` and `error_message` fields programmatically.
+    attr_reader :error_code
+    # @return [String] The currency in which `price` is measured, in ISO 4127 format (e.g. `usd`, `eur`, `jpy`).
+    attr_reader :price_unit
+    # @return [String] The API version used to process the Message
+    attr_reader :api_version
+    # @return [Hash] A list of related resources identified by their URIs relative to `api.twilio.com`
+    attr_reader :subresource_uris
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the MessageEnumAddressRetention SDK namespace.
+  module MessageEnumAddressRetention
+    RETAIN = 'retain'
+    OBFUSCATE = 'obfuscate'
+    VALUES = %w[retain obfuscate].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumAddressRetention SDK namespace.
-module MessageEnumAddressRetention
-  RETAIN = 'retain'
-  OBFUSCATE = 'obfuscate'
-  VALUES = ['retain', 'obfuscate'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumContentRetention SDK namespace.
+  module MessageEnumContentRetention
+    RETAIN = 'retain'
+    DISCARD = 'discard'
+    VALUES = %w[retain discard].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumContentRetention SDK namespace.
-module MessageEnumContentRetention
-  RETAIN = 'retain'
-  DISCARD = 'discard'
-  VALUES = ['retain', 'discard'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumDirection SDK namespace.
+  module MessageEnumDirection
+    INBOUND = 'inbound'
+    OUTBOUND_API = 'outbound-api'
+    OUTBOUND_CALL = 'outbound-call'
+    OUTBOUND_REPLY = 'outbound-reply'
+    VALUES = %w[inbound outbound-api outbound-call outbound-reply].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumDirection SDK namespace.
-module MessageEnumDirection
-  INBOUND = 'inbound'
-  OUTBOUND_API = 'outbound-api'
-  OUTBOUND_CALL = 'outbound-call'
-  OUTBOUND_REPLY = 'outbound-reply'
-  VALUES = ['inbound', 'outbound-api', 'outbound-call', 'outbound-reply'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumRiskCheck SDK namespace.
+  module MessageEnumRiskCheck
+    ENABLE = 'enable'
+    DISABLE = 'disable'
+    VALUES = %w[enable disable].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumRiskCheck SDK namespace.
-module MessageEnumRiskCheck
-  ENABLE = 'enable'
-  DISABLE = 'disable'
-  VALUES = ['enable', 'disable'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumScheduleType SDK namespace.
+  module MessageEnumScheduleType
+    FIXED = 'fixed'
+    VALUES = ['fixed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumScheduleType SDK namespace.
-module MessageEnumScheduleType
-  FIXED = 'fixed'
-  VALUES = ['fixed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumStatus SDK namespace.
+  module MessageEnumStatus
+    QUEUED = 'queued'
+    SENDING = 'sending'
+    SENT = 'sent'
+    FAILED = 'failed'
+    DELIVERED = 'delivered'
+    UNDELIVERED = 'undelivered'
+    RECEIVING = 'receiving'
+    RECEIVED = 'received'
+    ACCEPTED = 'accepted'
+    SCHEDULED = 'scheduled'
+    READ = 'read'
+    PARTIALLY_DELIVERED = 'partially_delivered'
+    CANCELED = 'canceled'
+    VALUES = %w[
+      queued sending sent failed delivered undelivered receiving received
+      accepted scheduled read partially_delivered canceled
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumStatus SDK namespace.
-module MessageEnumStatus
-  QUEUED = 'queued'
-  SENDING = 'sending'
-  SENT = 'sent'
-  FAILED = 'failed'
-  DELIVERED = 'delivered'
-  UNDELIVERED = 'undelivered'
-  RECEIVING = 'receiving'
-  RECEIVED = 'received'
-  ACCEPTED = 'accepted'
-  SCHEDULED = 'scheduled'
-  READ = 'read'
-  PARTIALLY_DELIVERED = 'partially_delivered'
-  CANCELED = 'canceled'
-  VALUES = [
-    'queued', 'sending', 'sent', 'failed', 'delivered', 'undelivered', 'receiving', 'received',
-    'accepted', 'scheduled', 'read', 'partially_delivered', 'canceled'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumTrafficType SDK namespace.
+  module MessageEnumTrafficType
+    FREE = 'free'
+    VALUES = ['free'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the MessageEnumTrafficType SDK namespace.
-module MessageEnumTrafficType
-  FREE = 'free'
-  VALUES = ['free'].freeze
-  def self.from_value(value)
-    value
+  # Defines the MessageEnumUpdateStatus SDK namespace.
+  module MessageEnumUpdateStatus
+    CANCELED = 'canceled'
+    VALUES = ['canceled'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the MessageEnumUpdateStatus SDK namespace.
-module MessageEnumUpdateStatus
-  CANCELED = 'canceled'
-  VALUES = ['canceled'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

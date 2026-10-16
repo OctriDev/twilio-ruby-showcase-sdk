@@ -5,87 +5,86 @@
 
 # api20100401_add_on_result domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata
-  FIELDS = {
-    sid: "sid",
-    account_sid: "account_sid",
-    status: "status",
-    add_on_sid: "add_on_sid",
-    add_on_configuration_sid: "add_on_configuration_sid",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    date_completed: "date_completed",
-    reference_sid: "reference_sid",
-    subresource_uris: "subresource_uris",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevTwilio::RecordingAddOnResultEnumStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountRecordingRecordingAddOnResult.
-# Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResult` API schema.
-class ApiV2010AccountRecordingRecordingAddOnResult
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::DECODERS
-
-  # @return [String] The unique string that that we created to identify the Recording AddOnResult resource.
-  attr_reader :sid
-  # @return [String] The SID of the Account that created the Recording AddOnResult resource.
-  attr_reader :account_sid
-  # @return [RecordingAddOnResultEnumStatus] The status of the result. Can be: `canceled`, `completed`, `deleted`, `failed`, `in-progress`, `init`, `processing`, `queued`.
-  attr_reader :status
-  # @return [String] The SID of the Add-on to which the result belongs.
-  attr_reader :add_on_sid
-  # @return [String] The SID of the Add-on configuration.
-  attr_reader :add_on_configuration_sid
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The date and time in GMT that the result was completed specified in RFC 2822 format.
-  attr_reader :date_completed
-  # @return [String] The SID of the recording to which the AddOnResult resource belongs.
-  attr_reader :reference_sid
-  # @return [Hash] A list of related resources identified by their relative URIs.
-  attr_reader :subresource_uris
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata
+    FIELDS = {
+      sid: 'sid',
+      account_sid: 'account_sid',
+      status: 'status',
+      add_on_sid: 'add_on_sid',
+      add_on_configuration_sid: 'add_on_configuration_sid',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      date_completed: 'date_completed',
+      reference_sid: 'reference_sid',
+      subresource_uris: 'subresource_uris'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevTwilio::RecordingAddOnResultEnumStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountRecordingRecordingAddOnResult.
+  # Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResult` API schema.
+  class ApiV2010AccountRecordingRecordingAddOnResult
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultMetadata::DECODERS
+
+    # @return [String] The unique string that that we created to identify the Recording AddOnResult resource.
+    attr_reader :sid
+    # @return [String] The SID of the Account that created the Recording AddOnResult resource.
+    attr_reader :account_sid
+    # @return [RecordingAddOnResultEnumStatus] The status of the result. Can be: `canceled`, `completed`, `deleted`, `failed`, `in-progress`, `init`, `processing`, `queued`.
+    attr_reader :status
+    # @return [String] The SID of the Add-on to which the result belongs.
+    attr_reader :add_on_sid
+    # @return [String] The SID of the Add-on configuration.
+    attr_reader :add_on_configuration_sid
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The date and time in GMT that the result was completed specified in RFC 2822 format.
+    attr_reader :date_completed
+    # @return [String] The SID of the recording to which the AddOnResult resource belongs.
+    attr_reader :reference_sid
+    # @return [Hash] A list of related resources identified by their relative URIs.
+    attr_reader :subresource_uris
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the RecordingAddOnResultEnumStatus SDK namespace.
+  module RecordingAddOnResultEnumStatus
+    CANCELED = 'canceled'
+    COMPLETED = 'completed'
+    DELETED = 'deleted'
+    FAILED = 'failed'
+    IN_PROGRESS = 'in-progress'
+    INIT = 'init'
+    PROCESSING = 'processing'
+    QUEUED = 'queued'
+    VALUES = %w[
+      canceled completed deleted failed in-progress init processing queued
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the RecordingAddOnResultEnumStatus SDK namespace.
-module RecordingAddOnResultEnumStatus
-  CANCELED = 'canceled'
-  COMPLETED = 'completed'
-  DELETED = 'deleted'
-  FAILED = 'failed'
-  IN_PROGRESS = 'in-progress'
-  INIT = 'init'
-  PROCESSING = 'processing'
-  QUEUED = 'queued'
-  VALUES = [
-    'canceled', 'completed', 'deleted', 'failed', 'in-progress', 'init', 'processing', 'queued'
-  ].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

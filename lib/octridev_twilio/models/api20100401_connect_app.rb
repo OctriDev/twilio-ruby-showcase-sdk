@@ -5,95 +5,94 @@
 
 # api20100401_connect_app domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountConnectAppMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    authorize_redirect_url: "authorize_redirect_url",
-    company_name: "company_name",
-    deauthorize_callback_method: "deauthorize_callback_method",
-    deauthorize_callback_url: "deauthorize_callback_url",
-    description: "description",
-    friendly_name: "friendly_name",
-    homepage_url: "homepage_url",
-    permissions: "permissions",
-    sid: "sid",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    deauthorize_callback_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountConnectAppDeauthorizeCallbackMethod.from_value(value)
-    end,
-    permissions: lambda do |value|
-      value&.map { |item| ::OctridevTwilio::ConnectAppEnumPermission.from_value(item) }
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountConnectApp.
-# Typed representation of the `ApiV2010AccountConnectApp` API schema.
-class ApiV2010AccountConnectApp
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountConnectAppMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountConnectAppMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountConnectAppMetadata::DECODERS
-
-  # @return [String] The SID of the Account that created the ConnectApp resource.
-  attr_reader :account_sid
-  # @return [String] The URL we redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
-  attr_reader :authorize_redirect_url
-  # @return [String] The company name set for the Connect App.
-  attr_reader :company_name
-  # @return [ApiV2010AccountConnectAppDeauthorizeCallbackMethod] The HTTP method we use to call `deauthorize_callback_url`.
-  attr_reader :deauthorize_callback_method
-  # @return [String] The URL we call using the `deauthorize_callback_method` to de-authorize the Connect App.
-  attr_reader :deauthorize_callback_url
-  # @return [String] The description of the Connect App.
-  attr_reader :description
-  # @return [String] The string that you assigned to describe the resource.
-  attr_reader :friendly_name
-  # @return [String] The public URL where users can obtain more information about this Connect App.
-  attr_reader :homepage_url
-  # @return [Array_of_ConnectAppEnumPermission] The set of permissions that your ConnectApp requests.
-  attr_reader :permissions
-  # @return [String] The unique string that that we created to identify the ConnectApp resource.
-  attr_reader :sid
-  # @return [String] The URI of the resource, relative to `api.twilio.com`.
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountConnectAppMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      authorize_redirect_url: 'authorize_redirect_url',
+      company_name: 'company_name',
+      deauthorize_callback_method: 'deauthorize_callback_method',
+      deauthorize_callback_url: 'deauthorize_callback_url',
+      description: 'description',
+      friendly_name: 'friendly_name',
+      homepage_url: 'homepage_url',
+      permissions: 'permissions',
+      sid: 'sid',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      deauthorize_callback_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountConnectAppDeauthorizeCallbackMethod.from_value(value)
+      end,
+      permissions: lambda do |value|
+        value&.map { |item| ::OctridevTwilio::ConnectAppEnumPermission.from_value(item) }
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountConnectApp.
+  # Typed representation of the `ApiV2010AccountConnectApp` API schema.
+  class ApiV2010AccountConnectApp
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountConnectAppMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountConnectAppMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountConnectAppMetadata::DECODERS
+
+    # @return [String] The SID of the Account that created the ConnectApp resource.
+    attr_reader :account_sid
+    # @return [String] The URL we redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
+    attr_reader :authorize_redirect_url
+    # @return [String] The company name set for the Connect App.
+    attr_reader :company_name
+    # @return [ApiV2010AccountConnectAppDeauthorizeCallbackMethod] The HTTP method we use to call `deauthorize_callback_url`.
+    attr_reader :deauthorize_callback_method
+    # @return [String] The URL we call using the `deauthorize_callback_method` to de-authorize the Connect App.
+    attr_reader :deauthorize_callback_url
+    # @return [String] The description of the Connect App.
+    attr_reader :description
+    # @return [String] The string that you assigned to describe the resource.
+    attr_reader :friendly_name
+    # @return [String] The public URL where users can obtain more information about this Connect App.
+    attr_reader :homepage_url
+    # @return [Array_of_ConnectAppEnumPermission] The set of permissions that your ConnectApp requests.
+    attr_reader :permissions
+    # @return [String] The unique string that that we created to identify the ConnectApp resource.
+    attr_reader :sid
+    # @return [String] The URI of the resource, relative to `api.twilio.com`.
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ApiV2010AccountConnectAppDeauthorizeCallbackMethod SDK namespace.
+  module ApiV2010AccountConnectAppDeauthorizeCallbackMethod
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountConnectAppDeauthorizeCallbackMethod SDK namespace.
-module ApiV2010AccountConnectAppDeauthorizeCallbackMethod
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ConnectAppEnumPermission SDK namespace.
+  module ConnectAppEnumPermission
+    GET_ALL = 'get-all'
+    POST_ALL = 'post-all'
+    VALUES = %w[get-all post-all].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the ConnectAppEnumPermission SDK namespace.
-module ConnectAppEnumPermission
-  GET_ALL = 'get-all'
-  POST_ALL = 'post-all'
-  VALUES = ['get-all', 'post-all'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

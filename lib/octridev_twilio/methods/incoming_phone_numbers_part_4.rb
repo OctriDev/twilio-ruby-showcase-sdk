@@ -115,24 +115,24 @@ module OctridevTwilio
         area_code: NOT_GIVEN,
         request_options: nil
       )
-
         __sdk_validate_create_incoming_phone_numbers(account_sid: account_sid, sms_application_sid: sms_application_sid, sms_fallback_url: sms_fallback_url, sms_url: sms_url, status_callback: status_callback, voice_application_sid: voice_application_sid, voice_fallback_url: voice_fallback_url, voice_url: voice_url, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid, identity_sid: identity_sid, address_sid: address_sid, bundle_sid: bundle_sid)
 
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/IncomingPhoneNumbers.json"
+            '/IncomingPhoneNumbers.json'
           ].join,
           config: config,
           body: __sdk_body_create_incoming_phone_numbers_part1(api_version: api_version, friendly_name: friendly_name, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url, emergency_status: emergency_status, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid).merge(
-            __sdk_body_create_incoming_phone_numbers_part2(identity_sid: identity_sid, address_sid: address_sid, voice_receive_mode: voice_receive_mode, bundle_sid: bundle_sid, phone_number: phone_number, area_code: area_code)),
+            __sdk_body_create_incoming_phone_numbers_part2(identity_sid: identity_sid, address_sid: address_sid, voice_receive_mode: voice_receive_mode, bundle_sid: bundle_sid, phone_number: phone_number, area_code: area_code)
+          ),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumber,
           decoder: :json,
           operation_id: 'create_incoming_phone_numbers',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -241,7 +241,7 @@ module OctridevTwilio
           'VoiceUrl' => voice_url,
           'EmergencyStatus' => emergency_status,
           'EmergencyAddressSid' => emergency_address_sid,
-          'TrunkSid' => trunk_sid,
+          'TrunkSid' => trunk_sid
         }
       end
       private_class_method :__sdk_body_create_incoming_phone_numbers_part1
@@ -260,7 +260,7 @@ module OctridevTwilio
           'VoiceReceiveMode' => voice_receive_mode,
           'BundleSid' => bundle_sid,
           'PhoneNumber' => phone_number,
-          'AreaCode' => area_code,
+          'AreaCode' => area_code
         }
       end
       private_class_method :__sdk_body_create_incoming_phone_numbers_part2
@@ -295,7 +295,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -306,9 +305,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/IncomingPhoneNumbers/Local.json"
+            '/IncomingPhoneNumbers/Local.json'
           ].join,
           config: config,
           query: {
@@ -318,12 +317,12 @@ module OctridevTwilio
             'Origin' => QueryValue.new(origin, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::IncomingPhoneNumbers::ListIncomingPhoneNumbersLocalResponse,
           decoder: :json,
           operation_id: 'list_incoming_phone_numbers_local',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -428,24 +427,24 @@ module OctridevTwilio
         bundle_sid: NOT_GIVEN,
         request_options: nil
       )
-
         __sdk_validate_create_incoming_phone_numbers_local(account_sid: account_sid, sms_application_sid: sms_application_sid, sms_fallback_url: sms_fallback_url, sms_url: sms_url, status_callback: status_callback, voice_application_sid: voice_application_sid, voice_fallback_url: voice_fallback_url, voice_url: voice_url, identity_sid: identity_sid, address_sid: address_sid, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid, bundle_sid: bundle_sid)
 
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/IncomingPhoneNumbers/Local.json"
+            '/IncomingPhoneNumbers/Local.json'
           ].join,
           config: config,
           body: __sdk_body_create_incoming_phone_numbers_local_part1(phone_number: phone_number, api_version: api_version, friendly_name: friendly_name, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url, identity_sid: identity_sid, address_sid: address_sid).merge(
-            __sdk_body_create_incoming_phone_numbers_local_part2(emergency_status: emergency_status, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid, voice_receive_mode: voice_receive_mode, bundle_sid: bundle_sid)),
+            __sdk_body_create_incoming_phone_numbers_local_part2(emergency_status: emergency_status, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid, voice_receive_mode: voice_receive_mode, bundle_sid: bundle_sid)
+          ),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal,
           decoder: :json,
           operation_id: 'create_incoming_phone_numbers_local',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -554,7 +553,7 @@ module OctridevTwilio
           'VoiceMethod' => voice_method,
           'VoiceUrl' => voice_url,
           'IdentitySid' => identity_sid,
-          'AddressSid' => address_sid,
+          'AddressSid' => address_sid
         }
       end
       private_class_method :__sdk_body_create_incoming_phone_numbers_local_part1
@@ -571,7 +570,7 @@ module OctridevTwilio
           'EmergencyAddressSid' => emergency_address_sid,
           'TrunkSid' => trunk_sid,
           'VoiceReceiveMode' => voice_receive_mode,
-          'BundleSid' => bundle_sid,
+          'BundleSid' => bundle_sid
         }
       end
       private_class_method :__sdk_body_create_incoming_phone_numbers_local_part2

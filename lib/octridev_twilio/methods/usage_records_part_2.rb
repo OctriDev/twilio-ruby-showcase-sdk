@@ -43,7 +43,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -58,9 +57,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/Daily.json"
+            '/Usage/Records/Daily.json'
           ].join,
           config: config,
           query: {
@@ -70,12 +69,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsDailyResponse,
           decoder: :json,
           operation_id: 'list_usage_records_daily',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -113,7 +112,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -128,9 +126,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/LastMonth.json"
+            '/Usage/Records/LastMonth.json'
           ].join,
           config: config,
           query: {
@@ -140,12 +138,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsLastMonthResponse,
           decoder: :json,
           operation_id: 'list_usage_records_last_month',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -183,7 +181,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -198,9 +195,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/Monthly.json"
+            '/Usage/Records/Monthly.json'
           ].join,
           config: config,
           query: {
@@ -210,12 +207,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsMonthlyResponse,
           decoder: :json,
           operation_id: 'list_usage_records_monthly',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -253,7 +250,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -268,9 +264,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/ThisMonth.json"
+            '/Usage/Records/ThisMonth.json'
           ].join,
           config: config,
           query: {
@@ -280,12 +276,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsThisMonthResponse,
           decoder: :json,
           operation_id: 'list_usage_records_this_month',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -323,7 +319,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -338,9 +333,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/Today.json"
+            '/Usage/Records/Today.json'
           ].join,
           config: config,
           query: {
@@ -350,12 +345,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsTodayResponse,
           decoder: :json,
           operation_id: 'list_usage_records_today',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -393,7 +388,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -408,9 +402,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/Yearly.json"
+            '/Usage/Records/Yearly.json'
           ].join,
           config: config,
           query: {
@@ -420,12 +414,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsYearlyResponse,
           decoder: :json,
           operation_id: 'list_usage_records_yearly',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -463,7 +457,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -478,9 +471,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/Yesterday.json"
+            '/Usage/Records/Yesterday.json'
           ].join,
           config: config,
           query: {
@@ -490,12 +483,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsYesterdayResponse,
           decoder: :json,
           operation_id: 'list_usage_records_yesterday',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -5,51 +5,49 @@
 
 # api20100401_auth_registrations_credential_list_mapping domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata
-  FIELDS = {
-    account_sid: "account_sid",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    friendly_name: "friendly_name",
-    sid: "sid",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6.
-# Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping` API schema.
-class ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::DECODERS
-
-  # @return [String] The SID of the Account that created the CredentialListMapping resource.
-  attr_reader :account_sid
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The string that you assigned to describe the resource.
-  attr_reader :friendly_name
-  # @return [String] The unique string that that we created to identify the CredentialListMapping resource.
-  attr_reader :sid
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      friendly_name: 'friendly_name',
+      sid: 'sid'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6.
+  # Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping` API schema.
+  class ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthXed44b778d6Metadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] The SID of the Account that created the CredentialListMapping resource.
+    attr_reader :account_sid
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The string that you assigned to describe the resource.
+    attr_reader :friendly_name
+    # @return [String] The unique string that that we created to identify the CredentialListMapping resource.
+    attr_reader :sid
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

@@ -198,25 +198,25 @@ module OctridevTwilio
         application_sid: NOT_GIVEN,
         request_options: nil
       )
-
         __sdk_validate_create_calls(account_sid: account_sid, fallback_url: fallback_url, status_callback: status_callback, async_amd_status_callback: async_amd_status_callback, byoc: byoc, client_notification_url: client_notification_url, url: url, application_sid: application_sid)
 
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls.json"
+            '/Calls.json'
           ].join,
           config: config,
           body: __sdk_body_create_calls_part1(to: to, from: from, method: method, fallback_url: fallback_url, fallback_method: fallback_method, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, send_digits: send_digits, timeout: timeout, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_method: recording_status_callback_method, recording_configuration_id: recording_configuration_id, sip_auth_username: sip_auth_username, sip_auth_password: sip_auth_password, machine_detection: machine_detection).merge(
             __sdk_body_create_calls_part2(machine_detection_timeout: machine_detection_timeout, recording_status_callback_event: recording_status_callback_event, trim: trim, caller_id: caller_id, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_silence_timeout: machine_detection_silence_timeout, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, passports: passports, byoc: byoc, call_reason: call_reason, call_token: call_token, recording_track: recording_track, time_limit: time_limit, client_notification_url: client_notification_url, url: url),
-            __sdk_body_create_calls_part3(twiml: twiml, application_sid: application_sid)),
+            __sdk_body_create_calls_part3(twiml: twiml, application_sid: application_sid)
+          ),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCall,
           decoder: :json,
           operation_id: 'create_calls',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -297,7 +297,7 @@ module OctridevTwilio
           'RecordingConfigurationId' => recording_configuration_id,
           'SipAuthUsername' => sip_auth_username,
           'SipAuthPassword' => sip_auth_password,
-          'MachineDetection' => machine_detection,
+          'MachineDetection' => machine_detection
         }
       end
       private_class_method :__sdk_body_create_calls_part1
@@ -340,7 +340,7 @@ module OctridevTwilio
           'RecordingTrack' => recording_track,
           'TimeLimit' => time_limit,
           'ClientNotificationUrl' => client_notification_url,
-          'Url' => url,
+          'Url' => url
         }
       end
       private_class_method :__sdk_body_create_calls_part2
@@ -351,7 +351,7 @@ module OctridevTwilio
       )
         {
           'Twiml' => twiml,
-          'ApplicationSid' => application_sid,
+          'ApplicationSid' => application_sid
         }
       end
       private_class_method :__sdk_body_create_calls_part3
@@ -411,7 +411,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -439,9 +438,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls.json"
+            '/Calls.json'
           ].join,
           config: config,
           query: {
@@ -457,12 +456,12 @@ module OctridevTwilio
             'EndTime>' => QueryValue.new(end_time3, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::Calls::ListCallsResponse,
           decoder: :json,
           operation_id: 'list_calls',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -478,7 +477,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -488,16 +486,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_calls',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -514,7 +512,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -524,17 +521,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountCall,
           decoder: :json,
           operation_id: 'fetch_calls',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

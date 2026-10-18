@@ -12,22 +12,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListSipIpAccessControlListsIpAddressesResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          ip_addresses: "ip_addresses",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          ip_addresses: 'ip_addresses'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           ip_addresses: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountSipSipIpAccessControlListSipIpAddress.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -58,16 +57,15 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateSipIpAccessControlListsIpAddressesMetadata
         FIELDS = {
-          friendly_name: "FriendlyName",
-          ip_address: "IpAddress",
-          cidr_prefix_length: "CidrPrefixLength",
+          friendly_name: 'FriendlyName',
+          ip_address: 'IpAddress',
+          cidr_prefix_length: 'CidrPrefixLength'
         }.freeze
         REQUIRED_FIELDS = %i[
           friendly_name
           ip_address
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CreateSipIpAccessControlListsIpAddresses.
@@ -101,14 +99,12 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateSipIpAccessControlListsIpAddressesMetadata
         FIELDS = {
-          ip_address: "IpAddress",
-          friendly_name: "FriendlyName",
-          cidr_prefix_length: "CidrPrefixLength",
+          ip_address: 'IpAddress',
+          friendly_name: 'FriendlyName',
+          cidr_prefix_length: 'CidrPrefixLength'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UpdateSipIpAccessControlListsIpAddresses.
@@ -160,7 +156,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -174,22 +169,22 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/IpAccessControlLists/",
+            '/SIP/IpAccessControlLists/',
             SdkClient.encode_path_segment(ip_access_control_list_sid),
-            "/IpAddresses.json"
+            '/IpAddresses.json'
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::SipIpAccessControlListsIpAddresses::ListSipIpAccessControlListsIpAddressesResponse,
           decoder: :json,
           operation_id: 'list_sip_ip_access_control_lists_ip_addresses',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -218,7 +213,6 @@ module OctridevTwilio
         cidr_prefix_length: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -228,23 +222,23 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/IpAccessControlLists/",
+            '/SIP/IpAccessControlLists/',
             SdkClient.encode_path_segment(ip_access_control_list_sid),
-            "/IpAddresses.json"
+            '/IpAddresses.json'
           ].join,
           config: config,
           body: {
             'FriendlyName' => friendly_name,
             'IpAddress' => ip_address,
-            'CidrPrefixLength' => cidr_prefix_length,
+            'CidrPrefixLength' => cidr_prefix_length
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipIpAccessControlListSipIpAddress,
           decoder: :json,
           operation_id: 'create_sip_ip_access_control_lists_ip_addresses',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -265,7 +259,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -278,19 +271,19 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/IpAccessControlLists/",
+            '/SIP/IpAccessControlLists/',
             SdkClient.encode_path_segment(ip_access_control_list_sid),
-            "/IpAddresses/",
+            '/IpAddresses/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipIpAccessControlListSipIpAddress,
           decoder: :json,
           operation_id: 'fetch_sip_ip_access_control_lists_ip_addresses',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -322,7 +315,6 @@ module OctridevTwilio
         cidr_prefix_length: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -335,25 +327,25 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/IpAccessControlLists/",
+            '/SIP/IpAccessControlLists/',
             SdkClient.encode_path_segment(ip_access_control_list_sid),
-            "/IpAddresses/",
+            '/IpAddresses/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
             'IpAddress' => ip_address,
             'FriendlyName' => friendly_name,
-            'CidrPrefixLength' => cidr_prefix_length,
+            'CidrPrefixLength' => cidr_prefix_length
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipIpAccessControlListSipIpAddress,
           decoder: :json,
           operation_id: 'update_sip_ip_access_control_lists_ip_addresses',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -374,7 +366,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -387,18 +378,18 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/IpAccessControlLists/",
+            '/SIP/IpAccessControlLists/',
             SdkClient.encode_path_segment(ip_access_control_list_sid),
-            "/IpAddresses/",
+            '/IpAddresses/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_sip_ip_access_control_lists_ip_addresses',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

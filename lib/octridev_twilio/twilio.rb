@@ -252,7 +252,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AddressesDependentPhoneNumbersNamespace SDK type.
@@ -280,7 +279,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AddressesNamespace SDK type.
@@ -409,7 +407,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ApplicationsNamespace SDK type.
@@ -563,7 +560,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AuthorizedConnectAppsNamespace SDK type.
@@ -607,7 +603,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the AvailablePhoneNumbersNamespace SDK type.
@@ -1039,7 +1034,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the BalanceNamespace SDK type.
@@ -1061,7 +1055,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsEventsNamespace SDK type.
@@ -1091,7 +1084,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsNotificationsNamespace SDK type.
@@ -1143,7 +1135,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsRecordingsNamespace SDK type.
@@ -1267,7 +1258,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsPaymentsNamespace SDK type.
@@ -1349,7 +1339,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsTranscriptionsNamespace SDK type.
@@ -1429,7 +1418,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsSiprecNamespace SDK type.
@@ -1464,7 +1452,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsStreamsNamespace SDK type.
@@ -1499,7 +1486,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsUserDefinedMessagesNamespace SDK type.
@@ -1525,7 +1511,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsUserDefinedMessageSubscriptionsNamespace SDK type.
@@ -1569,7 +1554,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the CallsNamespace SDK type.
@@ -1781,7 +1765,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ConferencesRecordingsNamespace SDK type.
@@ -1875,7 +1858,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ConferencesParticipantsNamespace SDK type.
@@ -1994,7 +1976,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ConferencesNamespace SDK type.
@@ -2078,7 +2059,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ConnectAppsNamespace SDK type.
@@ -2170,7 +2150,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the IncomingPhoneNumbersAssignedAddOnsExtensionsNamespace SDK type.
@@ -2222,7 +2201,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the IncomingPhoneNumbersAssignedAddOnsNamespace SDK type.
@@ -2305,7 +2283,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the IncomingPhoneNumbersNamespace SDK type.
@@ -2750,7 +2727,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the KeysNamespace SDK type.
@@ -2834,7 +2810,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the MessagesMediaNamespace SDK type.
@@ -2906,7 +2881,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the MessagesFeedbackNamespace SDK type.
@@ -2932,7 +2906,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the MessagesNamespace SDK type.
@@ -3092,7 +3065,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the QueuesMembersNamespace SDK type.
@@ -3162,7 +3134,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the QueuesNamespace SDK type.
@@ -3263,7 +3234,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SigningKeysNamespace SDK type.
@@ -3347,7 +3317,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the NotificationsNamespace SDK type.
@@ -3399,7 +3368,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the OutgoingCallerIdsNamespace SDK type.
@@ -3481,7 +3449,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ValidationRequestsNamespace SDK type.
@@ -3513,7 +3480,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the RecordingsAddOnResultsPayloadsNamespace SDK type.
@@ -3603,7 +3569,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the RecordingsAddOnResultsNamespace SDK type.
@@ -3672,7 +3637,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the RecordingsTranscriptionsNamespace SDK type.
@@ -3732,7 +3696,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the RecordingsNamespace SDK type.
@@ -3810,7 +3773,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the ShortCodesNamespace SDK type.
@@ -3886,7 +3848,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsAuthCallsCredentialListMappingsNamespace SDK type.
@@ -3968,7 +3929,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsAuthCallsIpAccessControlListMappingsNamespace SDK type.
@@ -4050,7 +4010,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsAuthRegistrationsCredentialListMappingsNamespace SDK type.
@@ -4132,7 +4091,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsCredentialListMappingsNamespace SDK type.
@@ -4212,7 +4170,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsIpAccessControlListMappingsNamespace SDK type.
@@ -4296,7 +4253,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipDomainsNamespace SDK type.
@@ -4447,7 +4403,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipCredentialListsCredentialsNamespace SDK type.
@@ -4553,7 +4508,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipCredentialListsNamespace SDK type.
@@ -4650,7 +4604,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipIpAccessControlListsIpAddressesNamespace SDK type.
@@ -4762,7 +4715,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipIpAccessControlListsNamespace SDK type.
@@ -4857,7 +4809,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the SipNamespace SDK type.
@@ -4869,7 +4820,6 @@ module OctridevTwilio
       @credential_lists = SipCredentialListsNamespace.new(config)
       @ip_access_control_lists = SipIpAccessControlListsNamespace.new(config)
     end
-
   end
 
   # Defines the TokensNamespace SDK type.
@@ -4893,7 +4843,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the TranscriptionsNamespace SDK type.
@@ -4951,7 +4900,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the UsageRecordsNamespace SDK type.
@@ -5195,7 +5143,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the UsageTriggersNamespace SDK type.
@@ -5309,7 +5256,6 @@ module OctridevTwilio
         request_options: request_options
       )
     end
-
   end
 
   # Defines the Twilio SDK type.
@@ -5344,7 +5290,7 @@ module OctridevTwilio
       tokens: TokensNamespace,
       transcriptions: TranscriptionsNamespace,
       usage_records: UsageRecordsNamespace,
-      usage_triggers: UsageTriggersNamespace,
+      usage_triggers: UsageTriggersNamespace
     }.freeze
     private_constant :SUB_NAMESPACES
 
@@ -5373,6 +5319,5 @@ module OctridevTwilio
       end
       logging
     end
-
   end
 end

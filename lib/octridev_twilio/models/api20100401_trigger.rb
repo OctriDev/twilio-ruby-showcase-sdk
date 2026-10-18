@@ -5,126 +5,125 @@
 
 # api20100401_trigger domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountUsageUsageTriggerMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    api_version: "api_version",
-    callback_method: "callback_method",
-    callback_url: "callback_url",
-    current_value: "current_value",
-    date_created: "date_created",
-    date_fired: "date_fired",
-    date_updated: "date_updated",
-    friendly_name: "friendly_name",
-    recurring: "recurring",
-    sid: "sid",
-    trigger_by: "trigger_by",
-    trigger_value: "trigger_value",
-    uri: "uri",
-    usage_category: "usage_category",
-    usage_record_uri: "usage_record_uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    callback_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountUsageUsageTriggerCallbackMethod.from_value(value)
-    end,
-    recurring: lambda do |value|
-      ::OctridevTwilio::UsageTriggerEnumRecurring.from_value(value)
-    end,
-    trigger_by: lambda do |value|
-      ::OctridevTwilio::UsageTriggerEnumTriggerField.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountUsageUsageTrigger.
-# Typed representation of the `ApiV2010AccountUsageUsageTrigger` API schema.
-class ApiV2010AccountUsageUsageTrigger
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::DECODERS
-
-  # @return [String] The SID of the Account that the trigger monitors.
-  attr_reader :account_sid
-  # @return [String] The API version used to create the resource.
-  attr_reader :api_version
-  # @return [ApiV2010AccountUsageUsageTriggerCallbackMethod] The HTTP method we use to call `callback_url`. Can be: `GET` or `POST`.
-  attr_reader :callback_method
-  # @return [String] The URL we call using the `callback_method` when the trigger fires.
-  attr_reader :callback_url
-  # @return [String] The current value of the field the trigger is watching.
-  attr_reader :current_value
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the trigger was last fired specified in RFC 2822 format.
-  attr_reader :date_fired
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The string that you assigned to describe the trigger.
-  attr_reader :friendly_name
-  # @return [UsageTriggerEnumRecurring] The frequency of a recurring UsageTrigger. Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
-  attr_reader :recurring
-  # @return [String] The unique string that that we created to identify the UsageTrigger resource.
-  attr_reader :sid
-  # @return [UsageTriggerEnumTriggerField] The field in the UsageRecord resource that fires the trigger. Can be: `count`, `usage`, or `price`, as described in the UsageRecords documentation.
-  attr_reader :trigger_by
-  # @return [String] The value at which the trigger will fire. Must be a positive, numeric value.
-  attr_reader :trigger_value
-  # @return [String] The URI of the resource, relative to `api.twilio.com`.
-  attr_reader :uri
-  # @return [String] The usage category the trigger watches. Must be one of the supported usage categories.
-  attr_reader :usage_category
-  # @return [String] The URI of the UsageRecord resource this trigger watches, relative to `api.twilio.com`.
-  attr_reader :usage_record_uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountUsageUsageTriggerMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      api_version: 'api_version',
+      callback_method: 'callback_method',
+      callback_url: 'callback_url',
+      current_value: 'current_value',
+      date_created: 'date_created',
+      date_fired: 'date_fired',
+      date_updated: 'date_updated',
+      friendly_name: 'friendly_name',
+      recurring: 'recurring',
+      sid: 'sid',
+      trigger_by: 'trigger_by',
+      trigger_value: 'trigger_value',
+      uri: 'uri',
+      usage_category: 'usage_category',
+      usage_record_uri: 'usage_record_uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      callback_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountUsageUsageTriggerCallbackMethod.from_value(value)
+      end,
+      recurring: lambda do |value|
+        ::OctridevTwilio::UsageTriggerEnumRecurring.from_value(value)
+      end,
+      trigger_by: lambda do |value|
+        ::OctridevTwilio::UsageTriggerEnumTriggerField.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountUsageUsageTrigger.
+  # Typed representation of the `ApiV2010AccountUsageUsageTrigger` API schema.
+  class ApiV2010AccountUsageUsageTrigger
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountUsageUsageTriggerMetadata::DECODERS
+
+    # @return [String] The SID of the Account that the trigger monitors.
+    attr_reader :account_sid
+    # @return [String] The API version used to create the resource.
+    attr_reader :api_version
+    # @return [ApiV2010AccountUsageUsageTriggerCallbackMethod] The HTTP method we use to call `callback_url`. Can be: `GET` or `POST`.
+    attr_reader :callback_method
+    # @return [String] The URL we call using the `callback_method` when the trigger fires.
+    attr_reader :callback_url
+    # @return [String] The current value of the field the trigger is watching.
+    attr_reader :current_value
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the trigger was last fired specified in RFC 2822 format.
+    attr_reader :date_fired
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The string that you assigned to describe the trigger.
+    attr_reader :friendly_name
+    # @return [UsageTriggerEnumRecurring] The frequency of a recurring UsageTrigger. Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
+    attr_reader :recurring
+    # @return [String] The unique string that that we created to identify the UsageTrigger resource.
+    attr_reader :sid
+    # @return [UsageTriggerEnumTriggerField] The field in the UsageRecord resource that fires the trigger. Can be: `count`, `usage`, or `price`, as described in the UsageRecords documentation.
+    attr_reader :trigger_by
+    # @return [String] The value at which the trigger will fire. Must be a positive, numeric value.
+    attr_reader :trigger_value
+    # @return [String] The URI of the resource, relative to `api.twilio.com`.
+    attr_reader :uri
+    # @return [String] The usage category the trigger watches. Must be one of the supported usage categories.
+    attr_reader :usage_category
+    # @return [String] The URI of the UsageRecord resource this trigger watches, relative to `api.twilio.com`.
+    attr_reader :usage_record_uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ApiV2010AccountUsageUsageTriggerCallbackMethod SDK namespace.
+  module ApiV2010AccountUsageUsageTriggerCallbackMethod
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountUsageUsageTriggerCallbackMethod SDK namespace.
-module ApiV2010AccountUsageUsageTriggerCallbackMethod
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the UsageTriggerEnumRecurring SDK namespace.
+  module UsageTriggerEnumRecurring
+    DAILY = 'daily'
+    MONTHLY = 'monthly'
+    YEARLY = 'yearly'
+    ALLTIME = 'alltime'
+    VALUES = %w[daily monthly yearly alltime].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the UsageTriggerEnumRecurring SDK namespace.
-module UsageTriggerEnumRecurring
-  DAILY = 'daily'
-  MONTHLY = 'monthly'
-  YEARLY = 'yearly'
-  ALLTIME = 'alltime'
-  VALUES = ['daily', 'monthly', 'yearly', 'alltime'].freeze
-  def self.from_value(value)
-    value
+  # Defines the UsageTriggerEnumTriggerField SDK namespace.
+  module UsageTriggerEnumTriggerField
+    COUNT = 'count'
+    USAGE = 'usage'
+    PRICE = 'price'
+    VALUES = %w[count usage price].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the UsageTriggerEnumTriggerField SDK namespace.
-module UsageTriggerEnumTriggerField
-  COUNT = 'count'
-  USAGE = 'usage'
-  PRICE = 'price'
-  VALUES = ['count', 'usage', 'price'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

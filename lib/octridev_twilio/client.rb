@@ -68,6 +68,15 @@ module OctridevTwilio
       raise refusal
     end
 
+    # Whether a decoded union branch still holds every key of the payload: an
+    # untagged union takes such a branch before the first that decodes.
+    def keeps_every_key?(data, decoded)
+      return true unless data.is_a?(::Hash) && decoded.respond_to?(:to_h)
+
+      kept = decoded.to_h
+      data.all? { |key, value| value.nil? || kept.key?(key) }
+    end
+
     def to_h(model, fields, extras: false)
       declared = fields.each_with_object({}) do |(field, wire_name), result|
         value = model.public_send(field)
@@ -710,8 +719,12 @@ module OctridevTwilio
     end
 
     # A literal path segment is authored text (`/größe/`), and URI accepts ASCII only.
+    # Literal path text a URI cannot carry (DigitalOcean's `/<upload_url>`,
+    # non-ASCII names) is percent-encoded; an encoded parameter stays as it is.
     def self.ascii_path(path)
-      path.gsub(/[^[:ascii:]]+/) { |text| URI.encode_www_form_component(text) }
+      path.gsub(%r{[^A-Za-z0-9\-._~!$&'()*+,;=:@/%?]+}) do |text|
+        text.bytes.map { |byte| format('%%%02X', byte) }.join
+      end
     end
 
     # Pairs a body that is one of `files`' models with its binary fields.

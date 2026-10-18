@@ -229,7 +229,9 @@ module OctridevTwilio
           status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::CallsStreams::CreateCallsStreamsStatusCallbackMethod.from_value(value)
           end
-        }.freeze
+        }.merge(
+          {}
+        ).freeze
       end
     end
   end

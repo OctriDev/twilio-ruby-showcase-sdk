@@ -138,7 +138,10 @@ class SdkBehaviorTest < Minitest::Test
       assert_equal item['expect']['method'], seen.method
       got_base, got_query = seen.url.split('?', 2)
       want_base, want_query = item['expect']['url'].split('?', 2)
-      assert_equal want_base, got_base
+      # Literal path text a URI cannot carry (DigitalOcean's /<upload_url>) is
+      # sent percent-encoded.
+      decode_path = ->(path) { path.gsub(/%\h\h/) { |escape| escape[1..].hex.chr } }
+      assert_equal decode_path.call(want_base), decode_path.call(got_base)
       assert_equal normalize_query(want_query), normalize_query(got_query)
       item['expect']['headers'].each do |name, value|
         actual = seen.headers.find { |header, _| header.downcase == name }&.last

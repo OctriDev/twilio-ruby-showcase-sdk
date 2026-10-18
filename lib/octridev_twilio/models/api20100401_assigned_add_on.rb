@@ -5,67 +5,69 @@
 
 # api20100401_assigned_add_on domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata
-    FIELDS = {
-      sid: 'sid',
-      account_sid: 'account_sid',
-      resource_sid: 'resource_sid',
-      friendly_name: 'friendly_name',
-      description: 'description',
-      configuration: 'configuration',
-      unique_name: 'unique_name',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      uri: 'uri',
-      subresource_uris: 'subresource_uris'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata
+  FIELDS = {
+    sid: "sid",
+    account_sid: "account_sid",
+    resource_sid: "resource_sid",
+    friendly_name: "friendly_name",
+    description: "description",
+    configuration: "configuration",
+    unique_name: "unique_name",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    uri: "uri",
+    subresource_uris: "subresource_uris",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.
+# Typed representation of the `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn` API schema.
+class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::DECODERS
+
+  # @return [String] The unique string that that we created to identify the resource.
+  attr_reader :sid
+  # @return [String] The SID of the Account that created the resource.
+  attr_reader :account_sid
+  # @return [String] The SID of the Phone Number to which the Add-on is assigned.
+  attr_reader :resource_sid
+  # @return [String] The string that you assigned to describe the resource.
+  attr_reader :friendly_name
+  # @return [String] A short description of the functionality that the Add-on provides.
+  attr_reader :description
+  # @return [Object] A JSON string that represents the current configuration of this Add-on installation.
+  attr_reader :configuration
+  # @return [String] An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+  attr_reader :unique_name
+  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] The URI of the resource, relative to `api.twilio.com`.
+  attr_reader :uri
+  # @return [Hash] A list of related resources identified by their relative URIs.
+  attr_reader :subresource_uris
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.
-  # Typed representation of the `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn` API schema.
-  class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnMetadata::DECODERS
-
-    # @return [String] The unique string that that we created to identify the resource.
-    attr_reader :sid
-    # @return [String] The SID of the Account that created the resource.
-    attr_reader :account_sid
-    # @return [String] The SID of the Phone Number to which the Add-on is assigned.
-    attr_reader :resource_sid
-    # @return [String] The string that you assigned to describe the resource.
-    attr_reader :friendly_name
-    # @return [String] A short description of the functionality that the Add-on provides.
-    attr_reader :description
-    # @return [Object] A JSON string that represents the current configuration of this Add-on installation.
-    attr_reader :configuration
-    # @return [String] An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
-    attr_reader :unique_name
-    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] The URI of the resource, relative to `api.twilio.com`.
-    attr_reader :uri
-    # @return [Hash] A list of related resources identified by their relative URIs.
-    attr_reader :subresource_uris
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

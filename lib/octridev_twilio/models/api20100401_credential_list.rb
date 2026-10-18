@@ -5,55 +5,57 @@
 
 # api20100401_credential_list domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipSipCredentialListMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      friendly_name: 'friendly_name',
-      sid: 'sid',
-      subresource_uris: 'subresource_uris',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipSipCredentialListMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    friendly_name: "friendly_name",
+    sid: "sid",
+    subresource_uris: "subresource_uris",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSipSipCredentialList.
+# Typed representation of the `ApiV2010AccountSipSipCredentialList` API schema.
+class ApiV2010AccountSipSipCredentialList
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::DECODERS
+
+  # @return [String] The unique id of the Account that owns this resource.
+  attr_reader :account_sid
+  # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] A human readable descriptive text that describes the CredentialList, up to 64 characters long.
+  attr_reader :friendly_name
+  # @return [String] A 34 character string that uniquely identifies this resource.
+  attr_reader :sid
+  # @return [Hash] A list of credentials associated with this credential list.
+  attr_reader :subresource_uris
+  # @return [String] The URI for this resource, relative to `api.twilio.com`.
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountSipSipCredentialList.
-  # Typed representation of the `ApiV2010AccountSipSipCredentialList` API schema.
-  class ApiV2010AccountSipSipCredentialList
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipSipCredentialListMetadata::DECODERS
-
-    # @return [String] The unique id of the Account that owns this resource.
-    attr_reader :account_sid
-    # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] A human readable descriptive text that describes the CredentialList, up to 64 characters long.
-    attr_reader :friendly_name
-    # @return [String] A 34 character string that uniquely identifies this resource.
-    attr_reader :sid
-    # @return [Hash] A list of credentials associated with this credential list.
-    attr_reader :subresource_uris
-    # @return [String] The URI for this resource, relative to `api.twilio.com`.
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

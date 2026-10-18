@@ -5,55 +5,57 @@
 
 # api20100401_credential_list_mapping domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      domain_sid: 'domain_sid',
-      friendly_name: 'friendly_name',
-      sid: 'sid',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    domain_sid: "domain_sid",
+    friendly_name: "friendly_name",
+    sid: "sid",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSipSipDomainSipCredentialListMapping.
+# Typed representation of the `ApiV2010AccountSipSipDomainSipCredentialListMapping` API schema.
+class ApiV2010AccountSipSipDomainSipCredentialListMapping
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::DECODERS
+
+  # @return [String] The unique id of the Account that is responsible for this resource.
+  attr_reader :account_sid
+  # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] The unique string that is created to identify the SipDomain resource.
+  attr_reader :domain_sid
+  # @return [String] A human readable descriptive text for this resource, up to 64 characters long.
+  attr_reader :friendly_name
+  # @return [String] A 34 character string that uniquely identifies this resource.
+  attr_reader :sid
+  # @return [String] The URI for this resource, relative to `api.twilio.com`
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountSipSipDomainSipCredentialListMapping.
-  # Typed representation of the `ApiV2010AccountSipSipDomainSipCredentialListMapping` API schema.
-  class ApiV2010AccountSipSipDomainSipCredentialListMapping
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipSipDomainSipCredentialListMappingMetadata::DECODERS
-
-    # @return [String] The unique id of the Account that is responsible for this resource.
-    attr_reader :account_sid
-    # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] The unique string that is created to identify the SipDomain resource.
-    attr_reader :domain_sid
-    # @return [String] A human readable descriptive text for this resource, up to 64 characters long.
-    attr_reader :friendly_name
-    # @return [String] A 34 character string that uniquely identifies this resource.
-    attr_reader :sid
-    # @return [String] The URI for this resource, relative to `api.twilio.com`
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

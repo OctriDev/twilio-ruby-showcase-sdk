@@ -440,7 +440,7 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsSiprecMetadata
         FIELDS = {
-          status: 'Status'
+          status: "Status",
         }.freeze
         REQUIRED_FIELDS = %i[
           status
@@ -448,7 +448,7 @@ module OctridevTwilio
         DECODERS = {
           status: lambda do |value|
             ::OctridevTwilio::SiprecEnumUpdateStatus.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -479,7 +479,7 @@ module OctridevTwilio
       module CreateCallsSiprecStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end

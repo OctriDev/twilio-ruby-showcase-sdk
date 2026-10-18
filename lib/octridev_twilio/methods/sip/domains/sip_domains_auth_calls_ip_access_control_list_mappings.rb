@@ -12,12 +12,13 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateSipDomainsAuthCallsIpAccessControlListMappingsMetadata
         FIELDS = {
-          ip_access_control_list_sid: 'IpAccessControlListSid'
+          ip_access_control_list_sid: "IpAccessControlListSid",
         }.freeze
         REQUIRED_FIELDS = %i[
           ip_access_control_list_sid
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CreateSipDomainsAuthCallsIpAccessControlListMappings.
@@ -47,21 +48,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListSipDomainsAuthCallsIpAccessControlListMappingsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          contents: 'contents'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          contents: "contents",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           contents: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAXfae3ce6f63.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -106,6 +108,7 @@ module OctridevTwilio
         ip_access_control_list_sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -118,21 +121,21 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(domain_sid),
-            '/Auth/Calls/IpAccessControlListMappings.json'
+            "/Auth/Calls/IpAccessControlListMappings.json"
           ].join,
           config: config,
           body: {
-            'IpAccessControlListSid' => ip_access_control_list_sid
+            'IpAccessControlListSid' => ip_access_control_list_sid,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAXfae3ce6f63,
           decoder: :json,
           operation_id: 'create_sip_domains_auth_calls_ip_access_control_list_mappings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -157,6 +160,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -170,22 +174,22 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(domain_sid),
-            '/Auth/Calls/IpAccessControlListMappings.json'
+            "/Auth/Calls/IpAccessControlListMappings.json"
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::SipDomainsAuthCallsIpAccessControlListMappings::ListSipDomainsAuthCallsIpAccessControlListMappingsResponse,
           decoder: :json,
           operation_id: 'list_sip_domains_auth_calls_ip_access_control_list_mappings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -206,6 +210,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -218,19 +223,19 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(domain_sid),
-            '/Auth/Calls/IpAccessControlListMappings/',
+            "/Auth/Calls/IpAccessControlListMappings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAXfae3ce6f63,
           decoder: :json,
           operation_id: 'fetch_sip_domains_auth_calls_ip_access_control_list_mappings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -249,6 +254,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -261,18 +267,18 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(domain_sid),
-            '/Auth/Calls/IpAccessControlListMappings/',
+            "/Auth/Calls/IpAccessControlListMappings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_sip_domains_auth_calls_ip_access_control_list_mappings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

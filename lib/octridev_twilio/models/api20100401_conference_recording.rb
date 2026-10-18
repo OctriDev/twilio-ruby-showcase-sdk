@@ -5,124 +5,125 @@
 
 # api20100401_conference_recording domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      api_version: 'api_version',
-      call_sid: 'call_sid',
-      conference_sid: 'conference_sid',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      start_time: 'start_time',
-      duration: 'duration',
-      sid: 'sid',
-      price: 'price',
-      price_unit: 'price_unit',
-      status: 'status',
-      channels: 'channels',
-      source: 'source',
-      error_code: 'error_code',
-      encryption_details: 'encryption_details',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      status: lambda do |value|
-        ::OctridevTwilio::ConferenceRecordingEnumStatus.from_value(value)
-      end,
-      source: lambda do |value|
-        ::OctridevTwilio::ConferenceRecordingEnumSource.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    api_version: "api_version",
+    call_sid: "call_sid",
+    conference_sid: "conference_sid",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    start_time: "start_time",
+    duration: "duration",
+    sid: "sid",
+    price: "price",
+    price_unit: "price_unit",
+    status: "status",
+    channels: "channels",
+    source: "source",
+    error_code: "error_code",
+    encryption_details: "encryption_details",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    status: lambda do |value|
+      ::OctridevTwilio::ConferenceRecordingEnumStatus.from_value(value)
+    end,
+    source: lambda do |value|
+      ::OctridevTwilio::ConferenceRecordingEnumSource.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountConferenceConferenceRecording.
+# Typed representation of the `ApiV2010AccountConferenceConferenceRecording` API schema.
+class ApiV2010AccountConferenceConferenceRecording
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::DECODERS
+
+  # @return [String] The SID of the Account that created the Conference Recording resource.
+  attr_reader :account_sid
+  # @return [String] The API version used to create the recording.
+  attr_reader :api_version
+  # @return [String] The SID of the Call the Conference Recording resource is associated with.
+  attr_reader :call_sid
+  # @return [String] The Conference SID that identifies the conference associated with the recording.
+  attr_reader :conference_sid
+  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that the resource was last updated, specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] The start time of the recording in GMT and in RFC 2822 format.
+  attr_reader :start_time
+  # @return [String] The length of the recording in seconds.
+  attr_reader :duration
+  # @return [String] The unique string that that we created to identify the Conference Recording resource.
+  attr_reader :sid
+  # @return [String] The one-time cost of creating the recording in the `price_unit` currency.
+  attr_reader :price
+  # @return [String] The currency used in the `price` property. Example: `USD`.
+  attr_reader :price_unit
+  # @return [ConferenceRecordingEnumStatus] The status of the recording. Can be: `processing`, `completed` and `absent`. For more detailed statuses on in-progress recordings, check out how to Update a Recording Resource.
+  attr_reader :status
+  # @return [Integer] The number of channels in the final recording file. Can be: `1`, or `2`. Separating a two leg call into two separate channels of the recording file is supported in Dial and Outbound Rest API record options.
+  attr_reader :channels
+  # @return [ConferenceRecordingEnumSource] How the recording was created. Can be: `DialVerb`, `Conference`, `OutboundAPI`, `Trunking`, `RecordVerb`, `StartCallRecordingAPI`, `StartConferenceRecordingAPI`.
+  attr_reader :source
+  # @return [Integer] The error code that describes why the recording is `absent`. The error code is described in our Error Dictionary. This value is null if the recording `status` is not `absent`.
+  attr_reader :error_code
+  # @return [Object] How to decrypt the recording if it was encrypted using Call Recording Encryption feature.
+  attr_reader :encryption_details
+  # @return [String] The URI of the resource, relative to `api.twilio.com`.
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountConferenceConferenceRecording.
-  # Typed representation of the `ApiV2010AccountConferenceConferenceRecording` API schema.
-  class ApiV2010AccountConferenceConferenceRecording
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountConferenceConferenceRecordingMetadata::DECODERS
-
-    # @return [String] The SID of the Account that created the Conference Recording resource.
-    attr_reader :account_sid
-    # @return [String] The API version used to create the recording.
-    attr_reader :api_version
-    # @return [String] The SID of the Call the Conference Recording resource is associated with.
-    attr_reader :call_sid
-    # @return [String] The Conference SID that identifies the conference associated with the recording.
-    attr_reader :conference_sid
-    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that the resource was last updated, specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] The start time of the recording in GMT and in RFC 2822 format.
-    attr_reader :start_time
-    # @return [String] The length of the recording in seconds.
-    attr_reader :duration
-    # @return [String] The unique string that that we created to identify the Conference Recording resource.
-    attr_reader :sid
-    # @return [String] The one-time cost of creating the recording in the `price_unit` currency.
-    attr_reader :price
-    # @return [String] The currency used in the `price` property. Example: `USD`.
-    attr_reader :price_unit
-    # @return [ConferenceRecordingEnumStatus] The status of the recording. Can be: `processing`, `completed` and `absent`. For more detailed statuses on in-progress recordings, check out how to Update a Recording Resource.
-    attr_reader :status
-    # @return [Integer] The number of channels in the final recording file. Can be: `1`, or `2`. Separating a two leg call into two separate channels of the recording file is supported in Dial and Outbound Rest API record options.
-    attr_reader :channels
-    # @return [ConferenceRecordingEnumSource] How the recording was created. Can be: `DialVerb`, `Conference`, `OutboundAPI`, `Trunking`, `RecordVerb`, `StartCallRecordingAPI`, `StartConferenceRecordingAPI`.
-    attr_reader :source
-    # @return [Integer] The error code that describes why the recording is `absent`. The error code is described in our Error Dictionary. This value is null if the recording `status` is not `absent`.
-    attr_reader :error_code
-    # @return [Object] How to decrypt the recording if it was encrypted using Call Recording Encryption feature.
-    attr_reader :encryption_details
-    # @return [String] The URI of the resource, relative to `api.twilio.com`.
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the ConferenceRecordingEnumSource SDK namespace.
-  module ConferenceRecordingEnumSource
-    DIAL_VERB = 'DialVerb'
-    CONFERENCE = 'Conference'
-    OUTBOUND_API = 'OutboundAPI'
-    TRUNKING = 'Trunking'
-    RECORD_VERB = 'RecordVerb'
-    START_CALL_RECORDING_API = 'StartCallRecordingAPI'
-    START_CONFERENCE_RECORDING_API = 'StartConferenceRecordingAPI'
-    VALUES = %w[
-      DialVerb Conference OutboundAPI Trunking RecordVerb StartCallRecordingAPI
-      StartConferenceRecordingAPI
-    ].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the ConferenceRecordingEnumStatus SDK namespace.
-  module ConferenceRecordingEnumStatus
-    IN_PROGRESS = 'in-progress'
-    PAUSED = 'paused'
-    STOPPED = 'stopped'
-    PROCESSING = 'processing'
-    COMPLETED = 'completed'
-    ABSENT = 'absent'
-    VALUES = %w[in-progress paused stopped processing completed absent].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the ConferenceRecordingEnumSource SDK namespace.
+module ConferenceRecordingEnumSource
+  DIAL_VERB = 'DialVerb'
+  CONFERENCE = 'Conference'
+  OUTBOUND_API = 'OutboundAPI'
+  TRUNKING = 'Trunking'
+  RECORD_VERB = 'RecordVerb'
+  START_CALL_RECORDING_API = 'StartCallRecordingAPI'
+  START_CONFERENCE_RECORDING_API = 'StartConferenceRecordingAPI'
+  VALUES = [
+    'DialVerb', 'Conference', 'OutboundAPI', 'Trunking', 'RecordVerb', 'StartCallRecordingAPI',
+    'StartConferenceRecordingAPI'
+  ].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the ConferenceRecordingEnumStatus SDK namespace.
+module ConferenceRecordingEnumStatus
+  IN_PROGRESS = 'in-progress'
+  PAUSED = 'paused'
+  STOPPED = 'stopped'
+  PROCESSING = 'processing'
+  COMPLETED = 'completed'
+  ABSENT = 'absent'
+  VALUES = ['in-progress', 'paused', 'stopped', 'processing', 'completed', 'absent'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

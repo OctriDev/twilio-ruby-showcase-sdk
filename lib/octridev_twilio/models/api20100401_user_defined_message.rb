@@ -5,46 +5,48 @@
 
 # api20100401_user_defined_message domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountCallUserDefinedMessageMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      call_sid: 'call_sid',
-      sid: 'sid',
-      date_created: 'date_created'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountCallUserDefinedMessageMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    call_sid: "call_sid",
+    sid: "sid",
+    date_created: "date_created",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountCallUserDefinedMessage.
+# Typed representation of the `ApiV2010AccountCallUserDefinedMessage` API schema.
+class ApiV2010AccountCallUserDefinedMessage
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::DECODERS
+
+  # @return [String] The SID of the Account that created User Defined Message.
+  attr_reader :account_sid
+  # @return [String] The SID of the Call the User Defined Message is associated with.
+  attr_reader :call_sid
+  # @return [String] The SID that uniquely identifies this User Defined Message.
+  attr_reader :sid
+  # @return [String] The date that this User Defined Message was created, given in RFC 2822 format.
+  attr_reader :date_created
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountCallUserDefinedMessage.
-  # Typed representation of the `ApiV2010AccountCallUserDefinedMessage` API schema.
-  class ApiV2010AccountCallUserDefinedMessage
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountCallUserDefinedMessageMetadata::DECODERS
-
-    # @return [String] The SID of the Account that created User Defined Message.
-    attr_reader :account_sid
-    # @return [String] The SID of the Call the User Defined Message is associated with.
-    attr_reader :call_sid
-    # @return [String] The SID that uniquely identifies this User Defined Message.
-    attr_reader :sid
-    # @return [String] The date that this User Defined Message was created, given in RFC 2822 format.
-    attr_reader :date_created
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

@@ -5,67 +5,69 @@
 
 # api20100401_payload domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata
-    FIELDS = {
-      sid: 'sid',
-      add_on_result_sid: 'add_on_result_sid',
-      account_sid: 'account_sid',
-      label: 'label',
-      add_on_sid: 'add_on_sid',
-      add_on_configuration_sid: 'add_on_configuration_sid',
-      content_type: 'content_type',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      reference_sid: 'reference_sid',
-      subresource_uris: 'subresource_uris'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata
+  FIELDS = {
+    sid: "sid",
+    add_on_result_sid: "add_on_result_sid",
+    account_sid: "account_sid",
+    label: "label",
+    add_on_sid: "add_on_sid",
+    add_on_configuration_sid: "add_on_configuration_sid",
+    content_type: "content_type",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    reference_sid: "reference_sid",
+    subresource_uris: "subresource_uris",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload.
+# Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload` API schema.
+class ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::DECODERS
+
+  # @return [String] The unique string that that we created to identify the Recording AddOnResult Payload resource.
+  attr_reader :sid
+  # @return [String] The SID of the AddOnResult to which the payload belongs.
+  attr_reader :add_on_result_sid
+  # @return [String] The SID of the Account that created the Recording AddOnResult Payload resource.
+  attr_reader :account_sid
+  # @return [String] The string provided by the vendor that describes the payload.
+  attr_reader :label
+  # @return [String] The SID of the Add-on to which the result belongs.
+  attr_reader :add_on_sid
+  # @return [String] The SID of the Add-on configuration.
+  attr_reader :add_on_configuration_sid
+  # @return [String] The MIME type of the payload.
+  attr_reader :content_type
+  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] The SID of the recording to which the AddOnResult resource that contains the payload belongs.
+  attr_reader :reference_sid
+  # @return [Hash] A list of related resources identified by their relative URIs.
+  attr_reader :subresource_uris
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload.
-  # Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload` API schema.
-  class ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadMetadata::DECODERS
-
-    # @return [String] The unique string that that we created to identify the Recording AddOnResult Payload resource.
-    attr_reader :sid
-    # @return [String] The SID of the AddOnResult to which the payload belongs.
-    attr_reader :add_on_result_sid
-    # @return [String] The SID of the Account that created the Recording AddOnResult Payload resource.
-    attr_reader :account_sid
-    # @return [String] The string provided by the vendor that describes the payload.
-    attr_reader :label
-    # @return [String] The SID of the Add-on to which the result belongs.
-    attr_reader :add_on_sid
-    # @return [String] The SID of the Add-on configuration.
-    attr_reader :add_on_configuration_sid
-    # @return [String] The MIME type of the payload.
-    attr_reader :content_type
-    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] The SID of the recording to which the AddOnResult resource that contains the payload belongs.
-    attr_reader :reference_sid
-    # @return [Hash] A list of related resources identified by their relative URIs.
-    attr_reader :subresource_uris
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

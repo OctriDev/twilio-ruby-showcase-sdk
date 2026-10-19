@@ -5,16 +5,16 @@
 
 # sms domain models
 module OctridevTwilio
-# Defines the SmsFeedbackEnumOutcome SDK namespace.
-module SmsFeedbackEnumOutcome
-  CONFIRMED = 'confirmed'
-  UNCONFIRMED = 'unconfirmed'
-  RECEIVED = 'received'
-  NOT_RECEIVED = 'not-received'
-  DELAYED = 'delayed'
-  VALUES = ['confirmed', 'unconfirmed', 'received', 'not-received', 'delayed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the SmsFeedbackEnumOutcome SDK namespace.
+  module SmsFeedbackEnumOutcome
+    CONFIRMED = 'confirmed'
+    UNCONFIRMED = 'unconfirmed'
+    RECEIVED = 'received'
+    NOT_RECEIVED = 'not-received'
+    DELAYED = 'delayed'
+    VALUES = %w[confirmed unconfirmed received not-received delayed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

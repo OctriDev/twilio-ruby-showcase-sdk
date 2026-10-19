@@ -12,12 +12,12 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateValidationRequestsMetadata
         FIELDS = {
-          phone_number: "PhoneNumber",
-          friendly_name: "FriendlyName",
-          call_delay: "CallDelay",
-          extension: "Extension",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
+          phone_number: 'PhoneNumber',
+          friendly_name: 'FriendlyName',
+          call_delay: 'CallDelay',
+          extension: 'Extension',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod'
         }.freeze
         REQUIRED_FIELDS = %i[
           phone_number
@@ -25,7 +25,7 @@ module OctridevTwilio
         DECODERS = {
           status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::ValidationRequests::CreateValidationRequestsStatusCallbackMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -67,7 +67,7 @@ module OctridevTwilio
       module CreateValidationRequestsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -104,7 +104,6 @@ module OctridevTwilio
         status_callback_method: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -113,9 +112,9 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/OutgoingCallerIds.json"
+            '/OutgoingCallerIds.json'
           ].join,
           config: config,
           body: {
@@ -124,13 +123,13 @@ module OctridevTwilio
             'CallDelay' => call_delay,
             'Extension' => extension,
             'StatusCallback' => status_callback,
-            'StatusCallbackMethod' => status_callback_method,
+            'StatusCallbackMethod' => status_callback_method
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountValidationRequest,
           decoder: :json,
           operation_id: 'create_validation_requests',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

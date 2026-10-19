@@ -12,22 +12,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecord.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -58,22 +57,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsAllTimeResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordAllTime.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -104,22 +102,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsDailyResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordDaily.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -150,22 +147,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsLastMonthResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordLastMonth.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -196,22 +192,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsMonthlyResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordMonthly.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -242,22 +237,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsThisMonthResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordThisMonth.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -288,22 +282,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsTodayResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordToday.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -334,22 +327,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsYearlyResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordYearly.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -380,22 +372,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageRecordsYesterdayResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_records: "usage_records",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_records: 'usage_records'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_records: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageRecordUsageRecordYesterday.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -459,7 +450,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -474,9 +464,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records.json"
+            '/Usage/Records.json'
           ].join,
           config: config,
           query: {
@@ -486,12 +476,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsResponse,
           decoder: :json,
           operation_id: 'list_usage_records',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -529,7 +519,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -544,9 +533,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Records/AllTime.json"
+            '/Usage/Records/AllTime.json'
           ].join,
           config: config,
           query: {
@@ -556,12 +545,12 @@ module OctridevTwilio
             'IncludeSubaccounts' => QueryValue.new(include_subaccounts, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageRecords::ListUsageRecordsAllTimeResponse,
           decoder: :json,
           operation_id: 'list_usage_records_all_time',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

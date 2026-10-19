@@ -5,115 +5,114 @@
 
 # api20100401_conference domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountConferenceMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    api_version: "api_version",
-    friendly_name: "friendly_name",
-    region: "region",
-    sid: "sid",
-    status: "status",
-    uri: "uri",
-    subresource_uris: "subresource_uris",
-    reason_conference_ended: "reason_conference_ended",
-    call_sid_ending_conference: "call_sid_ending_conference",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevTwilio::ConferenceEnumStatus.from_value(value)
-    end,
-    reason_conference_ended: lambda do |value|
-      ::OctridevTwilio::ConferenceEnumReasonConferenceEnded.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountConference.
-# Typed representation of the `ApiV2010AccountConference` API schema.
-class ApiV2010AccountConference
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountConferenceMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountConferenceMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountConferenceMetadata::DECODERS
-
-  # @return [String] The SID of the Account that created this Conference resource.
-  attr_reader :account_sid
-  # @return [String] The date and time in UTC that this resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in UTC that this resource was last updated, specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The API version used to create this conference.
-  attr_reader :api_version
-  # @return [String] A string that you assigned to describe this conference room. Maximum length is 128 characters.
-  attr_reader :friendly_name
-  # @return [String] A string that represents the Twilio Region where the conference audio was mixed. May be `us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, and `jp1`. Basic conference audio will always be mixed in `us1`. Global Conference audio will be mixed nearest to the majority of participants.
-  attr_reader :region
-  # @return [String] The unique, Twilio-provided string used to identify this Conference resource.
-  attr_reader :sid
-  # @return [ConferenceEnumStatus] The status of this conference. Can be: `init`, `in-progress`, or `completed`.
-  attr_reader :status
-  # @return [String] The URI of this resource, relative to `api.twilio.com`.
-  attr_reader :uri
-  # @return [Hash] A list of related resources identified by their URIs relative to `api.twilio.com`.
-  attr_reader :subresource_uris
-  # @return [ConferenceEnumReasonConferenceEnded] The reason why a conference ended. When a conference is in progress, will be `null`. When conference is completed, can be: `conference-ended-via-api`, `participant-with-end-conference-on-exit-left`, `participant-with-end-conference-on-exit-kicked`, `last-participant-kicked`, or `last-participant-left`.
-  attr_reader :reason_conference_ended
-  # @return [String] The call SID that caused the conference to end.
-  attr_reader :call_sid_ending_conference
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountConferenceMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      api_version: 'api_version',
+      friendly_name: 'friendly_name',
+      region: 'region',
+      sid: 'sid',
+      status: 'status',
+      uri: 'uri',
+      subresource_uris: 'subresource_uris',
+      reason_conference_ended: 'reason_conference_ended',
+      call_sid_ending_conference: 'call_sid_ending_conference'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevTwilio::ConferenceEnumStatus.from_value(value)
+      end,
+      reason_conference_ended: lambda do |value|
+        ::OctridevTwilio::ConferenceEnumReasonConferenceEnded.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountConference.
+  # Typed representation of the `ApiV2010AccountConference` API schema.
+  class ApiV2010AccountConference
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountConferenceMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountConferenceMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountConferenceMetadata::DECODERS
+
+    # @return [String] The SID of the Account that created this Conference resource.
+    attr_reader :account_sid
+    # @return [String] The date and time in UTC that this resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in UTC that this resource was last updated, specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The API version used to create this conference.
+    attr_reader :api_version
+    # @return [String] A string that you assigned to describe this conference room. Maximum length is 128 characters.
+    attr_reader :friendly_name
+    # @return [String] A string that represents the Twilio Region where the conference audio was mixed. May be `us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, and `jp1`. Basic conference audio will always be mixed in `us1`. Global Conference audio will be mixed nearest to the majority of participants.
+    attr_reader :region
+    # @return [String] The unique, Twilio-provided string used to identify this Conference resource.
+    attr_reader :sid
+    # @return [ConferenceEnumStatus] The status of this conference. Can be: `init`, `in-progress`, or `completed`.
+    attr_reader :status
+    # @return [String] The URI of this resource, relative to `api.twilio.com`.
+    attr_reader :uri
+    # @return [Hash] A list of related resources identified by their URIs relative to `api.twilio.com`.
+    attr_reader :subresource_uris
+    # @return [ConferenceEnumReasonConferenceEnded] The reason why a conference ended. When a conference is in progress, will be `null`. When conference is completed, can be: `conference-ended-via-api`, `participant-with-end-conference-on-exit-left`, `participant-with-end-conference-on-exit-kicked`, `last-participant-kicked`, or `last-participant-left`.
+    attr_reader :reason_conference_ended
+    # @return [String] The call SID that caused the conference to end.
+    attr_reader :call_sid_ending_conference
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ConferenceEnumReasonConferenceEnded SDK namespace.
+  module ConferenceEnumReasonConferenceEnded
+    CONFERENCE_ENDED_VIA_API = 'conference-ended-via-api'
+    PARTICIPANT_WITH_END_CONFERENCE_ON_EXIT_LEFT = 'participant-with-end-conference-on-exit-left'
+    PARTICIPANT_WITH_END_CONFERENCE_ON_EXIT_KICKED = 'participant-with-end-conference-on-exit-kicked'
+    LAST_PARTICIPANT_KICKED = 'last-participant-kicked'
+    LAST_PARTICIPANT_LEFT = 'last-participant-left'
+    VALUES = %w[
+      conference-ended-via-api participant-with-end-conference-on-exit-left
+      participant-with-end-conference-on-exit-kicked last-participant-kicked
+      last-participant-left
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ConferenceEnumReasonConferenceEnded SDK namespace.
-module ConferenceEnumReasonConferenceEnded
-  CONFERENCE_ENDED_VIA_API = 'conference-ended-via-api'
-  PARTICIPANT_WITH_END_CONFERENCE_ON_EXIT_LEFT = 'participant-with-end-conference-on-exit-left'
-  PARTICIPANT_WITH_END_CONFERENCE_ON_EXIT_KICKED = 'participant-with-end-conference-on-exit-kicked'
-  LAST_PARTICIPANT_KICKED = 'last-participant-kicked'
-  LAST_PARTICIPANT_LEFT = 'last-participant-left'
-  VALUES = [
-    'conference-ended-via-api', 'participant-with-end-conference-on-exit-left',
-    'participant-with-end-conference-on-exit-kicked', 'last-participant-kicked',
-    'last-participant-left'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the ConferenceEnumStatus SDK namespace.
+  module ConferenceEnumStatus
+    INIT = 'init'
+    IN_PROGRESS = 'in-progress'
+    COMPLETED = 'completed'
+    VALUES = %w[init in-progress completed].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ConferenceEnumStatus SDK namespace.
-module ConferenceEnumStatus
-  INIT = 'init'
-  IN_PROGRESS = 'in-progress'
-  COMPLETED = 'completed'
-  VALUES = ['init', 'in-progress', 'completed'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ConferenceEnumUpdateStatus SDK namespace.
+  module ConferenceEnumUpdateStatus
+    COMPLETED = 'completed'
+    VALUES = ['completed'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the ConferenceEnumUpdateStatus SDK namespace.
-module ConferenceEnumUpdateStatus
-  COMPLETED = 'completed'
-  VALUES = ['completed'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

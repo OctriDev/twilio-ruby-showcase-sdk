@@ -10,7 +10,6 @@ require 'securerandom'
 require 'time'
 require 'base64'
 
-
 # Defines the OctridevTwilio SDK namespace.
 module OctridevTwilio
   # Shared model hydration and serialization primitives.
@@ -46,9 +45,7 @@ module OctridevTwilio
       return NOT_GIVEN unless data.key?(wire_name) || required
 
       value = data[wire_name]
-      if required && value.nil? && !(data.key?(wire_name) && nullable_fields.include?(field))
-        raise SdkValidationError.new(wire_name, 'required', "Required property '#{wire_name}' is missing or null")
-      end
+      raise SdkValidationError.new(wire_name, 'required', "Required property '#{wire_name}' is missing or null") if required && value.nil? && !(data.key?(wire_name) && nullable_fields.include?(field))
 
       # A null the check above admits is no value for a decoder to read.
       decoder = decoders[field]
@@ -178,7 +175,7 @@ module OctridevTwilio
         event: @event_name || 'message',
         data: @data_lines.join("\n"),
         id: @event_id,
-        retry: @event_retry,
+        retry: @event_retry
       )
       reset_event
       event
@@ -203,20 +200,20 @@ module OctridevTwilio
     CREDENTIAL_HEADERS = %w[authorization proxy-authorization cookie].freeze
 
     REQ_CLASS = {
-      'GET'     => Net::HTTP::Get,
-      'POST'    => Net::HTTP::Post,
-      'PUT'     => Net::HTTP::Put,
-      'PATCH'   => Net::HTTP::Patch,
-      'DELETE'  => Net::HTTP::Delete,
-      'HEAD'    => Net::HTTP::Head,
+      'GET' => Net::HTTP::Get,
+      'POST' => Net::HTTP::Post,
+      'PUT' => Net::HTTP::Put,
+      'PATCH' => Net::HTTP::Patch,
+      'DELETE' => Net::HTTP::Delete,
+      'HEAD' => Net::HTTP::Head,
       'OPTIONS' => Net::HTTP::Options,
-      'TRACE'   => Net::HTTP::Trace,
+      'TRACE' => Net::HTTP::Trace
     }.freeze
 
     IDEMPOTENT_METHODS = %w[GET HEAD PUT DELETE OPTIONS].freeze
     ALWAYS_RETRYABLE_STATUSES = [429, 503].freeze
     IDEMPOTENCY_KEY_OPERATIONS = %w[].freeze
-    DEFAULT_BASE_URL = "https://api.twilio.com"
+    DEFAULT_BASE_URL = 'https://api.twilio.com'
     # A request to an operation that declares its own server goes there, unless
     # the consumer configured a base URL.
     OPERATION_SERVERS = {}.freeze
@@ -231,9 +228,9 @@ module OctridevTwilio
       application/x-ndjson application/ndjson application/jsonl
       application/json-lines application/x-jsonlines application/json-seq
     ].freeze
-    PII_KEYS = ["authorization", "cookie", "set_cookie", "setcookie", "password", "passcode", "secret", "token", "api_key", "apikey", "access_token", "accesstoken", "refresh_token", "refreshtoken", "client_secret", "clientsecret", "email", "email_address", "emailaddress", "phone", "phone_number", "phonenumber", "address", "street_address", "streetaddress", "street", "city", "postal_code", "postalcode", "zip_code", "zipcode", "first_name", "firstname", "last_name", "lastname", "full_name", "fullname", "username", "user_name", "ip", "ip_address", "ipaddress", "user_agent", "useragent", "referrer", "url", "uri", "query", "latitude", "longitude", "ssn", "social_security_number", "socialsecuritynumber", "tax_id", "taxid", "national_id", "nationalid", "passport_number", "passportnumber", "date_of_birth", "dateofbirth", "birth_date", "birthdate", "headers", "body", "request_headers", "requestheaders", "request_body", "requestbody"].freeze
+    PII_KEYS = %w[authorization cookie set_cookie setcookie password passcode secret token api_key apikey access_token accesstoken refresh_token refreshtoken client_secret clientsecret email email_address emailaddress phone phone_number phonenumber address street_address streetaddress street city postal_code postalcode zip_code zipcode first_name firstname last_name lastname full_name fullname username user_name ip ip_address ipaddress user_agent useragent referrer url uri query latitude longitude ssn social_security_number socialsecuritynumber tax_id taxid national_id nationalid passport_number passportnumber date_of_birth dateofbirth birth_date birthdate headers body request_headers requestheaders request_body requestbody].freeze
     # Word runs matched anywhere inside a key (`billingEmail`, `stripe_secret_key`).
-    PII_SEGMENTS = ["_password_", "_passwd_", "_passphrase_", "_secret_", "_token_", "_api_key_", "_access_token_", "_refresh_token_", "_client_secret_", "_authorization_", "_cookie_", "_set_cookie_", "_credential_", "_private_key_", "_access_key_", "_session_id_", "_card_number_", "_credit_card_", "_cvv_", "_cvc_", "_email_", "_email_address_", "_phone_", "_phone_number_", "_address_", "_street_address_", "_postal_code_", "_zip_code_", "_first_name_", "_last_name_", "_full_name_", "_user_name_", "_user_agent_", "_ssn_", "_social_security_number_", "_tax_id_", "_national_id_", "_passport_number_", "_passport_", "_date_of_birth_", "_birth_date_", "_birthdate_", "_dob_"].freeze
+    PII_SEGMENTS = %w[_password_ _passwd_ _passphrase_ _secret_ _token_ _api_key_ _access_token_ _refresh_token_ _client_secret_ _authorization_ _cookie_ _set_cookie_ _credential_ _private_key_ _access_key_ _session_id_ _card_number_ _credit_card_ _cvv_ _cvc_ _email_ _email_address_ _phone_ _phone_number_ _address_ _street_address_ _postal_code_ _zip_code_ _first_name_ _last_name_ _full_name_ _user_name_ _user_agent_ _ssn_ _social_security_number_ _tax_id_ _national_id_ _passport_number_ _passport_ _date_of_birth_ _birth_date_ _birthdate_ _dob_].freeze
     PII_REDACTION_MARKER = '[REDACTED]'
 
     # `stripeSecretKey`, `API-Key` and `first name` become `stripe_secret_key`, `api_key`, `first_name`.
@@ -302,7 +299,7 @@ module OctridevTwilio
         query: query,
         body: body,
         content_type: content_type,
-        operation_id: operation_id,
+        operation_id: operation_id
       )
       retry_cfg = request_options&.retry || cfg.retry || RetryConfig.new
       idem = cfg.idempotency || IdempotencyConfig.new
@@ -317,7 +314,7 @@ module OctridevTwilio
         content_type: content_type, operation_id: operation_id,
         extra_headers: extra_headers, retry_config: retry_cfg,
         idempotency_config: idem, idempotency_key: idempotency_key,
-        dispatch: dispatch, timeout: timeout, decoder: decoder, return_type: return_type, errors: errors,
+        dispatch: dispatch, timeout: timeout, decoder: decoder, return_type: return_type, errors: errors
       )
     end
 
@@ -341,12 +338,10 @@ module OctridevTwilio
             body_present: !body.equal?(NOT_GIVEN), body_string: body_string,
             content_type: content_type, operation_id: operation_id, attempt: attempt,
             extra_headers: extra_headers, idempotency_config: idempotency_config,
-            idempotency_key: idempotency_key, dispatch: dispatch, timeout: timeout,
+            idempotency_key: idempotency_key, dispatch: dispatch, timeout: timeout
           )
-        rescue SdkTimeoutError, SdkNetworkError => error
-          if attempt >= retry_config.max_attempts || !may_repeat_request?(method, operation_id, idempotency_key)
-            raise log_error(config, method, path, operation_id, error)
-          end
+        rescue SdkTimeoutError, SdkNetworkError => e
+          raise log_error(config, method, path, operation_id, e) if attempt >= retry_config.max_attempts || !may_repeat_request?(method, operation_id, idempotency_key)
 
           sleep_backoff(retry_config, attempt, nil)
           next
@@ -374,7 +369,7 @@ module OctridevTwilio
       headers[idempotency_config.header_name] = idempotency_key if idempotency_key
       request = SdkRequest.new(
         method: method, url: url, headers: headers, body: body_string,
-        content_type: content_type, operation_id: operation_id, attempt: attempt,
+        content_type: content_type, operation_id: operation_id, attempt: attempt
       )
       execute_attempt(dispatch, request, timeout)
     end
@@ -386,7 +381,7 @@ module OctridevTwilio
       SdkHttpError.for_status(
         status_code: raw.status_code, status_text: raw.status_text,
         body: decode_error_body(raw.body, raw.headers), headers: raw.headers,
-        request_id: raw.request_id, errors: errors,
+        request_id: raw.request_id, errors: errors
       )
     end
 
@@ -409,8 +404,8 @@ module OctridevTwilio
       raise SdkTimeoutError, timeout
     rescue SdkTimeoutError, SdkNetworkError
       raise
-    rescue ::StandardError => error
-      raise SdkNetworkError, error
+    rescue ::StandardError => e
+      raise SdkNetworkError, e
     end
 
     def self.successful_response(raw, config, decoder, return_type, operation_id)
@@ -422,7 +417,7 @@ module OctridevTwilio
         headers: raw.headers,
         request_id: raw.request_id,
         latency: raw.latency,
-        attempt: raw.attempt,
+        attempt: raw.attempt
       )
       config.on_response&.call(envelope)
       envelope
@@ -449,7 +444,7 @@ module OctridevTwilio
         operationId: operation_id,
         method: method,
         path: path,
-        error: log_error_object(error),
+        error: log_error_object(error)
       }
       {
         statusCode: error.status_code,
@@ -457,7 +452,7 @@ module OctridevTwilio
         environment: logging.environment,
         release: logging.release,
         user: logging.user,
-        tags: logging.tags,
+        tags: logging.tags
       }.each { |key, value| payload[key] = value unless value.nil? }
       payload
     end
@@ -466,7 +461,7 @@ module OctridevTwilio
       result = {
         name: error.class.name.split('::').last,
         message: error.message,
-        stack: (error.backtrace || caller).join("\n"),
+        stack: (error.backtrace || caller).join("\n")
       }
       frames = build_frames(error)
       result[:frames] = frames unless frames.empty?
@@ -494,12 +489,14 @@ module OctridevTwilio
     # original code for languages that are not minified (no source maps needed).
     def self.source_context(path, lineno)
       return {} if path.nil? || lineno.nil? || lineno < 1
+
       begin
         lines = File.readlines(path)
       rescue ::StandardError
         return {}
       end
       return {} if lines.empty? || lineno > lines.length
+
       idx = lineno - 1
       ctx = { contextLine: lines[idx].chomp }
       pre = lines[[0, idx - 5].max...idx].map(&:chomp)
@@ -512,6 +509,7 @@ module OctridevTwilio
     # A frame is in-app unless it lives in an installed gem or the Ruby stdlib.
     def self.frame_in_app?(path)
       return false if path.nil? || path.empty?
+
       !path.include?('/gems/') && !path.include?('/ruby/') && !path.start_with?('<')
     end
 
@@ -519,13 +517,14 @@ module OctridevTwilio
     def self.build_frames(error)
       locations = error.backtrace_locations
       return [] if locations.nil?
+
       locations.map do |loc|
         path = loc.absolute_path || loc.path
         {
           function: loc.label,
           filename: path,
           lineno: loc.lineno,
-          inApp: frame_in_app?(path),
+          inApp: frame_in_app?(path)
         }.merge(source_context(path, loc.lineno))
       end
     end
@@ -534,6 +533,7 @@ module OctridevTwilio
     # middleware in `stack` is the outermost. Returns `terminal` when empty.
     def self.compose_middleware(stack, terminal)
       return terminal if stack.nil? || stack.empty?
+
       next_in_chain = terminal
       stack.reverse_each do |mw|
         captured = next_in_chain
@@ -556,7 +556,7 @@ module OctridevTwilio
         body: response.body.to_s,
         request_id: find_request_id(resp_headers),
         latency: Time.now - started,
-        attempt: sdk_req.attempt,
+        attempt: sdk_req.attempt
       )
     end
 
@@ -641,6 +641,7 @@ module OctridevTwilio
         end
       end
       return '' if pairs.empty?
+
       separator = has_query ? '&' : '?'
       separator + URI.encode_www_form(pairs)
     end
@@ -764,6 +765,7 @@ module OctridevTwilio
     def self.serialize_headers(values, cookies: [])
       headers = values.each_with_object({}) do |(key, value), result|
         next if value.nil? || value.equal?(NOT_GIVEN)
+
         result[key.to_s] = value.to_s
       end
       pairs = cookies.flatten
@@ -836,16 +838,15 @@ module OctridevTwilio
 
     # Resolves all configured auth into [headers, query_params]. OAuth2 fetch
     # happens here, before the retry loop starts.
-    def self.resolve_auth(config, operation_id)
+    def self.resolve_auth(config, _operation_id)
       headers = {}
       query = {}
       auth = config.auth
       return [headers, query] unless auth
 
-
       if auth.account_sid_auth_token
         raw = "#{auth.account_sid_auth_token.username}:#{auth.account_sid_auth_token.password}"
-        headers["Authorization"] = "Basic #{Base64.strict_encode64(raw)}"
+        headers['Authorization'] = "Basic #{Base64.strict_encode64(raw)}"
       end
 
       [headers, query]
@@ -873,6 +874,7 @@ module OctridevTwilio
       return JSON.generate(deep_to_h(body)) if content_type.include?('json')
       return encode_form(body) if media_type == 'application/x-www-form-urlencoded' && body.is_a?(::Hash)
       return '' if body.nil?
+
       body.to_s
     end
 
@@ -961,6 +963,7 @@ module OctridevTwilio
     def self.retry_status?(method, status, retry_on)
       return false unless retry_on.include?(status)
       return true if IDEMPOTENT_METHODS.include?(method)
+
       ALWAYS_RETRYABLE_STATUSES.include?(status)
     end
 
@@ -969,6 +972,7 @@ module OctridevTwilio
     # that declares the server deduplicates on it.
     def self.may_repeat_request?(method, operation_id, idempotency_key)
       return true if IDEMPOTENT_METHODS.include?(method)
+
       !idempotency_key.nil? && IDEMPOTENCY_KEY_OPERATIONS.include?(operation_id)
     end
 
@@ -993,10 +997,10 @@ module OctridevTwilio
       data = JSON.parse(raw.body)
       raise_error_envelope(raw, data, operation_id)
       decode_typed(data, return_type)
-    rescue JSON::ParserError, SdkValidationError => error
+    rescue JSON::ParserError, SdkValidationError => e
       raise SdkResponseDecodeError.new(
-        error.message, status_code: raw.status_code, headers: raw.headers, body: raw.body,
-                       request_id: raw.request_id, field: error.respond_to?(:field) ? error.field : nil
+        e.message, status_code: raw.status_code, headers: raw.headers, body: raw.body,
+                   request_id: raw.request_id, field: e.respond_to?(:field) ? e.field : nil
       )
     end
 
@@ -1015,20 +1019,22 @@ module OctridevTwilio
     # SdkResponseDecodeError with its data.
     def self.decode_event(data, return_type)
       decode_typed(data, return_type)
-    rescue SdkValidationError => error
-      raise SdkResponseDecodeError.new(error.message, status_code: 200, headers: {}, body: data, field: error.field)
+    rescue SdkValidationError => e
+      raise SdkResponseDecodeError.new(e.message, status_code: 200, headers: {}, body: data, field: e.field)
     end
 
     def self.decode_body(text, decoder, return_type)
       return nil if decoder == :empty
       return text.b if decoder == :bytes
       return text.dup.force_encoding(Encoding::UTF_8) if decoder == :text
+
       data = JSON.parse(text)
       decode_typed(data, return_type)
     end
 
     def self.decode_typed(data, return_type)
       return data if return_type.nil?
+
       if return_type.is_a?(::Array)
         return data unless data.is_a?(::Array)
 
@@ -1061,7 +1067,7 @@ module OctridevTwilio
         query: query,
         body: body,
         content_type: content_type,
-        operation_id: operation_id,
+        operation_id: operation_id
       )
 
       headers = build_headers(cfg, auth_headers, content_type, !body.equal?(NOT_GIVEN))
@@ -1073,7 +1079,7 @@ module OctridevTwilio
         url,
         config: cfg,
         headers: headers,
-        body_string: body_string,
+        body_string: body_string
       )
       http.request(request) do |response|
         consume_stream_response(response, stream_format, chunk_domain, errors, &block)
@@ -1139,8 +1145,8 @@ module OctridevTwilio
       response_headers = flatten_headers(response)
       raise SdkResponseDecodeError.new(
         "Expected an event stream, received #{content_type}", status_code: response.code.to_i,
-                                                               headers: response_headers, body: response_body,
-                                                               request_id: find_request_id(response_headers)
+                                                              headers: response_headers, body: response_body,
+                                                              request_id: find_request_id(response_headers)
       )
     end
 
@@ -1154,7 +1160,7 @@ module OctridevTwilio
         body: response_body,
         headers: response_headers,
         request_id: find_request_id(response_headers),
-        errors: errors,
+        errors: errors
       )
     end
 
@@ -1169,9 +1175,11 @@ module OctridevTwilio
         done, failed, reason = is_terminal.call(result)
         if done
           raise SdkNetworkError, RuntimeError.new("operation failed: #{reason || 'unknown'}") if failed
+
           return result
         end
         raise SdkTimeoutError, cfg.timeout if Time.now >= deadline
+
         jitter = rand * cfg.interval
         wait = [interval + jitter, cfg.max_interval].min
         sleep(wait)
@@ -1179,7 +1187,6 @@ module OctridevTwilio
       end
     end
   end
-
 
   # One Server-Sent Event yielded by SdkClient.stream. @data is the raw event
   # payload; consumers can JSON-decode it themselves when applicable.

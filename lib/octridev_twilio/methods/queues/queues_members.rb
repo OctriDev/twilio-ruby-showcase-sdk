@@ -12,8 +12,8 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateQueuesMembersMetadata
         FIELDS = {
-          url: "Url",
-          method: "Method",
+          url: 'Url',
+          method: 'Method'
         }.freeze
         REQUIRED_FIELDS = %i[
           url
@@ -21,7 +21,7 @@ module OctridevTwilio
         DECODERS = {
           method: lambda do |value|
             ::OctridevTwilio::Methods::QueuesMembers::UpdateQueuesMembersMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -54,22 +54,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListQueuesMembersResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          queue_members: "queue_members",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          queue_members: 'queue_members'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           queue_members: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountQueueMember.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -101,7 +100,7 @@ module OctridevTwilio
       module UpdateQueuesMembersMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -123,7 +122,6 @@ module OctridevTwilio
         call_sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -133,19 +131,19 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Queues/",
+            '/Queues/',
             SdkClient.encode_path_segment(queue_sid),
-            "/Members/",
+            '/Members/',
             SdkClient.encode_path_segment(call_sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountQueueMember,
           decoder: :json,
           operation_id: 'fetch_queues_members',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -171,7 +169,6 @@ module OctridevTwilio
         method: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -183,24 +180,24 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Queues/",
+            '/Queues/',
             SdkClient.encode_path_segment(queue_sid),
-            "/Members/",
+            '/Members/',
             SdkClient.encode_path_segment(call_sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
             'Url' => url,
-            'Method' => method,
+            'Method' => method
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountQueueMember,
           decoder: :json,
           operation_id: 'update_queues_members',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -224,7 +221,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -238,22 +234,22 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Queues/",
+            '/Queues/',
             SdkClient.encode_path_segment(queue_sid),
-            "/Members.json"
+            '/Members.json'
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::QueuesMembers::ListQueuesMembersResponse,
           decoder: :json,
           operation_id: 'list_queues_members',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

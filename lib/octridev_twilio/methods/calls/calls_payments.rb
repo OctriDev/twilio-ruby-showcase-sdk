@@ -12,24 +12,24 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallsPaymentsMetadata
         FIELDS = {
-          idempotency_key: "IdempotencyKey",
-          status_callback: "StatusCallback",
-          bank_account_type: "BankAccountType",
-          charge_amount: "ChargeAmount",
-          currency: "Currency",
-          description: "Description",
-          input: "Input",
-          min_postal_code_length: "MinPostalCodeLength",
-          parameter: "Parameter",
-          payment_connector: "PaymentConnector",
-          payment_method: "PaymentMethod",
-          postal_code: "PostalCode",
-          security_code: "SecurityCode",
-          timeout: "Timeout",
-          token_type: "TokenType",
-          valid_card_types: "ValidCardTypes",
-          require_matching_inputs: "RequireMatchingInputs",
-          confirmation: "Confirmation",
+          idempotency_key: 'IdempotencyKey',
+          status_callback: 'StatusCallback',
+          bank_account_type: 'BankAccountType',
+          charge_amount: 'ChargeAmount',
+          currency: 'Currency',
+          description: 'Description',
+          input: 'Input',
+          min_postal_code_length: 'MinPostalCodeLength',
+          parameter: 'Parameter',
+          payment_connector: 'PaymentConnector',
+          payment_method: 'PaymentMethod',
+          postal_code: 'PostalCode',
+          security_code: 'SecurityCode',
+          timeout: 'Timeout',
+          token_type: 'TokenType',
+          valid_card_types: 'ValidCardTypes',
+          require_matching_inputs: 'RequireMatchingInputs',
+          confirmation: 'Confirmation'
         }.freeze
         REQUIRED_FIELDS = %i[
           idempotency_key
@@ -47,7 +47,7 @@ module OctridevTwilio
           end,
           confirmation: lambda do |value|
             ::OctridevTwilio::Methods::CallsPayments::CreateCallsPaymentsConfirmation.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -112,10 +112,10 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsPaymentsMetadata
         FIELDS = {
-          idempotency_key: "IdempotencyKey",
-          status_callback: "StatusCallback",
-          capture: "Capture",
-          status: "Status",
+          idempotency_key: 'IdempotencyKey',
+          status_callback: 'StatusCallback',
+          capture: 'Capture',
+          status: 'Status'
         }.freeze
         REQUIRED_FIELDS = %i[
           idempotency_key
@@ -127,7 +127,7 @@ module OctridevTwilio
           end,
           status: lambda do |value|
             ::OctridevTwilio::PaymentsEnumStatus.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -165,7 +165,7 @@ module OctridevTwilio
       module CreateCallsPaymentsConfirmation
         TRUE = 'true'
         FALSE = 'false'
-        VALUES = ['true', 'false'].freeze
+        VALUES = %w[true false].freeze
         def self.from_value(value)
           value
         end
@@ -264,7 +264,6 @@ module OctridevTwilio
         confirmation: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -276,11 +275,11 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(call_sid),
-            "/Payments.json"
+            '/Payments.json'
           ].join,
           config: config,
           body: {
@@ -301,13 +300,13 @@ module OctridevTwilio
             'TokenType' => token_type,
             'ValidCardTypes' => valid_card_types,
             'RequireMatchingInputs' => require_matching_inputs,
-            'Confirmation' => confirmation,
+            'Confirmation' => confirmation
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallPayments,
           decoder: :json,
           operation_id: 'create_calls_payments',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -345,7 +344,6 @@ module OctridevTwilio
         status: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -360,26 +358,26 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(call_sid),
-            "/Payments/",
+            '/Payments/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
             'IdempotencyKey' => idempotency_key,
             'StatusCallback' => status_callback,
             'Capture' => capture,
-            'Status' => status,
+            'Status' => status
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallPayments,
           decoder: :json,
           operation_id: 'update_calls_payments',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

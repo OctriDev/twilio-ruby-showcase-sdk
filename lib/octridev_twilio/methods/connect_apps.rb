@@ -12,24 +12,23 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateConnectAppsMetadata
         FIELDS = {
-          authorize_redirect_url: "AuthorizeRedirectUrl",
-          company_name: "CompanyName",
-          deauthorize_callback_method: "DeauthorizeCallbackMethod",
-          deauthorize_callback_url: "DeauthorizeCallbackUrl",
-          description: "Description",
-          friendly_name: "FriendlyName",
-          homepage_url: "HomepageUrl",
-          permissions: "Permissions",
+          authorize_redirect_url: 'AuthorizeRedirectUrl',
+          company_name: 'CompanyName',
+          deauthorize_callback_method: 'DeauthorizeCallbackMethod',
+          deauthorize_callback_url: 'DeauthorizeCallbackUrl',
+          description: 'Description',
+          friendly_name: 'FriendlyName',
+          homepage_url: 'HomepageUrl',
+          permissions: 'Permissions'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           deauthorize_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::ConnectApps::UpdateConnectAppsDeauthorizeCallbackMethod.from_value(value)
           end,
           permissions: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ConnectAppEnumPermission.from_value(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -74,22 +73,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListConnectAppsResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          connect_apps: "connect_apps",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          connect_apps: 'connect_apps'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           connect_apps: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountConnectApp.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -121,7 +119,7 @@ module OctridevTwilio
       module UpdateConnectAppsDeauthorizeCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -141,7 +139,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -151,17 +148,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/ConnectApps/",
+            '/ConnectApps/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountConnectApp,
           decoder: :json,
           operation_id: 'fetch_connect_apps',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -203,7 +200,6 @@ module OctridevTwilio
         permissions: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -223,11 +219,11 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/ConnectApps/",
+            '/ConnectApps/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
@@ -238,13 +234,13 @@ module OctridevTwilio
             'Description' => description,
             'FriendlyName' => friendly_name,
             'HomepageUrl' => homepage_url,
-            'Permissions' => permissions,
+            'Permissions' => permissions
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountConnectApp,
           decoder: :json,
           operation_id: 'update_connect_apps',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -262,7 +258,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -272,16 +267,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/ConnectApps/",
+            '/ConnectApps/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_connect_apps',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -303,7 +298,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -314,20 +308,20 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/ConnectApps.json"
+            '/ConnectApps.json'
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::ConnectApps::ListConnectAppsResponse,
           decoder: :json,
           operation_id: 'list_connect_apps',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

@@ -5,90 +5,89 @@
 
 # api20100401_call_transcription domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata
-  FIELDS = {
-    sid: "sid",
-    account_sid: "account_sid",
-    call_sid: "call_sid",
-    name: "name",
-    status: "status",
-    date_updated: "date_updated",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    status: lambda do |value|
-      ::OctridevTwilio::RealtimeTranscriptionEnumStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountCallRealtimeTranscription.
-# Typed representation of the `ApiV2010AccountCallRealtimeTranscription` API schema.
-class ApiV2010AccountCallRealtimeTranscription
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::DECODERS
-
-  # @return [String] The SID of the Transcription resource.
-  attr_reader :sid
-  # @return [String] The SID of the Account that created this Transcription resource.
-  attr_reader :account_sid
-  # @return [String] The SID of the Call the Transcription resource is associated with.
-  attr_reader :call_sid
-  # @return [String] The user-specified name of this Transcription, if one was given when the Transcription was created. This may be used to stop the Transcription.
-  attr_reader :name
-  # @return [RealtimeTranscriptionEnumStatus] The status - one of `stopped`, `in-flight`
-  attr_reader :status
-  # @return [String] The date and time in GMT that this resource was last updated, specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] Optional `string` value serialized in the `uri` wire field.
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata
+    FIELDS = {
+      sid: 'sid',
+      account_sid: 'account_sid',
+      call_sid: 'call_sid',
+      name: 'name',
+      status: 'status',
+      date_updated: 'date_updated',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      status: lambda do |value|
+        ::OctridevTwilio::RealtimeTranscriptionEnumStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountCallRealtimeTranscription.
+  # Typed representation of the `ApiV2010AccountCallRealtimeTranscription` API schema.
+  class ApiV2010AccountCallRealtimeTranscription
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountCallRealtimeTranscriptionMetadata::DECODERS
+
+    # @return [String] The SID of the Transcription resource.
+    attr_reader :sid
+    # @return [String] The SID of the Account that created this Transcription resource.
+    attr_reader :account_sid
+    # @return [String] The SID of the Call the Transcription resource is associated with.
+    attr_reader :call_sid
+    # @return [String] The user-specified name of this Transcription, if one was given when the Transcription was created. This may be used to stop the Transcription.
+    attr_reader :name
+    # @return [RealtimeTranscriptionEnumStatus] The status - one of `stopped`, `in-flight`
+    attr_reader :status
+    # @return [String] The date and time in GMT that this resource was last updated, specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] Optional `string` value serialized in the `uri` wire field.
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the RealtimeTranscriptionEnumStatus SDK namespace.
+  module RealtimeTranscriptionEnumStatus
+    IN_PROGRESS = 'in-progress'
+    STOPPED = 'stopped'
+    VALUES = %w[in-progress stopped].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the RealtimeTranscriptionEnumStatus SDK namespace.
-module RealtimeTranscriptionEnumStatus
-  IN_PROGRESS = 'in-progress'
-  STOPPED = 'stopped'
-  VALUES = ['in-progress', 'stopped'].freeze
-  def self.from_value(value)
-    value
+  # Defines the RealtimeTranscriptionEnumTrack SDK namespace.
+  module RealtimeTranscriptionEnumTrack
+    INBOUND_TRACK = 'inbound_track'
+    OUTBOUND_TRACK = 'outbound_track'
+    BOTH_TRACKS = 'both_tracks'
+    VALUES = %w[inbound_track outbound_track both_tracks].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the RealtimeTranscriptionEnumTrack SDK namespace.
-module RealtimeTranscriptionEnumTrack
-  INBOUND_TRACK = 'inbound_track'
-  OUTBOUND_TRACK = 'outbound_track'
-  BOTH_TRACKS = 'both_tracks'
-  VALUES = ['inbound_track', 'outbound_track', 'both_tracks'].freeze
-  def self.from_value(value)
-    value
+  # Defines the RealtimeTranscriptionEnumUpdateStatus SDK namespace.
+  module RealtimeTranscriptionEnumUpdateStatus
+    STOPPED = 'stopped'
+    VALUES = ['stopped'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the RealtimeTranscriptionEnumUpdateStatus SDK namespace.
-module RealtimeTranscriptionEnumUpdateStatus
-  STOPPED = 'stopped'
-  VALUES = ['stopped'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

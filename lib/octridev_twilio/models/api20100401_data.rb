@@ -5,39 +5,37 @@
 
 # api20100401_data domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata
-  FIELDS = {
-    redirect_to: "redirect_to",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcaf.
-# Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadRecordingAddOnResultPayloadData` API schema.
-class ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcaf
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::DECODERS
-
-  # @return [String] The URL to redirect to to get the data returned by the AddOn that was previously stored.
-  attr_reader :redirect_to
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata
+    FIELDS = {
+      redirect_to: 'redirect_to'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcaf.
+  # Typed representation of the `ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayloadRecordingAddOnResultPayloadData` API schema.
+  class ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcaf
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResX725ba4fcafMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] The URL to redirect to to get the data returned by the AddOn that was previously stored.
+    attr_reader :redirect_to
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

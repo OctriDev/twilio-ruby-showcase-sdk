@@ -5,48 +5,46 @@
 
 # api20100401_key domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountKeyMetadata
-  FIELDS = {
-    sid: "sid",
-    friendly_name: "friendly_name",
-    date_created: "date_created",
-    date_updated: "date_updated",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountKey.
-# Typed representation of the `ApiV2010AccountKey` API schema.
-class ApiV2010AccountKey
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountKeyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountKeyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountKeyMetadata::DECODERS
-
-  # @return [String] The unique string that that we created to identify the Key resource.
-  attr_reader :sid
-  # @return [String] The string that you assigned to describe the resource.
-  attr_reader :friendly_name
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountKeyMetadata
+    FIELDS = {
+      sid: 'sid',
+      friendly_name: 'friendly_name',
+      date_created: 'date_created',
+      date_updated: 'date_updated'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountKey.
+  # Typed representation of the `ApiV2010AccountKey` API schema.
+  class ApiV2010AccountKey
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountKeyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountKeyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountKeyMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] The unique string that that we created to identify the Key resource.
+    attr_reader :sid
+    # @return [String] The string that you assigned to describe the resource.
+    attr_reader :friendly_name
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

@@ -5,49 +5,51 @@
 
 # api20100401_validation_request domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountValidationRequestMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      call_sid: 'call_sid',
-      friendly_name: 'friendly_name',
-      phone_number: 'phone_number',
-      validation_code: 'validation_code'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountValidationRequestMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    call_sid: "call_sid",
+    friendly_name: "friendly_name",
+    phone_number: "phone_number",
+    validation_code: "validation_code",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountValidationRequest.
+# Typed representation of the `ApiV2010AccountValidationRequest` API schema.
+class ApiV2010AccountValidationRequest
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountValidationRequestMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountValidationRequestMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountValidationRequestMetadata::DECODERS
+
+  # @return [String] The SID of the Account responsible for the Caller ID.
+  attr_reader :account_sid
+  # @return [String] The SID of the Call the Caller ID is associated with.
+  attr_reader :call_sid
+  # @return [String] The string that you assigned to describe the resource.
+  attr_reader :friendly_name
+  # @return [String] The phone number to verify in E.164 format, which consists of a + followed by the country code and subscriber number.
+  attr_reader :phone_number
+  # @return [String] The 6 digit validation code that someone must enter to validate the Caller ID when `phone_number` is called.
+  attr_reader :validation_code
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountValidationRequest.
-  # Typed representation of the `ApiV2010AccountValidationRequest` API schema.
-  class ApiV2010AccountValidationRequest
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountValidationRequestMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountValidationRequestMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountValidationRequestMetadata::DECODERS
-
-    # @return [String] The SID of the Account responsible for the Caller ID.
-    attr_reader :account_sid
-    # @return [String] The SID of the Call the Caller ID is associated with.
-    attr_reader :call_sid
-    # @return [String] The string that you assigned to describe the resource.
-    attr_reader :friendly_name
-    # @return [String] The phone number to verify in E.164 format, which consists of a + followed by the country code and subscriber number.
-    attr_reader :phone_number
-    # @return [String] The 6 digit validation code that someone must enter to validate the Caller ID when `phone_number` is called.
-    attr_reader :validation_code
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

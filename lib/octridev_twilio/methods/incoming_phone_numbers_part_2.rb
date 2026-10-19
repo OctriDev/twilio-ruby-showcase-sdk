@@ -79,21 +79,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListIncomingPhoneNumbersTollFreeResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          incoming_phone_numbers: 'incoming_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          incoming_phone_numbers: "incoming_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           incoming_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -124,29 +125,29 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateIncomingPhoneNumbersTollFreeMetadata
         FIELDS = {
-          phone_number: 'PhoneNumber',
-          api_version: 'ApiVersion',
-          friendly_name: 'FriendlyName',
-          sms_application_sid: 'SmsApplicationSid',
-          sms_fallback_method: 'SmsFallbackMethod',
-          sms_fallback_url: 'SmsFallbackUrl',
-          sms_method: 'SmsMethod',
-          sms_url: 'SmsUrl',
-          status_callback: 'StatusCallback',
-          status_callback_method: 'StatusCallbackMethod',
-          voice_application_sid: 'VoiceApplicationSid',
-          voice_caller_id_lookup: 'VoiceCallerIdLookup',
-          voice_fallback_method: 'VoiceFallbackMethod',
-          voice_fallback_url: 'VoiceFallbackUrl',
-          voice_method: 'VoiceMethod',
-          voice_url: 'VoiceUrl',
-          identity_sid: 'IdentitySid',
-          address_sid: 'AddressSid',
-          emergency_status: 'EmergencyStatus',
-          emergency_address_sid: 'EmergencyAddressSid',
-          trunk_sid: 'TrunkSid',
-          voice_receive_mode: 'VoiceReceiveMode',
-          bundle_sid: 'BundleSid'
+          phone_number: "PhoneNumber",
+          api_version: "ApiVersion",
+          friendly_name: "FriendlyName",
+          sms_application_sid: "SmsApplicationSid",
+          sms_fallback_method: "SmsFallbackMethod",
+          sms_fallback_url: "SmsFallbackUrl",
+          sms_method: "SmsMethod",
+          sms_url: "SmsUrl",
+          status_callback: "StatusCallback",
+          status_callback_method: "StatusCallbackMethod",
+          voice_application_sid: "VoiceApplicationSid",
+          voice_caller_id_lookup: "VoiceCallerIdLookup",
+          voice_fallback_method: "VoiceFallbackMethod",
+          voice_fallback_url: "VoiceFallbackUrl",
+          voice_method: "VoiceMethod",
+          voice_url: "VoiceUrl",
+          identity_sid: "IdentitySid",
+          address_sid: "AddressSid",
+          emergency_status: "EmergencyStatus",
+          emergency_address_sid: "EmergencyAddressSid",
+          trunk_sid: "TrunkSid",
+          voice_receive_mode: "VoiceReceiveMode",
+          bundle_sid: "BundleSid",
         }.freeze
         REQUIRED_FIELDS = %i[
           phone_number
@@ -172,7 +173,7 @@ module OctridevTwilio
           end,
           voice_receive_mode: lambda do |value|
             ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumVoiceReceiveMode.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -247,7 +248,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersLocalVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -257,7 +258,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersLocalVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -267,7 +268,7 @@ module OctridevTwilio
       module UpdateIncomingPhoneNumbersSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -277,7 +278,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersLocalSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -287,7 +288,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersTollFreeVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -297,7 +298,7 @@ module OctridevTwilio
       module UpdateIncomingPhoneNumbersVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -307,7 +308,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersMobileVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -317,7 +318,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -327,7 +328,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersTollFreeVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -337,7 +338,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersMobileSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -347,7 +348,7 @@ module OctridevTwilio
       module UpdateIncomingPhoneNumbersStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -357,7 +358,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersLocalStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -367,7 +368,7 @@ module OctridevTwilio
       module UpdateIncomingPhoneNumbersSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -377,7 +378,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersLocalSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -387,7 +388,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -397,7 +398,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -407,7 +408,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersTollFreeStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -417,7 +418,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -427,7 +428,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersMobileVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -437,7 +438,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersMobileStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -447,7 +448,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersTollFreeSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -457,7 +458,7 @@ module OctridevTwilio
       module UpdateIncomingPhoneNumbersVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -467,7 +468,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersTollFreeSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -477,7 +478,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -487,7 +488,7 @@ module OctridevTwilio
       module CreateIncomingPhoneNumbersMobileSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end

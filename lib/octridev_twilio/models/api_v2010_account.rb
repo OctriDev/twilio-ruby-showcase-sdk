@@ -5,287 +5,307 @@
 
 # api_v2010_account domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata
-    FIELDS = {
-      attempt_sid: 'attempt_sid',
-      time: 'time'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata
+  FIELDS = {
+    attempt_sid: "attempt_sid",
+    time: "time",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem.
+# Required object value serialized in the `send_code_attempts[]` wire field.
+class ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::DECODERS
+
+  # @return [String] The SID of the verification attempt.
+  attr_reader :attempt_sid
+  # @return [String] The date and time of the attempt in ISO 8601 format.
+  attr_reader :time
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem.
-  # Required object value serialized in the `send_code_attempts[]` wire field.
-  class ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItemMetadata::DECODERS
-
-    # @return [String] The SID of the verification attempt.
-    attr_reader :attempt_sid
-    # @return [String] The date and time of the attempt in ISO 8601 format.
-    attr_reader :time
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata
-    FIELDS = {
-      phone_number: 'phone_number',
-      verification_sid: 'verification_sid',
-      send_code_attempts: 'send_code_attempts'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      send_code_attempts: lambda do |value|
-        value&.map { |item| ::OctridevTwilio::ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata
+  FIELDS = {
+    phone_number: "phone_number",
+    verification_sid: "verification_sid",
+    send_code_attempts: "send_code_attempts",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    send_code_attempts: lambda do |value|
+      value&.map { |item| ::OctridevTwilio::ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountOutgoingCallerIdSmsVerification.
+# Typed representation of the `ApiV2010AccountOutgoingCallerIdSmsVerification` API schema.
+class ApiV2010AccountOutgoingCallerIdSmsVerification
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::DECODERS
+
+  # @return [String] The phone number being verified in E.164 format.
+  attr_reader :phone_number
+  # @return [String] The SID that uniquely identifies the verification.
+  attr_reader :verification_sid
+  # @return [Array_of_ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem] An array of verification attempt objects containing the channel attempted and the channel-specific transaction SID.
+  attr_reader :send_code_attempts
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountOutgoingCallerIdSmsVerification.
-  # Typed representation of the `ApiV2010AccountOutgoingCallerIdSmsVerification` API schema.
-  class ApiV2010AccountOutgoingCallerIdSmsVerification
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdSmsVerificationMetadata::DECODERS
-
-    # @return [String] The phone number being verified in E.164 format.
-    attr_reader :phone_number
-    # @return [String] The SID that uniquely identifies the verification.
-    attr_reader :verification_sid
-    # @return [Array_of_ApiV2010AccountOutgoingCallerIdSmsVerificationSendCodeAttemptsItem] An array of verification attempt objects containing the channel attempted and the channel-specific transaction SID.
-    attr_reader :send_code_attempts
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata
-    FIELDS = {
-      phone_number: 'phone_number',
-      verification_sid: 'verification_sid',
-      status: 'status',
-      caller_id_sid: 'caller_id_sid'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata
+  FIELDS = {
+    phone_number: "phone_number",
+    verification_sid: "verification_sid",
+    status: "status",
+    caller_id_sid: "caller_id_sid",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountOutgoingCallerIdVerificationCheck.
+# Typed representation of the `ApiV2010AccountOutgoingCallerIdVerificationCheck` API schema.
+class ApiV2010AccountOutgoingCallerIdVerificationCheck
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::DECODERS
+
+  # @return [String] The phone number being verified in E.164 format.
+  attr_reader :phone_number
+  # @return [String] The SID that uniquely identifies the verification.
+  attr_reader :verification_sid
+  # @return [String] The status of the verification. Can be: `pending`, `approved`, or `failed`.
+  attr_reader :status
+  # @return [String] The SID of the OutgoingCallerId resource created when verification is approved.
+  attr_reader :caller_id_sid
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountOutgoingCallerIdVerificationCheck.
-  # Typed representation of the `ApiV2010AccountOutgoingCallerIdVerificationCheck` API schema.
-  class ApiV2010AccountOutgoingCallerIdVerificationCheck
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdVerificationCheckMetadata::DECODERS
-
-    # @return [String] The phone number being verified in E.164 format.
-    attr_reader :phone_number
-    # @return [String] The SID that uniquely identifies the verification.
-    attr_reader :verification_sid
-    # @return [String] The status of the verification. Can be: `pending`, `approved`, or `failed`.
-    attr_reader :status
-    # @return [String] The SID of the OutgoingCallerId resource created when verification is approved.
-    attr_reader :caller_id_sid
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipMetadata
-    FIELDS = {}.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipMetadata
+  FIELDS = {
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSip.
+# Typed representation of the `ApiV2010AccountSip` API schema.
+class ApiV2010AccountSip
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipMetadata::DECODERS
+
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for ApiV2010AccountSip.
-  # Typed representation of the `ApiV2010AccountSip` API schema.
-  class ApiV2010AccountSip
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipMetadata::DECODERS
-
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata
-    FIELDS = {}.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata
+  FIELDS = {
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSipSipDomainSipAuth.
+# Typed representation of the `ApiV2010AccountSipSipDomainSipAuth` API schema.
+class ApiV2010AccountSipSipDomainSipAuth
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::DECODERS
+
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for ApiV2010AccountSipSipDomainSipAuth.
-  # Typed representation of the `ApiV2010AccountSipSipDomainSipAuth` API schema.
-  class ApiV2010AccountSipSipDomainSipAuth
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthMetadata::DECODERS
-
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata
-    FIELDS = {}.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata
+  FIELDS = {
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSipSipDomainSipAuthSipAuthCalls.
+# Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthCalls` API schema.
+class ApiV2010AccountSipSipDomainSipAuthSipAuthCalls
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::DECODERS
+
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for ApiV2010AccountSipSipDomainSipAuthSipAuthCalls.
-  # Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthCalls` API schema.
-  class ApiV2010AccountSipSipDomainSipAuthSipAuthCalls
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthCallsMetadata::DECODERS
-
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata
-    FIELDS = {}.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata
+  FIELDS = {
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations.
+# Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations` API schema.
+class ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::DECODERS
+
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations.
-  # Typed representation of the `ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations` API schema.
-  class ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrations
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsMetadata::DECODERS
-
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountUsageMetadata
-    FIELDS = {}.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountUsageMetadata
+  FIELDS = {
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountUsage.
+# Typed representation of the `ApiV2010AccountUsage` API schema.
+class ApiV2010AccountUsage
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountUsageMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountUsageMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountUsageMetadata::DECODERS
+
+  # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
+  attr_reader :additional_properties
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
+    freeze
   end
 
-  # API model for ApiV2010AccountUsage.
-  # Typed representation of the `ApiV2010AccountUsage` API schema.
-  class ApiV2010AccountUsage
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountUsageMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountUsageMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountUsageMetadata::DECODERS
-
-    # @return [Hash{String => Object}] Keys the schema admits beside the declared fields.
-    attr_reader :additional_properties
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS, extras: true)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS, extras: true)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS, extras: true)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS, extras: true)
+  end
+end
 end

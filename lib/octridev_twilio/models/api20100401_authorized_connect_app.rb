@@ -5,72 +5,73 @@
 
 # api20100401_authorized_connect_app domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountAuthorizedConnectAppMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      connect_app_company_name: 'connect_app_company_name',
-      connect_app_description: 'connect_app_description',
-      connect_app_friendly_name: 'connect_app_friendly_name',
-      connect_app_homepage_url: 'connect_app_homepage_url',
-      connect_app_sid: 'connect_app_sid',
-      permissions: 'permissions',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      permissions: lambda do |value|
-        value&.map { |item| ::OctridevTwilio::AuthorizedConnectAppEnumPermission.from_value(item) }
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountAuthorizedConnectAppMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    connect_app_company_name: "connect_app_company_name",
+    connect_app_description: "connect_app_description",
+    connect_app_friendly_name: "connect_app_friendly_name",
+    connect_app_homepage_url: "connect_app_homepage_url",
+    connect_app_sid: "connect_app_sid",
+    permissions: "permissions",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    permissions: lambda do |value|
+      value&.map { |item| ::OctridevTwilio::AuthorizedConnectAppEnumPermission.from_value(item) }
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountAuthorizedConnectApp.
+# Typed representation of the `ApiV2010AccountAuthorizedConnectApp` API schema.
+class ApiV2010AccountAuthorizedConnectApp
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::DECODERS
+
+  # @return [String] The SID of the Account that created the AuthorizedConnectApp resource.
+  attr_reader :account_sid
+  # @return [String] The company name set for the Connect App.
+  attr_reader :connect_app_company_name
+  # @return [String] A detailed description of the Connect App.
+  attr_reader :connect_app_description
+  # @return [String] The name of the Connect App.
+  attr_reader :connect_app_friendly_name
+  # @return [String] The public URL for the Connect App.
+  attr_reader :connect_app_homepage_url
+  # @return [String] The SID that we assigned to the Connect App.
+  attr_reader :connect_app_sid
+  # @return [Array_of_AuthorizedConnectAppEnumPermission] The set of permissions that you authorized for the Connect App. Can be: `get-all` or `post-all`.
+  attr_reader :permissions
+  # @return [String] The URI of the resource, relative to `api.twilio.com`.
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountAuthorizedConnectApp.
-  # Typed representation of the `ApiV2010AccountAuthorizedConnectApp` API schema.
-  class ApiV2010AccountAuthorizedConnectApp
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountAuthorizedConnectAppMetadata::DECODERS
-
-    # @return [String] The SID of the Account that created the AuthorizedConnectApp resource.
-    attr_reader :account_sid
-    # @return [String] The company name set for the Connect App.
-    attr_reader :connect_app_company_name
-    # @return [String] A detailed description of the Connect App.
-    attr_reader :connect_app_description
-    # @return [String] The name of the Connect App.
-    attr_reader :connect_app_friendly_name
-    # @return [String] The public URL for the Connect App.
-    attr_reader :connect_app_homepage_url
-    # @return [String] The SID that we assigned to the Connect App.
-    attr_reader :connect_app_sid
-    # @return [Array_of_AuthorizedConnectAppEnumPermission] The set of permissions that you authorized for the Connect App. Can be: `get-all` or `post-all`.
-    attr_reader :permissions
-    # @return [String] The URI of the resource, relative to `api.twilio.com`.
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the AuthorizedConnectAppEnumPermission SDK namespace.
-  module AuthorizedConnectAppEnumPermission
-    GET_ALL = 'get-all'
-    POST_ALL = 'post-all'
-    VALUES = %w[get-all post-all].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
+
+# Defines the AuthorizedConnectAppEnumPermission SDK namespace.
+module AuthorizedConnectAppEnumPermission
+  GET_ALL = 'get-all'
+  POST_ALL = 'post-all'
+  VALUES = ['get-all', 'post-all'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

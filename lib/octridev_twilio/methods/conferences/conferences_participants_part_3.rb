@@ -297,28 +297,28 @@ module OctridevTwilio
         emergency_country: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_create_conferences_participants(account_sid: account_sid, status_callback: status_callback, wait_url: wait_url, conference_status_callback: conference_status_callback, recording_status_callback: recording_status_callback, conference_recording_status_callback: conference_recording_status_callback, call_sid_to_coach: call_sid_to_coach, byoc: byoc, amd_status_callback: amd_status_callback, client_notification_url: client_notification_url)
 
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Conferences/',
+            "/Conferences/",
             SdkClient.encode_path_segment(conference_sid),
-            '/Participants.json'
+            "/Participants.json"
           ].join,
           config: config,
           body: __sdk_body_create_conferences_participants_part1(from: from, to: to, status_callback: status_callback, status_callback_method: status_callback_method, status_callback_event: status_callback_event, label: label, timeout: timeout, record: record, muted: muted, beep: beep, start_conference_on_enter: start_conference_on_enter, end_conference_on_exit: end_conference_on_exit, wait_url: wait_url, wait_method: wait_method, early_media: early_media, max_participants: max_participants, conference_record: conference_record, conference_trim: conference_trim).merge(
             __sdk_body_create_conferences_participants_part2(conference_status_callback: conference_status_callback, conference_status_callback_method: conference_status_callback_method, conference_status_callback_event: conference_status_callback_event, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_method: recording_status_callback_method, sip_auth_username: sip_auth_username, sip_auth_password: sip_auth_password, region: region, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_method: conference_recording_status_callback_method, recording_status_callback_event: recording_status_callback_event, conference_recording_status_callback_event: conference_recording_status_callback_event, coaching: coaching, call_sid_to_coach: call_sid_to_coach, jitter_buffer_size: jitter_buffer_size, byoc: byoc, caller_id: caller_id),
             __sdk_body_create_conferences_participants_part3(call_reason: call_reason, recording_track: recording_track, recording_configuration_id: recording_configuration_id, time_limit: time_limit, machine_detection: machine_detection, machine_detection_timeout: machine_detection_timeout, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_silence_timeout: machine_detection_silence_timeout, amd_status_callback: amd_status_callback, amd_status_callback_method: amd_status_callback_method, trim: trim, call_token: call_token, passports: passports, client_notification_url: client_notification_url, caller_display_name: caller_display_name, emergency_caller_position: emergency_caller_position, emergency_caller_location: emergency_caller_location),
-            __sdk_body_create_conferences_participants_part4(emergency_name: emergency_name, emergency_address: emergency_address, emergency_zip_code: emergency_zip_code, emergency_city: emergency_city, emergency_state: emergency_state, emergency_country: emergency_country)
-          ),
+            __sdk_body_create_conferences_participants_part4(emergency_name: emergency_name, emergency_address: emergency_address, emergency_zip_code: emergency_zip_code, emergency_city: emergency_city, emergency_state: emergency_state, emergency_country: emergency_country)),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountConferenceParticipant,
           decoder: :json,
           operation_id: 'create_conferences_participants',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -411,7 +411,7 @@ module OctridevTwilio
           'EarlyMedia' => early_media,
           'MaxParticipants' => max_participants,
           'ConferenceRecord' => conference_record,
-          'ConferenceTrim' => conference_trim
+          'ConferenceTrim' => conference_trim,
         }
       end
       private_class_method :__sdk_body_create_conferences_participants_part1
@@ -454,7 +454,7 @@ module OctridevTwilio
           'CallSidToCoach' => call_sid_to_coach,
           'JitterBufferSize' => jitter_buffer_size,
           'Byoc' => byoc,
-          'CallerId' => caller_id
+          'CallerId' => caller_id,
         }
       end
       private_class_method :__sdk_body_create_conferences_participants_part2
@@ -497,7 +497,7 @@ module OctridevTwilio
           'ClientNotificationUrl' => client_notification_url,
           'CallerDisplayName' => caller_display_name,
           'EmergencyCallerPosition' => emergency_caller_position,
-          'EmergencyCallerLocation' => emergency_caller_location
+          'EmergencyCallerLocation' => emergency_caller_location,
         }
       end
       private_class_method :__sdk_body_create_conferences_participants_part3
@@ -516,7 +516,7 @@ module OctridevTwilio
           'EmergencyZipCode' => emergency_zip_code,
           'EmergencyCity' => emergency_city,
           'EmergencyState' => emergency_state,
-          'EmergencyCountry' => emergency_country
+          'EmergencyCountry' => emergency_country,
         }
       end
       private_class_method :__sdk_body_create_conferences_participants_part4

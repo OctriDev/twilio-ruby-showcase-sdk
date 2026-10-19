@@ -12,24 +12,25 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateApplicationsMetadata
         FIELDS = {
-          api_version: 'ApiVersion',
-          voice_url: 'VoiceUrl',
-          voice_method: 'VoiceMethod',
-          voice_fallback_url: 'VoiceFallbackUrl',
-          voice_fallback_method: 'VoiceFallbackMethod',
-          status_callback: 'StatusCallback',
-          status_callback_method: 'StatusCallbackMethod',
-          voice_caller_id_lookup: 'VoiceCallerIdLookup',
-          sms_url: 'SmsUrl',
-          sms_method: 'SmsMethod',
-          sms_fallback_url: 'SmsFallbackUrl',
-          sms_fallback_method: 'SmsFallbackMethod',
-          sms_status_callback: 'SmsStatusCallback',
-          message_status_callback: 'MessageStatusCallback',
-          friendly_name: 'FriendlyName',
-          public_application_connect_enabled: 'PublicApplicationConnectEnabled'
+          api_version: "ApiVersion",
+          voice_url: "VoiceUrl",
+          voice_method: "VoiceMethod",
+          voice_fallback_url: "VoiceFallbackUrl",
+          voice_fallback_method: "VoiceFallbackMethod",
+          status_callback: "StatusCallback",
+          status_callback_method: "StatusCallbackMethod",
+          voice_caller_id_lookup: "VoiceCallerIdLookup",
+          sms_url: "SmsUrl",
+          sms_method: "SmsMethod",
+          sms_fallback_url: "SmsFallbackUrl",
+          sms_fallback_method: "SmsFallbackMethod",
+          sms_status_callback: "SmsStatusCallback",
+          message_status_callback: "MessageStatusCallback",
+          friendly_name: "FriendlyName",
+          public_application_connect_enabled: "PublicApplicationConnectEnabled",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           voice_method: lambda do |value|
             ::OctridevTwilio::Methods::Applications::CreateApplicationsVoiceMethod.from_value(value)
@@ -45,7 +46,7 @@ module OctridevTwilio
           end,
           sms_fallback_method: lambda do |value|
             ::OctridevTwilio::Methods::Applications::CreateApplicationsSmsFallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -106,21 +107,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListApplicationsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          applications: 'applications'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          applications: "applications",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           applications: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountApplication.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -151,24 +153,25 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateApplicationsMetadata
         FIELDS = {
-          friendly_name: 'FriendlyName',
-          api_version: 'ApiVersion',
-          voice_url: 'VoiceUrl',
-          voice_method: 'VoiceMethod',
-          voice_fallback_url: 'VoiceFallbackUrl',
-          voice_fallback_method: 'VoiceFallbackMethod',
-          status_callback: 'StatusCallback',
-          status_callback_method: 'StatusCallbackMethod',
-          voice_caller_id_lookup: 'VoiceCallerIdLookup',
-          sms_url: 'SmsUrl',
-          sms_method: 'SmsMethod',
-          sms_fallback_url: 'SmsFallbackUrl',
-          sms_fallback_method: 'SmsFallbackMethod',
-          sms_status_callback: 'SmsStatusCallback',
-          message_status_callback: 'MessageStatusCallback',
-          public_application_connect_enabled: 'PublicApplicationConnectEnabled'
+          friendly_name: "FriendlyName",
+          api_version: "ApiVersion",
+          voice_url: "VoiceUrl",
+          voice_method: "VoiceMethod",
+          voice_fallback_url: "VoiceFallbackUrl",
+          voice_fallback_method: "VoiceFallbackMethod",
+          status_callback: "StatusCallback",
+          status_callback_method: "StatusCallbackMethod",
+          voice_caller_id_lookup: "VoiceCallerIdLookup",
+          sms_url: "SmsUrl",
+          sms_method: "SmsMethod",
+          sms_fallback_url: "SmsFallbackUrl",
+          sms_fallback_method: "SmsFallbackMethod",
+          sms_status_callback: "SmsStatusCallback",
+          message_status_callback: "MessageStatusCallback",
+          public_application_connect_enabled: "PublicApplicationConnectEnabled",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           voice_method: lambda do |value|
             ::OctridevTwilio::Methods::Applications::UpdateApplicationsVoiceMethod.from_value(value)
@@ -184,7 +187,7 @@ module OctridevTwilio
           end,
           sms_fallback_method: lambda do |value|
             ::OctridevTwilio::Methods::Applications::UpdateApplicationsSmsFallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -246,7 +249,7 @@ module OctridevTwilio
       module CreateApplicationsSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -256,7 +259,7 @@ module OctridevTwilio
       module UpdateApplicationsSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -266,7 +269,7 @@ module OctridevTwilio
       module UpdateApplicationsVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -276,7 +279,7 @@ module OctridevTwilio
       module CreateApplicationsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -286,7 +289,7 @@ module OctridevTwilio
       module CreateApplicationsVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -296,7 +299,7 @@ module OctridevTwilio
       module CreateApplicationsVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -306,7 +309,7 @@ module OctridevTwilio
       module CreateApplicationsSmsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -316,7 +319,7 @@ module OctridevTwilio
       module UpdateApplicationsSmsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -326,7 +329,7 @@ module OctridevTwilio
       module UpdateApplicationsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -336,7 +339,7 @@ module OctridevTwilio
       module UpdateApplicationsVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -407,6 +410,7 @@ module OctridevTwilio
         public_application_connect_enabled: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -433,9 +437,9 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Applications.json'
+            "/Applications.json"
           ].join,
           config: config,
           body: {
@@ -454,13 +458,13 @@ module OctridevTwilio
             'SmsStatusCallback' => sms_status_callback,
             'MessageStatusCallback' => message_status_callback,
             'FriendlyName' => friendly_name,
-            'PublicApplicationConnectEnabled' => public_application_connect_enabled
+            'PublicApplicationConnectEnabled' => public_application_connect_enabled,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountApplication,
           decoder: :json,
           operation_id: 'create_applications',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -485,6 +489,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -495,21 +500,21 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Applications.json'
+            "/Applications.json"
           ].join,
           config: config,
           query: {
             'FriendlyName' => QueryValue.new(friendly_name, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::Applications::ListApplicationsResponse,
           decoder: :json,
           operation_id: 'list_applications',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -525,6 +530,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -534,16 +540,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Applications/',
+            "/Applications/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_applications',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

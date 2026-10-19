@@ -12,21 +12,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListRecordingsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          recordings: 'recordings'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          recordings: "recordings",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           recordings: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountRecording.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -72,6 +73,7 @@ module OctridevTwilio
         include_soft_deleted: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -81,20 +83,20 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Recordings/',
+            "/Recordings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           query: {
-            'IncludeSoftDeleted' => QueryValue.new(include_soft_deleted, style: 'form', explode: true)
+            'IncludeSoftDeleted' => QueryValue.new(include_soft_deleted, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::ApiV2010AccountRecording,
           decoder: :json,
           operation_id: 'fetch_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -112,6 +114,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -121,16 +124,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Recordings/',
+            "/Recordings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -182,6 +185,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -208,9 +212,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Recordings.json'
+            "/Recordings.json"
           ].join,
           config: config,
           query: {
@@ -222,12 +226,12 @@ module OctridevTwilio
             'IncludeSoftDeleted' => QueryValue.new(include_soft_deleted, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::Recordings::ListRecordingsResponse,
           decoder: :json,
           operation_id: 'list_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

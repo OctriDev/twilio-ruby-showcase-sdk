@@ -433,16 +433,17 @@ module OctridevTwilio
         parameter99_value: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_create_calls_siprec(account_sid: account_sid, call_sid: call_sid, status_callback: status_callback)
 
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Siprec.json'
+            "/Siprec.json"
           ].join,
           config: config,
           body: __sdk_body_create_calls_siprec_part1(name: name, connector_name: connector_name, track: track, status_callback: status_callback, status_callback_method: status_callback_method, parameter1_name: parameter1_name, parameter1_value: parameter1_value, parameter2_name: parameter2_name, parameter2_value: parameter2_value, parameter3_name: parameter3_name, parameter3_value: parameter3_value, parameter4_name: parameter4_name, parameter4_value: parameter4_value, parameter5_name: parameter5_name, parameter5_value: parameter5_value, parameter6_name: parameter6_name, parameter6_value: parameter6_value, parameter7_name: parameter7_name).merge(
@@ -456,13 +457,12 @@ module OctridevTwilio
             __sdk_body_create_calls_siprec_part9(parameter70_value: parameter70_value, parameter71_name: parameter71_name, parameter71_value: parameter71_value, parameter72_name: parameter72_name, parameter72_value: parameter72_value, parameter73_name: parameter73_name, parameter73_value: parameter73_value, parameter74_name: parameter74_name, parameter74_value: parameter74_value, parameter75_name: parameter75_name, parameter75_value: parameter75_value, parameter76_name: parameter76_name, parameter76_value: parameter76_value, parameter77_name: parameter77_name, parameter77_value: parameter77_value, parameter78_name: parameter78_name, parameter78_value: parameter78_value, parameter79_name: parameter79_name),
             __sdk_body_create_calls_siprec_part10(parameter79_value: parameter79_value, parameter80_name: parameter80_name, parameter80_value: parameter80_value, parameter81_name: parameter81_name, parameter81_value: parameter81_value, parameter82_name: parameter82_name, parameter82_value: parameter82_value, parameter83_name: parameter83_name, parameter83_value: parameter83_value, parameter84_name: parameter84_name, parameter84_value: parameter84_value, parameter85_name: parameter85_name, parameter85_value: parameter85_value, parameter86_name: parameter86_name, parameter86_value: parameter86_value, parameter87_name: parameter87_name, parameter87_value: parameter87_value, parameter88_name: parameter88_name),
             __sdk_body_create_calls_siprec_part11(parameter88_value: parameter88_value, parameter89_name: parameter89_name, parameter89_value: parameter89_value, parameter90_name: parameter90_name, parameter90_value: parameter90_value, parameter91_name: parameter91_name, parameter91_value: parameter91_value, parameter92_name: parameter92_name, parameter92_value: parameter92_value, parameter93_name: parameter93_name, parameter93_value: parameter93_value, parameter94_name: parameter94_name, parameter94_value: parameter94_value, parameter95_name: parameter95_name, parameter95_value: parameter95_value, parameter96_name: parameter96_name, parameter96_value: parameter96_value, parameter97_name: parameter97_name),
-            __sdk_body_create_calls_siprec_part12(parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value)
-          ),
+            __sdk_body_create_calls_siprec_part12(parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value)),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallSiprec,
           decoder: :json,
           operation_id: 'create_calls_siprec',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -519,7 +519,7 @@ module OctridevTwilio
           'Parameter5.Value' => parameter5_value,
           'Parameter6.Name' => parameter6_name,
           'Parameter6.Value' => parameter6_value,
-          'Parameter7.Name' => parameter7_name
+          'Parameter7.Name' => parameter7_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part1
@@ -562,7 +562,7 @@ module OctridevTwilio
           'Parameter14.Value' => parameter14_value,
           'Parameter15.Name' => parameter15_name,
           'Parameter15.Value' => parameter15_value,
-          'Parameter16.Name' => parameter16_name
+          'Parameter16.Name' => parameter16_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part2
@@ -605,7 +605,7 @@ module OctridevTwilio
           'Parameter23.Value' => parameter23_value,
           'Parameter24.Name' => parameter24_name,
           'Parameter24.Value' => parameter24_value,
-          'Parameter25.Name' => parameter25_name
+          'Parameter25.Name' => parameter25_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part3
@@ -648,7 +648,7 @@ module OctridevTwilio
           'Parameter32.Value' => parameter32_value,
           'Parameter33.Name' => parameter33_name,
           'Parameter33.Value' => parameter33_value,
-          'Parameter34.Name' => parameter34_name
+          'Parameter34.Name' => parameter34_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part4
@@ -691,7 +691,7 @@ module OctridevTwilio
           'Parameter41.Value' => parameter41_value,
           'Parameter42.Name' => parameter42_name,
           'Parameter42.Value' => parameter42_value,
-          'Parameter43.Name' => parameter43_name
+          'Parameter43.Name' => parameter43_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part5
@@ -734,7 +734,7 @@ module OctridevTwilio
           'Parameter50.Value' => parameter50_value,
           'Parameter51.Name' => parameter51_name,
           'Parameter51.Value' => parameter51_value,
-          'Parameter52.Name' => parameter52_name
+          'Parameter52.Name' => parameter52_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part6
@@ -777,7 +777,7 @@ module OctridevTwilio
           'Parameter59.Value' => parameter59_value,
           'Parameter60.Name' => parameter60_name,
           'Parameter60.Value' => parameter60_value,
-          'Parameter61.Name' => parameter61_name
+          'Parameter61.Name' => parameter61_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part7
@@ -820,7 +820,7 @@ module OctridevTwilio
           'Parameter68.Value' => parameter68_value,
           'Parameter69.Name' => parameter69_name,
           'Parameter69.Value' => parameter69_value,
-          'Parameter70.Name' => parameter70_name
+          'Parameter70.Name' => parameter70_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part8
@@ -863,7 +863,7 @@ module OctridevTwilio
           'Parameter77.Value' => parameter77_value,
           'Parameter78.Name' => parameter78_name,
           'Parameter78.Value' => parameter78_value,
-          'Parameter79.Name' => parameter79_name
+          'Parameter79.Name' => parameter79_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part9
@@ -906,7 +906,7 @@ module OctridevTwilio
           'Parameter86.Value' => parameter86_value,
           'Parameter87.Name' => parameter87_name,
           'Parameter87.Value' => parameter87_value,
-          'Parameter88.Name' => parameter88_name
+          'Parameter88.Name' => parameter88_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part10
@@ -949,7 +949,7 @@ module OctridevTwilio
           'Parameter95.Value' => parameter95_value,
           'Parameter96.Name' => parameter96_name,
           'Parameter96.Value' => parameter96_value,
-          'Parameter97.Name' => parameter97_name
+          'Parameter97.Name' => parameter97_name,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part11
@@ -966,7 +966,7 @@ module OctridevTwilio
           'Parameter98.Name' => parameter98_name,
           'Parameter98.Value' => parameter98_value,
           'Parameter99.Name' => parameter99_name,
-          'Parameter99.Value' => parameter99_value
+          'Parameter99.Value' => parameter99_value,
         }
       end
       private_class_method :__sdk_body_create_calls_siprec_part12

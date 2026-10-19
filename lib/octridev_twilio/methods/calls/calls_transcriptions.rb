@@ -12,33 +12,34 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallsTranscriptionsMetadata
         FIELDS = {
-          name: 'Name',
-          track: 'Track',
-          status_callback_url: 'StatusCallbackUrl',
-          status_callback_method: 'StatusCallbackMethod',
-          inbound_track_label: 'InboundTrackLabel',
-          outbound_track_label: 'OutboundTrackLabel',
-          partial_results: 'PartialResults',
-          language_code: 'LanguageCode',
-          transcription_engine: 'TranscriptionEngine',
-          profanity_filter: 'ProfanityFilter',
-          speech_model: 'SpeechModel',
-          hints: 'Hints',
-          enable_automatic_punctuation: 'EnableAutomaticPunctuation',
-          intelligence_service: 'IntelligenceService',
-          conversation_configuration: 'ConversationConfiguration',
-          conversation_id: 'ConversationId',
-          transcription_configuration_id: 'TranscriptionConfigurationId',
-          enable_provider_data: 'EnableProviderData'
+          name: "Name",
+          track: "Track",
+          status_callback_url: "StatusCallbackUrl",
+          status_callback_method: "StatusCallbackMethod",
+          inbound_track_label: "InboundTrackLabel",
+          outbound_track_label: "OutboundTrackLabel",
+          partial_results: "PartialResults",
+          language_code: "LanguageCode",
+          transcription_engine: "TranscriptionEngine",
+          profanity_filter: "ProfanityFilter",
+          speech_model: "SpeechModel",
+          hints: "Hints",
+          enable_automatic_punctuation: "EnableAutomaticPunctuation",
+          intelligence_service: "IntelligenceService",
+          conversation_configuration: "ConversationConfiguration",
+          conversation_id: "ConversationId",
+          transcription_configuration_id: "TranscriptionConfigurationId",
+          enable_provider_data: "EnableProviderData",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           track: lambda do |value|
             ::OctridevTwilio::RealtimeTranscriptionEnumTrack.from_value(value)
           end,
           status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::CallsTranscriptions::CreateCallsTranscriptionsStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -103,7 +104,7 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsTranscriptionsMetadata
         FIELDS = {
-          status: 'Status'
+          status: "Status",
         }.freeze
         REQUIRED_FIELDS = %i[
           status
@@ -111,7 +112,7 @@ module OctridevTwilio
         DECODERS = {
           status: lambda do |value|
             ::OctridevTwilio::RealtimeTranscriptionEnumUpdateStatus.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -142,7 +143,7 @@ module OctridevTwilio
       module CreateCallsTranscriptionsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -219,6 +220,7 @@ module OctridevTwilio
         enable_provider_data: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -232,11 +234,11 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Transcriptions.json'
+            "/Transcriptions.json"
           ].join,
           config: config,
           body: {
@@ -257,13 +259,13 @@ module OctridevTwilio
             'ConversationConfiguration' => conversation_configuration,
             'ConversationId' => conversation_id,
             'TranscriptionConfigurationId' => transcription_configuration_id,
-            'EnableProviderData' => enable_provider_data
+            'EnableProviderData' => enable_provider_data,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallRealtimeTranscription,
           decoder: :json,
           operation_id: 'create_calls_transcriptions',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -285,6 +287,7 @@ module OctridevTwilio
         status:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -294,23 +297,23 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Transcriptions/',
+            "/Transcriptions/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           body: {
-            'Status' => status
+            'Status' => status,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallRealtimeTranscription,
           decoder: :json,
           operation_id: 'update_calls_transcriptions',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

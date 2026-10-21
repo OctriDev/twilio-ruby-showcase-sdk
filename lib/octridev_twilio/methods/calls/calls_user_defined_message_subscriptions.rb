@@ -10,7 +10,7 @@ module OctridevTwilio
     # Defines the CallsUserDefinedMessageSubscriptions SDK namespace.
     module CallsUserDefinedMessageSubscriptions
       # Internal model hydration metadata.
-      class SdkInternalCreateCallsUserDefinedMessageSubscriptionsMetadata
+      class SdkInternalCreateCallUserDefinedMessageSubscriptionMetadata
         FIELDS = {
           callback: 'Callback',
           idempotency_key: 'IdempotencyKey',
@@ -21,23 +21,23 @@ module OctridevTwilio
         ].freeze
         DECODERS = {
           method: lambda do |value|
-            ::OctridevTwilio::Methods::CallsUserDefinedMessageSubscriptions::CreateCallsUserDefinedMessageSubscriptionsMethod.from_value(value)
+            ::OctridevTwilio::Methods::CallsUserDefinedMessageSubscriptions::CreateCallUserDefinedMessageSubscriptionMethod.from_value(value)
           end
         }.freeze
       end
 
-      # API model for CreateCallsUserDefinedMessageSubscriptions.
-      class CreateCallsUserDefinedMessageSubscriptions
+      # API model for CreateCallUserDefinedMessageSubscription.
+      class CreateCallUserDefinedMessageSubscription
         CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCreateCallsUserDefinedMessageSubscriptionsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCreateCallsUserDefinedMessageSubscriptionsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCreateCallsUserDefinedMessageSubscriptionsMetadata::DECODERS
+        FIELDS = SdkInternalCreateCallUserDefinedMessageSubscriptionMetadata::FIELDS
+        REQUIRED_FIELDS = SdkInternalCreateCallUserDefinedMessageSubscriptionMetadata::REQUIRED_FIELDS
+        DECODERS = SdkInternalCreateCallUserDefinedMessageSubscriptionMetadata::DECODERS
 
         # @return [String] The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted).
         attr_reader :callback
         # @return [String] A unique string value to identify API call. This should be a unique string value per API call and can be a randomly generated.
         attr_reader :idempotency_key
-        # @return [CreateCallsUserDefinedMessageSubscriptionsMethod] The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. Default is `POST`.
+        # @return [CreateCallUserDefinedMessageSubscriptionMethod] The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. Default is `POST`.
         attr_reader :method
 
         def initialize(**attributes)
@@ -54,8 +54,8 @@ module OctridevTwilio
         end
       end
 
-      # Defines the CreateCallsUserDefinedMessageSubscriptionsMethod SDK namespace.
-      module CreateCallsUserDefinedMessageSubscriptionsMethod
+      # Defines the CreateCallUserDefinedMessageSubscriptionMethod SDK namespace.
+      module CreateCallUserDefinedMessageSubscriptionMethod
         GET = 'GET'
         POST = 'POST'
         VALUES = %w[GET POST].freeze
@@ -77,10 +77,10 @@ module OctridevTwilio
       # @param idempotency_key [String] A unique string value to identify API call.
       #   This should be a unique string value per API call and can be a randomly
       #   generated.
-      # @param method [CreateCallsUserDefinedMessageSubscriptionsMethod] The HTTP
+      # @param method [CreateCallUserDefinedMessageSubscriptionMethod] The HTTP
       #   method Twilio will use when requesting the above `Url`. Either `GET` or
       #   `POST`. Default is `POST`.
-      def self.create_calls_user_defined_message_subscriptions(
+      def self.create_call_user_defined_message_subscription(
         config:,
         account_sid:,
         call_sid:,
@@ -115,7 +115,7 @@ module OctridevTwilio
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallUserDefinedMessageSubscription,
           decoder: :json,
-          operation_id: 'create_calls_user_defined_message_subscriptions',
+          operation_id: 'create_call_user_defined_message_subscription',
           request_options: request_options
         ).data
       end

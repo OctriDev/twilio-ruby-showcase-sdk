@@ -9,449 +9,6 @@ module OctridevTwilio
   module Methods
     # Defines the ConferencesParticipants SDK namespace.
     module ConferencesParticipants
-      # Internal model hydration metadata.
-      class SdkInternalUpdateConferencesParticipantsMetadata
-        FIELDS = {
-          muted: 'Muted',
-          hold: 'Hold',
-          hold_url: 'HoldUrl',
-          hold_method: 'HoldMethod',
-          announce_url: 'AnnounceUrl',
-          announce_method: 'AnnounceMethod',
-          wait_url: 'WaitUrl',
-          wait_method: 'WaitMethod',
-          beep_on_exit: 'BeepOnExit',
-          end_conference_on_exit: 'EndConferenceOnExit',
-          coaching: 'Coaching',
-          call_sid_to_coach: 'CallSidToCoach'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          hold_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::UpdateConferencesParticipantsHoldMethod.from_value(value)
-          end,
-          announce_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::UpdateConferencesParticipantsAnnounceMethod.from_value(value)
-          end,
-          wait_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::UpdateConferencesParticipantsWaitMethod.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for UpdateConferencesParticipants.
-      class UpdateConferencesParticipants
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUpdateConferencesParticipantsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUpdateConferencesParticipantsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUpdateConferencesParticipantsMetadata::DECODERS
-
-        # @return [Boolean] Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
-        attr_reader :muted
-        # @return [Boolean] Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
-        attr_reader :hold
-        # @return [String] The URL we call using the `hold_method` for music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
-        attr_reader :hold_url
-        # @return [UpdateConferencesParticipantsHoldMethod] The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`.
-        attr_reader :hold_method
-        # @return [String] The URL we call using the `announce_method` for an announcement to the participant. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs.
-        attr_reader :announce_url
-        # @return [UpdateConferencesParticipantsAnnounceMethod] The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :announce_method
-        # @return [String] The URL that Twilio calls using the `wait_method` before the conference has started. The URL may return an MP3 file, a WAV file, or a TwiML document. The default value is the URL of our standard hold music. If you do not want anything to play while waiting for the conference to start, specify an empty string by setting `wait_url` to `''`. For more details on the allowable verbs within the `waitUrl`, see the `waitUrl` attribute in the <Conference> TwiML instruction.
-        attr_reader :wait_url
-        # @return [UpdateConferencesParticipantsWaitMethod] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
-        attr_reader :wait_method
-        # @return [Boolean] Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
-        attr_reader :beep_on_exit
-        # @return [Boolean] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
-        attr_reader :end_conference_on_exit
-        # @return [Boolean] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
-        attr_reader :coaching
-        # @return [String] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
-        attr_reader :call_sid_to_coach
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCreateConferencesParticipantsMetadata
-        FIELDS = {
-          from: 'From',
-          to: 'To',
-          status_callback: 'StatusCallback',
-          status_callback_method: 'StatusCallbackMethod',
-          status_callback_event: 'StatusCallbackEvent',
-          label: 'Label',
-          timeout: 'Timeout',
-          record: 'Record',
-          muted: 'Muted',
-          beep: 'Beep',
-          start_conference_on_enter: 'StartConferenceOnEnter',
-          end_conference_on_exit: 'EndConferenceOnExit',
-          wait_url: 'WaitUrl',
-          wait_method: 'WaitMethod',
-          early_media: 'EarlyMedia',
-          max_participants: 'MaxParticipants',
-          conference_record: 'ConferenceRecord',
-          conference_trim: 'ConferenceTrim',
-          conference_status_callback: 'ConferenceStatusCallback',
-          conference_status_callback_method: 'ConferenceStatusCallbackMethod',
-          conference_status_callback_event: 'ConferenceStatusCallbackEvent',
-          recording_channels: 'RecordingChannels',
-          recording_status_callback: 'RecordingStatusCallback',
-          recording_status_callback_method: 'RecordingStatusCallbackMethod',
-          sip_auth_username: 'SipAuthUsername',
-          sip_auth_password: 'SipAuthPassword',
-          region: 'Region',
-          conference_recording_status_callback: 'ConferenceRecordingStatusCallback',
-          conference_recording_status_callback_method: 'ConferenceRecordingStatusCallbackMethod',
-          recording_status_callback_event: 'RecordingStatusCallbackEvent',
-          conference_recording_status_callback_event: 'ConferenceRecordingStatusCallbackEvent',
-          coaching: 'Coaching',
-          call_sid_to_coach: 'CallSidToCoach',
-          jitter_buffer_size: 'JitterBufferSize',
-          byoc: 'Byoc',
-          caller_id: 'CallerId',
-          call_reason: 'CallReason',
-          recording_track: 'RecordingTrack',
-          recording_configuration_id: 'RecordingConfigurationId',
-          time_limit: 'TimeLimit',
-          machine_detection: 'MachineDetection',
-          machine_detection_timeout: 'MachineDetectionTimeout',
-          machine_detection_speech_threshold: 'MachineDetectionSpeechThreshold',
-          machine_detection_speech_end_threshold: 'MachineDetectionSpeechEndThreshold',
-          machine_detection_silence_timeout: 'MachineDetectionSilenceTimeout',
-          amd_status_callback: 'AmdStatusCallback',
-          amd_status_callback_method: 'AmdStatusCallbackMethod',
-          trim: 'Trim',
-          call_token: 'CallToken',
-          passports: 'Passports',
-          client_notification_url: 'ClientNotificationUrl',
-          caller_display_name: 'CallerDisplayName',
-          emergency_caller_position: 'EmergencyCallerPosition',
-          emergency_caller_location: 'EmergencyCallerLocation',
-          emergency_name: 'EmergencyName',
-          emergency_address: 'EmergencyAddress',
-          emergency_zip_code: 'EmergencyZipCode',
-          emergency_city: 'EmergencyCity',
-          emergency_state: 'EmergencyState',
-          emergency_country: 'EmergencyCountry'
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          from
-          to
-        ].freeze
-        DECODERS = {
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsStatusCallbackMethod.from_value(value)
-          end,
-          wait_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsWaitMethod.from_value(value)
-          end,
-          conference_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsConferenceStatusCallbackMethod.from_value(value)
-          end,
-          recording_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsRecordingStatusCallbackMethod.from_value(value)
-          end,
-          conference_recording_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsConferenceRecordingStatusCallbackMethod.from_value(value)
-          end,
-          amd_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsAmdStatusCallbackMethod.from_value(value)
-          end
-        }.freeze
-      end
-
-      # API model for CreateConferencesParticipants.
-      class CreateConferencesParticipants
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCreateConferencesParticipantsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCreateConferencesParticipantsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCreateConferencesParticipantsMetadata::DECODERS
-
-        # @return [String] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in E.164 format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified outgoing caller id for your account. If the `to` parameter is a phone number, `from` must also be a phone number. If `to` is sip address, this value of `from` should be a username portion to be used to populate the…
-        attr_reader :from
-        # @return [String] The phone number, SIP address, Client, TwiML App identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. TwiML App identifiers are formatted `app:<APP_SID>`. Custom parameters may also be specified.
-        attr_reader :to
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application.
-        attr_reader :status_callback
-        # @return [CreateConferencesParticipantsStatusCallbackMethod] The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`.
-        attr_reader :status_callback_method
-        # @return [Array_of_String] The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
-        attr_reader :status_callback_event
-        # @return [String] A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant.
-        attr_reader :label
-        # @return [Integer] The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so value of 10 would result in an actual timeout that was closer to 15 seconds.
-        attr_reader :timeout
-        # @return [Boolean] Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
-        attr_reader :record
-        # @return [Boolean] Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
-        attr_reader :muted
-        # @return [String] Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.
-        attr_reader :beep
-        # @return [Boolean] Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
-        attr_reader :start_conference_on_enter
-        # @return [Boolean] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
-        attr_reader :end_conference_on_exit
-        # @return [String] The URL that Twilio calls using the `wait_method` before the conference has started. The URL may return an MP3 file, a WAV file, or a TwiML document. The default value is the URL of our standard hold music. If you do not want anything to play while waiting for the conference to start, specify an empty string by setting `wait_url` to `''`. For more details on the allowable verbs within the `waitUrl`, see the `waitUrl` attribute in the <Conference> TwiML instruction.
-        attr_reader :wait_url
-        # @return [CreateConferencesParticipantsWaitMethod] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
-        attr_reader :wait_method
-        # @return [Boolean] Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
-        attr_reader :early_media
-        # @return [Integer] The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
-        attr_reader :max_participants
-        # @return [String] Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
-        attr_reader :conference_record
-        # @return [String] Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
-        attr_reader :conference_trim
-        # @return [String] The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
-        attr_reader :conference_status_callback
-        # @return [CreateConferencesParticipantsConferenceStatusCallbackMethod] The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :conference_status_callback_method
-        # @return [Array_of_String] The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
-        attr_reader :conference_status_callback_event
-        # @return [String] The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.
-        attr_reader :recording_channels
-        # @return [String] The URL that we should call using the `recording_status_callback_method` when the recording status changes.
-        attr_reader :recording_status_callback
-        # @return [CreateConferencesParticipantsRecordingStatusCallbackMethod] The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :recording_status_callback_method
-        # @return [String] The SIP username used for authentication.
-        attr_reader :sip_auth_username
-        # @return [String] The SIP password for authentication.
-        attr_reader :sip_auth_password
-        # @return [String] The region where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
-        attr_reader :region
-        # @return [String] The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
-        attr_reader :conference_recording_status_callback
-        # @return [CreateConferencesParticipantsConferenceRecordingStatusCallbackMethod] The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :conference_recording_status_callback_method
-        # @return [Array_of_String] The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`.
-        attr_reader :recording_status_callback_event
-        # @return [Array_of_String] The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`
-        attr_reader :conference_recording_status_callback_event
-        # @return [Boolean] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
-        attr_reader :coaching
-        # @return [String] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
-        attr_reader :call_sid_to_coach
-        # @return [String] Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`.
-        attr_reader :jitter_buffer_size
-        # @return [String] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
-        attr_reader :byoc
-        # @return [String] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in E.164 format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified outgoing caller id for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to…
-        attr_reader :caller_id
-        # @return [String] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
-        attr_reader :call_reason
-        # @return [String] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
-        attr_reader :recording_track
-        # @return [String] The identifier of the configuration to be used when creating and processing the recording
-        attr_reader :recording_configuration_id
-        # @return [Integer] The maximum duration of the call in seconds. Constraints depend on account and configuration.
-        attr_reader :time_limit
-        # @return [String] Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see Answering Machine Detection.
-        attr_reader :machine_detection
-        # @return [Integer] The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
-        attr_reader :machine_detection_timeout
-        # @return [Integer] The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
-        attr_reader :machine_detection_speech_threshold
-        # @return [Integer] The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
-        attr_reader :machine_detection_speech_end_threshold
-        # @return [Integer] The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
-        attr_reader :machine_detection_silence_timeout
-        # @return [String] The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
-        attr_reader :amd_status_callback
-        # @return [CreateConferencesParticipantsAmdStatusCallbackMethod] The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
-        attr_reader :amd_status_callback_method
-        # @return [String] Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
-        attr_reader :trim
-        # @return [String] A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
-        attr_reader :call_token
-        # @return [String] The STIR/SHAKEN passport for this call, provided as a base64 encoded string. Multiple passports (at max 5) are comma separated and provided as base64 encoded string
-        attr_reader :passports
-        # @return [String] The URL that we should use to deliver `push call notification`.
-        attr_reader :client_notification_url
-        # @return [String] The name that populates the display name in the From header. Must be between 2 and 255 characters. Only applicable for calls to sip address.
-        attr_reader :caller_display_name
-        # @return [String] The emergency caller's GPS coordinates in decimal degrees format. Format: "latitude longitude" (space-separated) - Latitude: decimal degrees, range -90.0 to +90.0 (negative for South, positive for North) - Longitude: decimal degrees, range -180.0 to +180.0 (negative for West, positive for East) - Precision: up to 6 decimal places recommended for meter-level accuracy Note: If the value exceeds 150 characters, only the first 150 characters will be used.
-        attr_reader :emergency_caller_position
-        # @return [String] The emergency caller's physical location description within a building or facility. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_caller_location
-        # @return [String] The emergency caller's organization or entity name. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_name
-        # @return [String] The emergency caller's street address including street number and street name. Note: If the value exceeds 60 characters, only the first 60 characters will be used.
-        attr_reader :emergency_address
-        # @return [String] The emergency caller's postal code or ZIP code. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_zip_code
-        # @return [String] The emergency caller's city or municipality name. Should be the official city name as recognized by local authorities. Used in combination with state and country for emergency call routing. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_city
-        # @return [String] The emergency caller's state or province. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_state
-        # @return [String] The emergency caller's country. Currently supported US and CA only. Note: If the value exceeds 20 characters, only the first 20 characters will be used.
-        attr_reader :emergency_country
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalListConferencesParticipantsResponseMetadata
-        FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          participants: 'participants'
-        }.freeze
-        REQUIRED_FIELDS = %i[].freeze
-        DECODERS = {
-          participants: lambda do |value|
-            value&.map { |item| ::OctridevTwilio::ApiV2010AccountConferenceParticipant.from_hash(item) }
-          end
-        }.freeze
-      end
-
-      # API model for ListConferencesParticipantsResponse.
-      class ListConferencesParticipantsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalListConferencesParticipantsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalListConferencesParticipantsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalListConferencesParticipantsResponseMetadata::DECODERS
-
-        attr_reader :end_, :first_page_uri, :next_page_uri, :page, :page_size, :previous_page_uri,
-                    :start, :uri, :participants
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsConferenceRecordingStatusCallbackMethod SDK namespace.
-      module CreateConferencesParticipantsConferenceRecordingStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UpdateConferencesParticipantsHoldMethod SDK namespace.
-      module UpdateConferencesParticipantsHoldMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsConferenceStatusCallbackMethod SDK namespace.
-      module CreateConferencesParticipantsConferenceStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsStatusCallbackMethod SDK namespace.
-      module CreateConferencesParticipantsStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsWaitMethod SDK namespace.
-      module CreateConferencesParticipantsWaitMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsAmdStatusCallbackMethod SDK namespace.
-      module CreateConferencesParticipantsAmdStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UpdateConferencesParticipantsAnnounceMethod SDK namespace.
-      module UpdateConferencesParticipantsAnnounceMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateConferencesParticipantsRecordingStatusCallbackMethod SDK namespace.
-      module CreateConferencesParticipantsRecordingStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UpdateConferencesParticipantsWaitMethod SDK namespace.
-      module UpdateConferencesParticipantsWaitMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = %w[GET POST].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
       # Retrieves a participant in a specific conference. Use `AccountSid`, `ConferenceSid`, and `CallSid` to identify the account, conference, and participant. You can identify the participant by call SID or label; percent-encode characters in a label that are not URL-safe.
       #
       # Fetch an instance of a participant
@@ -494,10 +51,176 @@ module OctridevTwilio
           request_options: request_options
         ).data
       end
+
+      # Updates configurable properties of a participant in a conference. Use `AccountSid`, `ConferenceSid`, and `CallSid` to identify the participant, then supply the form fields for the settings you want to change. If `Coaching` is true, provide `CallSidToCoach`.
+      #
+      # Update the properties of the participant
+      #
+      # @param account_sid [String] The SID of the Account that created the
+      #   Participant resources to update.
+      # @param conference_sid [String] The SID of the conference with the
+      #   participant to update.
+      # @param call_sid [String] The Call SID or label of the participant to update.
+      #   Non URL safe characters in a label must be percent encoded, for example, a
+      #   space character is represented as %20.
+      # @param muted [Boolean] Whether the participant should be muted. Can be
+      #   `true` or `false`. `true` will mute the participant, and `false` will
+      #   un-mute them. Anything value other than `true` or `false` is interpreted as
+      #   `false`.
+      # @param hold [Boolean] Whether the participant should be on hold. Can be:
+      #   `true` or `false`. `true` puts the participant on hold, and `false` lets
+      #   them rejoin the conference.
+      # @param hold_url [String] The URL we call using the `hold_method` for music
+      #   that plays when the participant is on hold. The URL may return an MP3 file,
+      #   a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`,
+      #   or `<Redirect>` verbs.
+      # @param hold_method [UpdateConferencesParticipantsHoldMethod] The HTTP method
+      #   we should use to call `hold_url`. Can be: `GET` or `POST` and the default is
+      #   `GET`.
+      # @param announce_url [String] The URL we call using the `announce_method` for
+      #   an announcement to the participant. The URL may return an MP3 file, a WAV
+      #   file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or
+      #   `<Redirect>` verbs.
+      # @param announce_method [UpdateConferencesParticipantsAnnounceMethod] The
+      #   HTTP method we should use to call `announce_url`. Can be: `GET` or `POST`
+      #   and defaults to `POST`.
+      # @param wait_url [String] The URL that Twilio calls using the `wait_method`
+      #   before the conference has started. The URL may return an MP3 file, a WAV
+      #   file, or a TwiML document. The default value is the URL of our standard hold
+      #   music. If you do not want anything to play while waiting for the conference
+      #   to start, specify an empty string by setting `wait_url` to `''`. For more
+      #   details on the allowable verbs within the `waitUrl`, see the `waitUrl`
+      #   attribute in the <Conference> TwiML instruction.
+      # @param wait_method [UpdateConferencesParticipantsWaitMethod] The HTTP method
+      #   we should use to call `wait_url`. Can be `GET` or `POST` and the default is
+      #   `POST`. When using a static audio file, this should be `GET` so that we can
+      #   cache the file.
+      # @param beep_on_exit [Boolean] Whether to play a notification beep to the
+      #   conference when the participant exits. Can be: `true` or `false`.
+      # @param end_conference_on_exit [Boolean] Whether to end the conference when
+      #   the participant leaves. Can be: `true` or `false` and defaults to `false`.
+      # @param coaching [Boolean] Whether the participant is coaching another call.
+      #   Can be: `true` or `false`. If not present, defaults to `false` unless
+      #   `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be
+      #   defined.
+      # @param call_sid_to_coach [String] The SID of the participant who is being
+      #   `coached`. The participant being coached is the only participant who can
+      #   hear the participant who is `coaching`.
+      def self.update_conferences_participants(
+        config:,
+        account_sid:,
+        conference_sid:,
+        call_sid:,
+        muted: NOT_GIVEN,
+        hold: NOT_GIVEN,
+        hold_url: NOT_GIVEN,
+        hold_method: NOT_GIVEN,
+        announce_url: NOT_GIVEN,
+        announce_method: NOT_GIVEN,
+        wait_url: NOT_GIVEN,
+        wait_method: NOT_GIVEN,
+        beep_on_exit: NOT_GIVEN,
+        end_conference_on_exit: NOT_GIVEN,
+        coaching: NOT_GIVEN,
+        call_sid_to_coach: NOT_GIVEN,
+        request_options: nil
+      )
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
+
+        Validation.validate_length('ConferenceSid', conference_sid, min: 34, max: 34)
+        Validation.validate_pattern('ConferenceSid', conference_sid, '^CF[0-9a-fA-F]{32}$')
+
+        Validation.if_given(hold_url) { Validation.validate_uri('HoldUrl', hold_url) }
+
+        Validation.if_given(announce_url) { Validation.validate_uri('AnnounceUrl', announce_url) }
+
+        Validation.if_given(wait_url) { Validation.validate_uri('WaitUrl', wait_url) }
+
+        Validation.if_given(call_sid_to_coach) do
+          Validation.validate_length('CallSidToCoach', call_sid_to_coach, min: 34, max: 34)
+          Validation.validate_pattern('CallSidToCoach', call_sid_to_coach, '^CA[0-9a-fA-F]{32}$')
+        end
+
+        SdkClient.request(
+          'POST',
+          [
+            '/2010-04-01/Accounts/',
+            SdkClient.encode_path_segment(account_sid),
+            '/Conferences/',
+            SdkClient.encode_path_segment(conference_sid),
+            '/Participants/',
+            SdkClient.encode_path_segment(call_sid),
+            '.json'
+          ].join,
+          config: config,
+          body: {
+            'Muted' => muted,
+            'Hold' => hold,
+            'HoldUrl' => hold_url,
+            'HoldMethod' => hold_method,
+            'AnnounceUrl' => announce_url,
+            'AnnounceMethod' => announce_method,
+            'WaitUrl' => wait_url,
+            'WaitMethod' => wait_method,
+            'BeepOnExit' => beep_on_exit,
+            'EndConferenceOnExit' => end_conference_on_exit,
+            'Coaching' => coaching,
+            'CallSidToCoach' => call_sid_to_coach
+          },
+          content_type: 'application/x-www-form-urlencoded',
+          return_type: ::OctridevTwilio::ApiV2010AccountConferenceParticipant,
+          decoder: :json,
+          operation_id: 'update_conferences_participants',
+          request_options: request_options
+        ).data
+      end
+
+      # Removes a participant from a conference. Use `AccountSid`, `ConferenceSid`, and `CallSid` to identify the account, conference, and participant. You can identify the participant by call SID or label; percent-encode characters in a label that are not URL-safe.
+      #
+      # Kick a participant from a given conference
+      #
+      # @param account_sid [String] The SID of the Account that created the
+      #   Participant resources to delete.
+      # @param conference_sid [String] The SID of the conference with the
+      #   participants to delete.
+      # @param call_sid [String] The Call SID or label of the participant to delete.
+      #   Non URL safe characters in a label must be percent encoded, for example, a
+      #   space character is represented as %20.
+      def self.delete_conferences_participants(
+        config:,
+        account_sid:,
+        conference_sid:,
+        call_sid:,
+        request_options: nil
+      )
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
+
+        Validation.validate_length('ConferenceSid', conference_sid, min: 34, max: 34)
+        Validation.validate_pattern('ConferenceSid', conference_sid, '^CF[0-9a-fA-F]{32}$')
+
+        SdkClient.request(
+          'DELETE',
+          [
+            '/2010-04-01/Accounts/',
+            SdkClient.encode_path_segment(account_sid),
+            '/Conferences/',
+            SdkClient.encode_path_segment(conference_sid),
+            '/Participants/',
+            SdkClient.encode_path_segment(call_sid),
+            '.json'
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'delete_conferences_participants',
+          request_options: request_options
+        ).data
+      end
     end
   end
 end
 
-require_relative 'conferences_participants_part_2'
-require_relative 'conferences_participants_part_3'
-require_relative 'conferences_participants_part_4'
+require_relative 'conferences_participants_types'
+require_relative 'conferences_participants_create_conferences_participants'
+require_relative 'conferences_participants_list_conferences_participants'

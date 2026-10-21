@@ -5,63 +5,61 @@
 
 # api20100401_sip_ip_address domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata
-  FIELDS = {
-    sid: "sid",
-    account_sid: "account_sid",
-    friendly_name: "friendly_name",
-    ip_address: "ip_address",
-    cidr_prefix_length: "cidr_prefix_length",
-    ip_access_control_list_sid: "ip_access_control_list_sid",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountSipSipIpAccessControlListSipIpAddress.
-# Typed representation of the `ApiV2010AccountSipSipIpAccessControlListSipIpAddress` API schema.
-class ApiV2010AccountSipSipIpAccessControlListSipIpAddress
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::DECODERS
-
-  # @return [String] A 34 character string that uniquely identifies this resource.
-  attr_reader :sid
-  # @return [String] The unique id of the Account that is responsible for this resource.
-  attr_reader :account_sid
-  # @return [String] A human readable descriptive text for this resource, up to 255 characters long.
-  attr_reader :friendly_name
-  # @return [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-  attr_reader :ip_address
-  # @return [Integer] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-  attr_reader :cidr_prefix_length
-  # @return [String] The unique id of the IpAccessControlList resource that includes this resource.
-  attr_reader :ip_access_control_list_sid
-  # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The URI for this resource, relative to `api.twilio.com`
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata
+    FIELDS = {
+      sid: 'sid',
+      account_sid: 'account_sid',
+      friendly_name: 'friendly_name',
+      ip_address: 'ip_address',
+      cidr_prefix_length: 'cidr_prefix_length',
+      ip_access_control_list_sid: 'ip_access_control_list_sid',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountSipSipIpAccessControlListSipIpAddress.
+  # Typed representation of the `ApiV2010AccountSipSipIpAccessControlListSipIpAddress` API schema.
+  class ApiV2010AccountSipSipIpAccessControlListSipIpAddress
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountSipSipIpAccessControlListSipIpAddressMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] A 34 character string that uniquely identifies this resource.
+    attr_reader :sid
+    # @return [String] The unique id of the Account that is responsible for this resource.
+    attr_reader :account_sid
+    # @return [String] A human readable descriptive text for this resource, up to 255 characters long.
+    attr_reader :friendly_name
+    # @return [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    attr_reader :ip_address
+    # @return [Integer] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    attr_reader :cidr_prefix_length
+    # @return [String] The unique id of the IpAccessControlList resource that includes this resource.
+    attr_reader :ip_access_control_list_sid
+    # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The URI for this resource, relative to `api.twilio.com`
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

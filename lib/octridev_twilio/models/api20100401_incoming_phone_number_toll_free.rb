@@ -5,312 +5,309 @@
 
 # api20100401_incoming_phone_number_toll_free domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata
-  FIELDS = {
-    mms: "mms",
-    sms: "sms",
-    voice: "voice",
-    fax: "fax",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3.
-# The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
-class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::DECODERS
-
-  # @return [Boolean] Optional `boolean` value serialized in the `mms` wire field.
-  attr_reader :mms
-  # @return [Boolean] Optional `boolean` value serialized in the `sms` wire field.
-  attr_reader :sms
-  # @return [Boolean] Optional `boolean` value serialized in the `voice` wire field.
-  attr_reader :voice
-  # @return [Boolean] Optional `boolean` value serialized in the `fax` wire field.
-  attr_reader :fax
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata
+    FIELDS = {
+      mms: 'mms',
+      sms: 'sms',
+      voice: 'voice',
+      fax: 'fax'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3.
+  # The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
+  class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3Metadata::DECODERS
+
+    # @return [Boolean] Optional `boolean` value serialized in the `mms` wire field.
+    attr_reader :mms
+    # @return [Boolean] Optional `boolean` value serialized in the `sms` wire field.
+    attr_reader :sms
+    # @return [Boolean] Optional `boolean` value serialized in the `voice` wire field.
+    attr_reader :voice
+    # @return [Boolean] Optional `boolean` value serialized in the `fax` wire field.
+    attr_reader :fax
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
-  end
-end
-
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    address_sid: "address_sid",
-    address_requirements: "address_requirements",
-    api_version: "api_version",
-    beta: "beta",
-    capabilities: "capabilities",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    friendly_name: "friendly_name",
-    identity_sid: "identity_sid",
-    phone_number: "phone_number",
-    origin: "origin",
-    sid: "sid",
-    sms_application_sid: "sms_application_sid",
-    sms_fallback_method: "sms_fallback_method",
-    sms_fallback_url: "sms_fallback_url",
-    sms_method: "sms_method",
-    sms_url: "sms_url",
-    status_callback: "status_callback",
-    status_callback_method: "status_callback_method",
-    trunk_sid: "trunk_sid",
-    uri: "uri",
-    voice_receive_mode: "voice_receive_mode",
-    voice_application_sid: "voice_application_sid",
-    voice_caller_id_lookup: "voice_caller_id_lookup",
-    voice_fallback_method: "voice_fallback_method",
-    voice_fallback_url: "voice_fallback_url",
-    voice_method: "voice_method",
-    voice_url: "voice_url",
-    emergency_status: "emergency_status",
-    emergency_address_sid: "emergency_address_sid",
-    emergency_address_status: "emergency_address_status",
-    bundle_sid: "bundle_sid",
-    status: "status",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-    address_requirements: lambda do |value|
-      ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumAddressRequirement.from_value(value)
-    end,
-    capabilities: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3.from_hash(value)
-    end,
-    sms_fallback_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c.from_value(value)
-    end,
-    sms_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod.from_value(value)
-    end,
-    status_callback_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4.from_value(value)
-    end,
-    voice_receive_mode: lambda do |value|
-      ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumVoiceReceiveMode.from_value(value)
-    end,
-    voice_fallback_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130.from_value(value)
-    end,
-    voice_method: lambda do |value|
-      ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod.from_value(value)
-    end,
-    emergency_status: lambda do |value|
-      ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumEmergencyStatus.from_value(value)
-    end,
-    emergency_address_status: lambda do |value|
-      ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus.from_value(value)
-    end,
-  }.freeze
-end
-
-# API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree.
-# Typed representation of the `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree` API schema.
-class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::DECODERS
-
-  # @return [String] The SID of the Account that created the resource.
-  attr_reader :account_sid
-  # @return [String] The SID of the Address resource associated with the phone number.
-  attr_reader :address_sid
-  # @return [IncomingPhoneNumberTollFreeEnumAddressRequirement] Whether the phone number requires an Address registered with Twilio. Can be: `none`, `any`, `local`, or `foreign`.
-  attr_reader :address_requirements
-  # @return [String] The API version used to start a new TwiML session.
-  attr_reader :api_version
-  # @return [Boolean] Whether the phone number is new to the Twilio platform. Can be: `true` or `false`.
-  attr_reader :beta
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3] The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
-  attr_reader :capabilities
-  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [String] The string that you assigned to describe the resource.
-  attr_reader :friendly_name
-  # @return [String] The SID of the Identity resource that we associate with the phone number. Some regions require an Identity to meet local regulations.
-  attr_reader :identity_sid
-  # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
-  attr_reader :phone_number
-  # @return [String] The phone number's origin. `twilio` identifies Twilio-owned phone numbers and `hosted` identifies hosted phone numbers.
-  attr_reader :origin
-  # @return [String] The unique string that that we created to identify the resource.
-  attr_reader :sid
-  # @return [String] The SID of the application that handles SMS messages sent to the phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
-  attr_reader :sms_application_sid
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c] The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`.
-  attr_reader :sms_fallback_method
-  # @return [String] The URL that we call when an error occurs while retrieving or executing the TwiML from `sms_url`.
-  attr_reader :sms_fallback_url
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod] The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`.
-  attr_reader :sms_method
-  # @return [String] The URL we call when the phone number receives an incoming SMS message.
-  attr_reader :sms_url
-  # @return [String] The URL we call using the `status_callback_method` to send status information to your application.
-  attr_reader :status_callback
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4] The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`.
-  attr_reader :status_callback_method
-  # @return [String] The SID of the Trunk that handles calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
-  attr_reader :trunk_sid
-  # @return [String] The URI of the resource, relative to `api.twilio.com`.
-  attr_reader :uri
-  # @return [IncomingPhoneNumberTollFreeEnumVoiceReceiveMode] Optional enumerated value serialized in the `voice_receive_mode` wire field.
-  attr_reader :voice_receive_mode
-  # @return [String] The SID of the application that handles calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
-  attr_reader :voice_application_sid
-  # @return [Boolean] Whether we look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Can be: `true` or `false`.
-  attr_reader :voice_caller_id_lookup
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130] The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`.
-  attr_reader :voice_fallback_method
-  # @return [String] The URL that we call when an error occurs retrieving or executing the TwiML requested by `url`.
-  attr_reader :voice_fallback_url
-  # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod] The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`.
-  attr_reader :voice_method
-  # @return [String] The URL we call when the phone number receives a call. The `voice_url` will not be used if a `voice_application_sid` or a `trunk_sid` is set.
-  attr_reader :voice_url
-  # @return [IncomingPhoneNumberTollFreeEnumEmergencyStatus] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
-  attr_reader :emergency_status
-  # @return [String] The SID of the emergency address configuration that we use for emergency calling from this phone number.
-  attr_reader :emergency_address_sid
-  # @return [IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus] The status of address registration with emergency services. A registered emergency address will be used during handling of emergency calls from this number.
-  attr_reader :emergency_address_status
-  # @return [String] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
-  attr_reader :bundle_sid
-  # @return [String] Optional `string` value serialized in the `status` wire field.
-  attr_reader :status
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      address_sid: 'address_sid',
+      address_requirements: 'address_requirements',
+      api_version: 'api_version',
+      beta: 'beta',
+      capabilities: 'capabilities',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      friendly_name: 'friendly_name',
+      identity_sid: 'identity_sid',
+      phone_number: 'phone_number',
+      origin: 'origin',
+      sid: 'sid',
+      sms_application_sid: 'sms_application_sid',
+      sms_fallback_method: 'sms_fallback_method',
+      sms_fallback_url: 'sms_fallback_url',
+      sms_method: 'sms_method',
+      sms_url: 'sms_url',
+      status_callback: 'status_callback',
+      status_callback_method: 'status_callback_method',
+      trunk_sid: 'trunk_sid',
+      uri: 'uri',
+      voice_receive_mode: 'voice_receive_mode',
+      voice_application_sid: 'voice_application_sid',
+      voice_caller_id_lookup: 'voice_caller_id_lookup',
+      voice_fallback_method: 'voice_fallback_method',
+      voice_fallback_url: 'voice_fallback_url',
+      voice_method: 'voice_method',
+      voice_url: 'voice_url',
+      emergency_status: 'emergency_status',
+      emergency_address_sid: 'emergency_address_sid',
+      emergency_address_status: 'emergency_address_status',
+      bundle_sid: 'bundle_sid',
+      status: 'status'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {
+      address_requirements: lambda do |value|
+        ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumAddressRequirement.from_value(value)
+      end,
+      capabilities: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3.from_hash(value)
+      end,
+      sms_fallback_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c.from_value(value)
+      end,
+      sms_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod.from_value(value)
+      end,
+      status_callback_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4.from_value(value)
+      end,
+      voice_receive_mode: lambda do |value|
+        ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumVoiceReceiveMode.from_value(value)
+      end,
+      voice_fallback_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130.from_value(value)
+      end,
+      voice_method: lambda do |value|
+        ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod.from_value(value)
+      end,
+      emergency_status: lambda do |value|
+        ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumEmergencyStatus.from_value(value)
+      end,
+      emergency_address_status: lambda do |value|
+        ::OctridevTwilio::IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus.from_value(value)
+      end
+    }.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+  # API model for ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree.
+  # Typed representation of the `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree` API schema.
+  class ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeMetadata::DECODERS
+
+    # @return [String] The SID of the Account that created the resource.
+    attr_reader :account_sid
+    # @return [String] The SID of the Address resource associated with the phone number.
+    attr_reader :address_sid
+    # @return [IncomingPhoneNumberTollFreeEnumAddressRequirement] Whether the phone number requires an Address registered with Twilio. Can be: `none`, `any`, `local`, or `foreign`.
+    attr_reader :address_requirements
+    # @return [String] The API version used to start a new TwiML session.
+    attr_reader :api_version
+    # @return [Boolean] Whether the phone number is new to the Twilio platform. Can be: `true` or `false`.
+    attr_reader :beta
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX5f3305dcd3] The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
+    attr_reader :capabilities
+    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [String] The string that you assigned to describe the resource.
+    attr_reader :friendly_name
+    # @return [String] The SID of the Identity resource that we associate with the phone number. Some regions require an Identity to meet local regulations.
+    attr_reader :identity_sid
+    # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
+    attr_reader :phone_number
+    # @return [String] The phone number's origin. `twilio` identifies Twilio-owned phone numbers and `hosted` identifies hosted phone numbers.
+    attr_reader :origin
+    # @return [String] The unique string that that we created to identify the resource.
+    attr_reader :sid
+    # @return [String] The SID of the application that handles SMS messages sent to the phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
+    attr_reader :sms_application_sid
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c] The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    attr_reader :sms_fallback_method
+    # @return [String] The URL that we call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    attr_reader :sms_fallback_url
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod] The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`.
+    attr_reader :sms_method
+    # @return [String] The URL we call when the phone number receives an incoming SMS message.
+    attr_reader :sms_url
+    # @return [String] The URL we call using the `status_callback_method` to send status information to your application.
+    attr_reader :status_callback
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4] The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`.
+    attr_reader :status_callback_method
+    # @return [String] The SID of the Trunk that handles calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    attr_reader :trunk_sid
+    # @return [String] The URI of the resource, relative to `api.twilio.com`.
+    attr_reader :uri
+    # @return [IncomingPhoneNumberTollFreeEnumVoiceReceiveMode] Optional enumerated value serialized in the `voice_receive_mode` wire field.
+    attr_reader :voice_receive_mode
+    # @return [String] The SID of the application that handles calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    attr_reader :voice_application_sid
+    # @return [Boolean] Whether we look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Can be: `true` or `false`.
+    attr_reader :voice_caller_id_lookup
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130] The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    attr_reader :voice_fallback_method
+    # @return [String] The URL that we call when an error occurs retrieving or executing the TwiML requested by `url`.
+    attr_reader :voice_fallback_url
+    # @return [ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod] The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`.
+    attr_reader :voice_method
+    # @return [String] The URL we call when the phone number receives a call. The `voice_url` will not be used if a `voice_application_sid` or a `trunk_sid` is set.
+    attr_reader :voice_url
+    # @return [IncomingPhoneNumberTollFreeEnumEmergencyStatus] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    attr_reader :emergency_status
+    # @return [String] The SID of the emergency address configuration that we use for emergency calling from this phone number.
+    attr_reader :emergency_address_sid
+    # @return [IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus] The status of address registration with emergency services. A registered emergency address will be used during handling of emergency calls from this number.
+    attr_reader :emergency_address_status
+    # @return [String] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    attr_reader :bundle_sid
+    # @return [String] Optional `string` value serialized in the `status` wire field.
+    attr_reader :status
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+  # Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c SDK namespace.
+  module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c SDK namespace.
-module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeXabc90d859c
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod SDK namespace.
+  module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod SDK namespace.
-module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSmsMethod
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4 SDK namespace.
+  module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4 SDK namespace.
-module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX21baf36bd4
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130 SDK namespace.
+  module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130 SDK namespace.
-module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeX6dca882130
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod SDK namespace.
+  module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod
+    GET = 'GET'
+    POST = 'POST'
+    VALUES = %w[GET POST].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod SDK namespace.
-module ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeVoiceMethod
-  GET = 'GET'
-  POST = 'POST'
-  VALUES = ['GET', 'POST'].freeze
-  def self.from_value(value)
-    value
+  # Defines the IncomingPhoneNumberTollFreeEnumAddressRequirement SDK namespace.
+  module IncomingPhoneNumberTollFreeEnumAddressRequirement
+    NONE = 'none'
+    ANY = 'any'
+    LOCAL = 'local'
+    FOREIGN = 'foreign'
+    VALUES = %w[none any local foreign].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the IncomingPhoneNumberTollFreeEnumAddressRequirement SDK namespace.
-module IncomingPhoneNumberTollFreeEnumAddressRequirement
-  NONE = 'none'
-  ANY = 'any'
-  LOCAL = 'local'
-  FOREIGN = 'foreign'
-  VALUES = ['none', 'any', 'local', 'foreign'].freeze
-  def self.from_value(value)
-    value
+  # Defines the IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus SDK namespace.
+  module IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus
+    REGISTERED = 'registered'
+    UNREGISTERED = 'unregistered'
+    PENDING_REGISTRATION = 'pending-registration'
+    REGISTRATION_FAILURE = 'registration-failure'
+    PENDING_UNREGISTRATION = 'pending-unregistration'
+    UNREGISTRATION_FAILURE = 'unregistration-failure'
+    VALUES = %w[
+      registered unregistered pending-registration registration-failure
+      pending-unregistration unregistration-failure
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus SDK namespace.
-module IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus
-  REGISTERED = 'registered'
-  UNREGISTERED = 'unregistered'
-  PENDING_REGISTRATION = 'pending-registration'
-  REGISTRATION_FAILURE = 'registration-failure'
-  PENDING_UNREGISTRATION = 'pending-unregistration'
-  UNREGISTRATION_FAILURE = 'unregistration-failure'
-  VALUES = [
-    'registered', 'unregistered', 'pending-registration', 'registration-failure',
-    'pending-unregistration', 'unregistration-failure'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the IncomingPhoneNumberTollFreeEnumEmergencyStatus SDK namespace.
+  module IncomingPhoneNumberTollFreeEnumEmergencyStatus
+    ACTIVE = 'Active'
+    INACTIVE = 'Inactive'
+    VALUES = %w[Active Inactive].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the IncomingPhoneNumberTollFreeEnumEmergencyStatus SDK namespace.
-module IncomingPhoneNumberTollFreeEnumEmergencyStatus
-  ACTIVE = 'Active'
-  INACTIVE = 'Inactive'
-  VALUES = ['Active', 'Inactive'].freeze
-  def self.from_value(value)
-    value
+  # Defines the IncomingPhoneNumberTollFreeEnumVoiceReceiveMode SDK namespace.
+  module IncomingPhoneNumberTollFreeEnumVoiceReceiveMode
+    VOICE = 'voice'
+    FAX = 'fax'
+    VALUES = %w[voice fax].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
-
-# Defines the IncomingPhoneNumberTollFreeEnumVoiceReceiveMode SDK namespace.
-module IncomingPhoneNumberTollFreeEnumVoiceReceiveMode
-  VOICE = 'voice'
-  FAX = 'fax'
-  VALUES = ['voice', 'fax'].freeze
-  def self.from_value(value)
-    value
-  end
-end
 end

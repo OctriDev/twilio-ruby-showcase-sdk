@@ -12,12 +12,10 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateOutgoingCallerIdsMetadata
         FIELDS = {
-          friendly_name: "FriendlyName",
+          friendly_name: 'FriendlyName'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-        }.freeze
+        REQUIRED_FIELDS = %i[].freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UpdateOutgoingCallerIds.
@@ -47,22 +45,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListOutgoingCallerIdsResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          outgoing_caller_ids: "outgoing_caller_ids",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          outgoing_caller_ids: 'outgoing_caller_ids'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           outgoing_caller_ids: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountOutgoingCallerId.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -104,7 +101,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -114,17 +110,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/OutgoingCallerIds/",
+            '/OutgoingCallerIds/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountOutgoingCallerId,
           decoder: :json,
           operation_id: 'fetch_outgoing_caller_ids',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -145,7 +141,6 @@ module OctridevTwilio
         friendly_name: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -155,21 +150,21 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/OutgoingCallerIds/",
+            '/OutgoingCallerIds/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
-            'FriendlyName' => friendly_name,
+            'FriendlyName' => friendly_name
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountOutgoingCallerId,
           decoder: :json,
           operation_id: 'update_outgoing_caller_ids',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -187,7 +182,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -197,16 +191,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/OutgoingCallerIds/",
+            '/OutgoingCallerIds/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_outgoing_caller_ids',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -234,7 +228,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -245,9 +238,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/OutgoingCallerIds.json"
+            '/OutgoingCallerIds.json'
           ].join,
           config: config,
           query: {
@@ -255,12 +248,12 @@ module OctridevTwilio
             'FriendlyName' => QueryValue.new(friendly_name, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::OutgoingCallerIds::ListOutgoingCallerIdsResponse,
           decoder: :json,
           operation_id: 'list_outgoing_caller_ids',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

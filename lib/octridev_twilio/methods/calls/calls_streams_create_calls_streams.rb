@@ -440,7 +440,7 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsStreamsMetadata
         FIELDS = {
-          status: "Status",
+          status: 'Status'
         }.freeze
         REQUIRED_FIELDS = %i[
           status
@@ -448,7 +448,7 @@ module OctridevTwilio
         DECODERS = {
           status: lambda do |value|
             ::OctridevTwilio::StreamEnumUpdateStatus.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -479,7 +479,7 @@ module OctridevTwilio
       module CreateCallsStreamsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end

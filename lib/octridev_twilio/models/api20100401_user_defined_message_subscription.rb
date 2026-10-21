@@ -5,51 +5,49 @@
 
 # api20100401_user_defined_message_subscription domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata
-  FIELDS = {
-    account_sid: "account_sid",
-    call_sid: "call_sid",
-    sid: "sid",
-    date_created: "date_created",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountCallUserDefinedMessageSubscription.
-# Typed representation of the `ApiV2010AccountCallUserDefinedMessageSubscription` API schema.
-class ApiV2010AccountCallUserDefinedMessageSubscription
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::DECODERS
-
-  # @return [String] The SID of the Account that subscribed to the User Defined Messages.
-  attr_reader :account_sid
-  # @return [String] The SID of the Call the User Defined Message Subscription is associated with. This refers to the Call SID that is producing the User Defined Messages.
-  attr_reader :call_sid
-  # @return [String] The SID that uniquely identifies this User Defined Message Subscription.
-  attr_reader :sid
-  # @return [String] The date that this User Defined Message Subscription was created, given in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The URI of the User Defined Message Subscription Resource, relative to `api.twilio.com`.
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata
+    FIELDS = {
+      account_sid: 'account_sid',
+      call_sid: 'call_sid',
+      sid: 'sid',
+      date_created: 'date_created',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountCallUserDefinedMessageSubscription.
+  # Typed representation of the `ApiV2010AccountCallUserDefinedMessageSubscription` API schema.
+  class ApiV2010AccountCallUserDefinedMessageSubscription
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountCallUserDefinedMessageSubscriptionMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] The SID of the Account that subscribed to the User Defined Messages.
+    attr_reader :account_sid
+    # @return [String] The SID of the Call the User Defined Message Subscription is associated with. This refers to the Call SID that is producing the User Defined Messages.
+    attr_reader :call_sid
+    # @return [String] The SID that uniquely identifies this User Defined Message Subscription.
+    attr_reader :sid
+    # @return [String] The date that this User Defined Message Subscription was created, given in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The URI of the User Defined Message Subscription Resource, relative to `api.twilio.com`.
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

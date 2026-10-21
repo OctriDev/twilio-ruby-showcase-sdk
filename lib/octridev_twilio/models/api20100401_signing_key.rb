@@ -5,48 +5,46 @@
 
 # api20100401_signing_key domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountSigningKeyMetadata
-  FIELDS = {
-    sid: "sid",
-    friendly_name: "friendly_name",
-    date_created: "date_created",
-    date_updated: "date_updated",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountSigningKey.
-# Typed representation of the `ApiV2010AccountSigningKey` API schema.
-class ApiV2010AccountSigningKey
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountSigningKeyMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountSigningKeyMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountSigningKeyMetadata::DECODERS
-
-  # @return [String] Optional `string` value serialized in the `sid` wire field.
-  attr_reader :sid
-  # @return [String] Optional `string` value serialized in the `friendly_name` wire field.
-  attr_reader :friendly_name
-  # @return [String] Optional `date-time-rfc-2822`-formatted value serialized in the `date_created` wire field.
-  attr_reader :date_created
-  # @return [String] Optional `date-time-rfc-2822`-formatted value serialized in the `date_updated` wire field.
-  attr_reader :date_updated
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountSigningKeyMetadata
+    FIELDS = {
+      sid: 'sid',
+      friendly_name: 'friendly_name',
+      date_created: 'date_created',
+      date_updated: 'date_updated'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountSigningKey.
+  # Typed representation of the `ApiV2010AccountSigningKey` API schema.
+  class ApiV2010AccountSigningKey
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountSigningKeyMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountSigningKeyMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountSigningKeyMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] Optional `string` value serialized in the `sid` wire field.
+    attr_reader :sid
+    # @return [String] Optional `string` value serialized in the `friendly_name` wire field.
+    attr_reader :friendly_name
+    # @return [String] Optional `date-time-rfc-2822`-formatted value serialized in the `date_created` wire field.
+    attr_reader :date_created
+    # @return [String] Optional `date-time-rfc-2822`-formatted value serialized in the `date_updated` wire field.
+    attr_reader :date_updated
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

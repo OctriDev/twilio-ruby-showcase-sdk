@@ -12,9 +12,9 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallUserDefinedMessageSubscriptionMetadata
         FIELDS = {
-          callback: "Callback",
-          idempotency_key: "IdempotencyKey",
-          method: "Method",
+          callback: 'Callback',
+          idempotency_key: 'IdempotencyKey',
+          method: 'Method'
         }.freeze
         REQUIRED_FIELDS = %i[
           callback
@@ -22,7 +22,7 @@ module OctridevTwilio
         DECODERS = {
           method: lambda do |value|
             ::OctridevTwilio::Methods::CallsUserDefinedMessageSubscriptions::CreateCallUserDefinedMessageSubscriptionMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -58,7 +58,7 @@ module OctridevTwilio
       module CreateCallUserDefinedMessageSubscriptionMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -89,7 +89,6 @@ module OctridevTwilio
         method: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -101,23 +100,23 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(call_sid),
-            "/UserDefinedMessageSubscriptions.json"
+            '/UserDefinedMessageSubscriptions.json'
           ].join,
           config: config,
           body: {
             'Callback' => callback,
             'IdempotencyKey' => idempotency_key,
-            'Method' => method,
+            'Method' => method
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallUserDefinedMessageSubscription,
           decoder: :json,
           operation_id: 'create_call_user_defined_message_subscription',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -137,7 +136,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -150,18 +148,18 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Calls/",
+            '/Calls/',
             SdkClient.encode_path_segment(call_sid),
-            "/UserDefinedMessageSubscriptions/",
+            '/UserDefinedMessageSubscriptions/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_calls_user_defined_message_subscriptions',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

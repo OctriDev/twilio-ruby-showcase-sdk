@@ -12,32 +12,31 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateIncomingPhoneNumbersMetadata
         FIELDS = {
-          account_sid: "AccountSid",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          bundle_sid: "BundleSid",
+          account_sid: 'AccountSid',
+          api_version: 'ApiVersion',
+          friendly_name: 'FriendlyName',
+          sms_application_sid: 'SmsApplicationSid',
+          sms_fallback_method: 'SmsFallbackMethod',
+          sms_fallback_url: 'SmsFallbackUrl',
+          sms_method: 'SmsMethod',
+          sms_url: 'SmsUrl',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod',
+          voice_application_sid: 'VoiceApplicationSid',
+          voice_caller_id_lookup: 'VoiceCallerIdLookup',
+          voice_fallback_method: 'VoiceFallbackMethod',
+          voice_fallback_url: 'VoiceFallbackUrl',
+          voice_method: 'VoiceMethod',
+          voice_url: 'VoiceUrl',
+          emergency_status: 'EmergencyStatus',
+          emergency_address_sid: 'EmergencyAddressSid',
+          trunk_sid: 'TrunkSid',
+          voice_receive_mode: 'VoiceReceiveMode',
+          identity_sid: 'IdentitySid',
+          address_sid: 'AddressSid',
+          bundle_sid: 'BundleSid'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           sms_fallback_method: lambda do |value|
             ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersSmsFallbackMethod.from_value(value)
@@ -59,7 +58,7 @@ module OctridevTwilio
           end,
           voice_receive_mode: lambda do |value|
             ::OctridevTwilio::IncomingPhoneNumberEnumVoiceReceiveMode.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -133,22 +132,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListIncomingPhoneNumbersResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          incoming_phone_numbers: 'incoming_phone_numbers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           incoming_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumber.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -179,33 +177,32 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateIncomingPhoneNumbersMetadata
         FIELDS = {
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
-          phone_number: "PhoneNumber",
-          area_code: "AreaCode",
+          api_version: 'ApiVersion',
+          friendly_name: 'FriendlyName',
+          sms_application_sid: 'SmsApplicationSid',
+          sms_fallback_method: 'SmsFallbackMethod',
+          sms_fallback_url: 'SmsFallbackUrl',
+          sms_method: 'SmsMethod',
+          sms_url: 'SmsUrl',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod',
+          voice_application_sid: 'VoiceApplicationSid',
+          voice_caller_id_lookup: 'VoiceCallerIdLookup',
+          voice_fallback_method: 'VoiceFallbackMethod',
+          voice_fallback_url: 'VoiceFallbackUrl',
+          voice_method: 'VoiceMethod',
+          voice_url: 'VoiceUrl',
+          emergency_status: 'EmergencyStatus',
+          emergency_address_sid: 'EmergencyAddressSid',
+          trunk_sid: 'TrunkSid',
+          identity_sid: 'IdentitySid',
+          address_sid: 'AddressSid',
+          voice_receive_mode: 'VoiceReceiveMode',
+          bundle_sid: 'BundleSid',
+          phone_number: 'PhoneNumber',
+          area_code: 'AreaCode'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           sms_fallback_method: lambda do |value|
             ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersSmsFallbackMethod.from_value(value)
@@ -227,7 +224,7 @@ module OctridevTwilio
           end,
           voice_receive_mode: lambda do |value|
             ::OctridevTwilio::IncomingPhoneNumberEnumVoiceReceiveMode.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -303,22 +300,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListIncomingPhoneNumbersLocalResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          incoming_phone_numbers: 'incoming_phone_numbers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           incoming_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -349,29 +345,29 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateIncomingPhoneNumbersLocalMetadata
         FIELDS = {
-          phone_number: "PhoneNumber",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
+          phone_number: 'PhoneNumber',
+          api_version: 'ApiVersion',
+          friendly_name: 'FriendlyName',
+          sms_application_sid: 'SmsApplicationSid',
+          sms_fallback_method: 'SmsFallbackMethod',
+          sms_fallback_url: 'SmsFallbackUrl',
+          sms_method: 'SmsMethod',
+          sms_url: 'SmsUrl',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod',
+          voice_application_sid: 'VoiceApplicationSid',
+          voice_caller_id_lookup: 'VoiceCallerIdLookup',
+          voice_fallback_method: 'VoiceFallbackMethod',
+          voice_fallback_url: 'VoiceFallbackUrl',
+          voice_method: 'VoiceMethod',
+          voice_url: 'VoiceUrl',
+          identity_sid: 'IdentitySid',
+          address_sid: 'AddressSid',
+          emergency_status: 'EmergencyStatus',
+          emergency_address_sid: 'EmergencyAddressSid',
+          trunk_sid: 'TrunkSid',
+          voice_receive_mode: 'VoiceReceiveMode',
+          bundle_sid: 'BundleSid'
         }.freeze
         REQUIRED_FIELDS = %i[
           phone_number
@@ -397,7 +393,7 @@ module OctridevTwilio
           end,
           voice_receive_mode: lambda do |value|
             ::OctridevTwilio::IncomingPhoneNumberLocalEnumVoiceReceiveMode.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -471,22 +467,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListIncomingPhoneNumbersMobileResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          incoming_phone_numbers: 'incoming_phone_numbers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           incoming_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberMobile.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -517,29 +512,29 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateIncomingPhoneNumbersMobileMetadata
         FIELDS = {
-          phone_number: "PhoneNumber",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
+          phone_number: 'PhoneNumber',
+          api_version: 'ApiVersion',
+          friendly_name: 'FriendlyName',
+          sms_application_sid: 'SmsApplicationSid',
+          sms_fallback_method: 'SmsFallbackMethod',
+          sms_fallback_url: 'SmsFallbackUrl',
+          sms_method: 'SmsMethod',
+          sms_url: 'SmsUrl',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod',
+          voice_application_sid: 'VoiceApplicationSid',
+          voice_caller_id_lookup: 'VoiceCallerIdLookup',
+          voice_fallback_method: 'VoiceFallbackMethod',
+          voice_fallback_url: 'VoiceFallbackUrl',
+          voice_method: 'VoiceMethod',
+          voice_url: 'VoiceUrl',
+          identity_sid: 'IdentitySid',
+          address_sid: 'AddressSid',
+          emergency_status: 'EmergencyStatus',
+          emergency_address_sid: 'EmergencyAddressSid',
+          trunk_sid: 'TrunkSid',
+          voice_receive_mode: 'VoiceReceiveMode',
+          bundle_sid: 'BundleSid'
         }.freeze
         REQUIRED_FIELDS = %i[
           phone_number
@@ -565,7 +560,7 @@ module OctridevTwilio
           end,
           voice_receive_mode: lambda do |value|
             ::OctridevTwilio::IncomingPhoneNumberMobileEnumVoiceReceiveMode.from_value(value)
-          end,
+          end
         }.freeze
       end
     end

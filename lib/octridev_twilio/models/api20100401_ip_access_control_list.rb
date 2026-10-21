@@ -5,57 +5,55 @@
 
 # api20100401_ip_access_control_list domain models
 module OctridevTwilio
-# Internal model hydration metadata.
-class SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata
-  FIELDS = {
-    sid: "sid",
-    account_sid: "account_sid",
-    friendly_name: "friendly_name",
-    date_created: "date_created",
-    date_updated: "date_updated",
-    subresource_uris: "subresource_uris",
-    uri: "uri",
-  }.freeze
-  REQUIRED_FIELDS = %i[
-  ].freeze
-  DECODERS = {
-  }.freeze
-end
-
-# API model for ApiV2010AccountSipSipIpAccessControlList.
-# Typed representation of the `ApiV2010AccountSipSipIpAccessControlList` API schema.
-class ApiV2010AccountSipSipIpAccessControlList
-  CONSTRUCTION_SURFACE = :named
-  FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::FIELDS
-  REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::REQUIRED_FIELDS
-  DECODERS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::DECODERS
-
-  # @return [String] A 34 character string that uniquely identifies this resource.
-  attr_reader :sid
-  # @return [String] The unique id of the Account that owns this resource.
-  attr_reader :account_sid
-  # @return [String] A human readable descriptive text, up to 255 characters long.
-  attr_reader :friendly_name
-  # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
-  attr_reader :date_created
-  # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
-  attr_reader :date_updated
-  # @return [Hash] A list of the IpAddress resources associated with this IP access control list resource.
-  attr_reader :subresource_uris
-  # @return [String] The URI for this resource, relative to `api.twilio.com`
-  attr_reader :uri
-
-  def initialize(**attributes)
-    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-    freeze
+  # Internal model hydration metadata.
+  class SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata
+    FIELDS = {
+      sid: 'sid',
+      account_sid: 'account_sid',
+      friendly_name: 'friendly_name',
+      date_created: 'date_created',
+      date_updated: 'date_updated',
+      subresource_uris: 'subresource_uris',
+      uri: 'uri'
+    }.freeze
+    REQUIRED_FIELDS = %i[].freeze
+    DECODERS = {}.freeze
   end
 
-  def self.from_hash(data)
-    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-  end
+  # API model for ApiV2010AccountSipSipIpAccessControlList.
+  # Typed representation of the `ApiV2010AccountSipSipIpAccessControlList` API schema.
+  class ApiV2010AccountSipSipIpAccessControlList
+    CONSTRUCTION_SURFACE = :named
+    FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::FIELDS
+    REQUIRED_FIELDS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::REQUIRED_FIELDS
+    DECODERS = SdkInternalApiV2010AccountSipSipIpAccessControlListMetadata::DECODERS
 
-  def to_h
-    SdkModel.to_h(self, FIELDS)
+    # @return [String] A 34 character string that uniquely identifies this resource.
+    attr_reader :sid
+    # @return [String] The unique id of the Account that owns this resource.
+    attr_reader :account_sid
+    # @return [String] A human readable descriptive text, up to 255 characters long.
+    attr_reader :friendly_name
+    # @return [String] The date that this resource was created, given as GMT in RFC 2822 format.
+    attr_reader :date_created
+    # @return [String] The date that this resource was last updated, given as GMT in RFC 2822 format.
+    attr_reader :date_updated
+    # @return [Hash] A list of the IpAddress resources associated with this IP access control list resource.
+    attr_reader :subresource_uris
+    # @return [String] The URI for this resource, relative to `api.twilio.com`
+    attr_reader :uri
+
+    def initialize(**attributes)
+      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+      freeze
+    end
+
+    def self.from_hash(data)
+      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+    end
+
+    def to_h
+      SdkModel.to_h(self, FIELDS)
+    end
   end
-end
 end

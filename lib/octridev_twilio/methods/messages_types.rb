@@ -12,32 +12,32 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateMessagesMetadata
         FIELDS = {
-          to: "To",
-          status_callback: "StatusCallback",
-          application_sid: "ApplicationSid",
-          max_price: "MaxPrice",
-          provide_feedback: "ProvideFeedback",
-          attempt: "Attempt",
-          validity_period: "ValidityPeriod",
-          force_delivery: "ForceDelivery",
-          content_retention: "ContentRetention",
-          address_retention: "AddressRetention",
-          smart_encoded: "SmartEncoded",
-          persistent_action: "PersistentAction",
-          traffic_type: "TrafficType",
-          shorten_urls: "ShortenUrls",
-          schedule_type: "ScheduleType",
-          send_at: "SendAt",
-          send_as_mms: "SendAsMms",
-          content_variables: "ContentVariables",
-          message_intent: "MessageIntent",
-          risk_check: "RiskCheck",
-          from: "From",
-          fallback_from: "FallbackFrom",
-          messaging_service_sid: "MessagingServiceSid",
-          body: "Body",
-          media_url: "MediaUrl",
-          content_sid: "ContentSid",
+          to: 'To',
+          status_callback: 'StatusCallback',
+          application_sid: 'ApplicationSid',
+          max_price: 'MaxPrice',
+          provide_feedback: 'ProvideFeedback',
+          attempt: 'Attempt',
+          validity_period: 'ValidityPeriod',
+          force_delivery: 'ForceDelivery',
+          content_retention: 'ContentRetention',
+          address_retention: 'AddressRetention',
+          smart_encoded: 'SmartEncoded',
+          persistent_action: 'PersistentAction',
+          traffic_type: 'TrafficType',
+          shorten_urls: 'ShortenUrls',
+          schedule_type: 'ScheduleType',
+          send_at: 'SendAt',
+          send_as_mms: 'SendAsMms',
+          content_variables: 'ContentVariables',
+          message_intent: 'MessageIntent',
+          risk_check: 'RiskCheck',
+          from: 'From',
+          fallback_from: 'FallbackFrom',
+          messaging_service_sid: 'MessagingServiceSid',
+          body: 'Body',
+          media_url: 'MediaUrl',
+          content_sid: 'ContentSid'
         }.freeze
         REQUIRED_FIELDS = %i[
           to
@@ -57,7 +57,7 @@ module OctridevTwilio
           end,
           risk_check: lambda do |value|
             ::OctridevTwilio::MessageEnumRiskCheck.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -137,22 +137,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListMessagesResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          messages: "messages",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          messages: 'messages'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           messages: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountMessage.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -183,15 +182,14 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateMessagesMetadata
         FIELDS = {
-          body: "Body",
-          status: "Status",
+          body: 'Body',
+          status: 'Status'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           status: lambda do |value|
             ::OctridevTwilio::MessageEnumUpdateStatus.from_value(value)
-          end,
+          end
         }.freeze
       end
 

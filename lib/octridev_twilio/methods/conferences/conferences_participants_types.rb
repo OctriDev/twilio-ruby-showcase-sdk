@@ -12,21 +12,20 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateConferencesParticipantsMetadata
         FIELDS = {
-          muted: "Muted",
-          hold: "Hold",
-          hold_url: "HoldUrl",
-          hold_method: "HoldMethod",
-          announce_url: "AnnounceUrl",
-          announce_method: "AnnounceMethod",
-          wait_url: "WaitUrl",
-          wait_method: "WaitMethod",
-          beep_on_exit: "BeepOnExit",
-          end_conference_on_exit: "EndConferenceOnExit",
-          coaching: "Coaching",
-          call_sid_to_coach: "CallSidToCoach",
+          muted: 'Muted',
+          hold: 'Hold',
+          hold_url: 'HoldUrl',
+          hold_method: 'HoldMethod',
+          announce_url: 'AnnounceUrl',
+          announce_method: 'AnnounceMethod',
+          wait_url: 'WaitUrl',
+          wait_method: 'WaitMethod',
+          beep_on_exit: 'BeepOnExit',
+          end_conference_on_exit: 'EndConferenceOnExit',
+          coaching: 'Coaching',
+          call_sid_to_coach: 'CallSidToCoach'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           hold_method: lambda do |value|
             ::OctridevTwilio::Methods::ConferencesParticipants::UpdateConferencesParticipantsHoldMethod.from_value(value)
@@ -36,7 +35,7 @@ module OctridevTwilio
           end,
           wait_method: lambda do |value|
             ::OctridevTwilio::Methods::ConferencesParticipants::UpdateConferencesParticipantsWaitMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -89,66 +88,66 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateConferencesParticipantsMetadata
         FIELDS = {
-          from: "From",
-          to: "To",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          status_callback_event: "StatusCallbackEvent",
-          label: "Label",
-          timeout: "Timeout",
-          record: "Record",
-          muted: "Muted",
-          beep: "Beep",
-          start_conference_on_enter: "StartConferenceOnEnter",
-          end_conference_on_exit: "EndConferenceOnExit",
-          wait_url: "WaitUrl",
-          wait_method: "WaitMethod",
-          early_media: "EarlyMedia",
-          max_participants: "MaxParticipants",
-          conference_record: "ConferenceRecord",
-          conference_trim: "ConferenceTrim",
-          conference_status_callback: "ConferenceStatusCallback",
-          conference_status_callback_method: "ConferenceStatusCallbackMethod",
-          conference_status_callback_event: "ConferenceStatusCallbackEvent",
-          recording_channels: "RecordingChannels",
-          recording_status_callback: "RecordingStatusCallback",
-          recording_status_callback_method: "RecordingStatusCallbackMethod",
-          sip_auth_username: "SipAuthUsername",
-          sip_auth_password: "SipAuthPassword",
-          region: "Region",
-          conference_recording_status_callback: "ConferenceRecordingStatusCallback",
-          conference_recording_status_callback_method: "ConferenceRecordingStatusCallbackMethod",
-          recording_status_callback_event: "RecordingStatusCallbackEvent",
-          conference_recording_status_callback_event: "ConferenceRecordingStatusCallbackEvent",
-          coaching: "Coaching",
-          call_sid_to_coach: "CallSidToCoach",
-          jitter_buffer_size: "JitterBufferSize",
-          byoc: "Byoc",
-          caller_id: "CallerId",
-          call_reason: "CallReason",
-          recording_track: "RecordingTrack",
-          recording_configuration_id: "RecordingConfigurationId",
-          time_limit: "TimeLimit",
-          machine_detection: "MachineDetection",
-          machine_detection_timeout: "MachineDetectionTimeout",
-          machine_detection_speech_threshold: "MachineDetectionSpeechThreshold",
-          machine_detection_speech_end_threshold: "MachineDetectionSpeechEndThreshold",
-          machine_detection_silence_timeout: "MachineDetectionSilenceTimeout",
-          amd_status_callback: "AmdStatusCallback",
-          amd_status_callback_method: "AmdStatusCallbackMethod",
-          trim: "Trim",
-          call_token: "CallToken",
-          passports: "Passports",
-          client_notification_url: "ClientNotificationUrl",
-          caller_display_name: "CallerDisplayName",
-          emergency_caller_position: "EmergencyCallerPosition",
-          emergency_caller_location: "EmergencyCallerLocation",
-          emergency_name: "EmergencyName",
-          emergency_address: "EmergencyAddress",
-          emergency_zip_code: "EmergencyZipCode",
-          emergency_city: "EmergencyCity",
-          emergency_state: "EmergencyState",
-          emergency_country: "EmergencyCountry",
+          from: 'From',
+          to: 'To',
+          status_callback: 'StatusCallback',
+          status_callback_method: 'StatusCallbackMethod',
+          status_callback_event: 'StatusCallbackEvent',
+          label: 'Label',
+          timeout: 'Timeout',
+          record: 'Record',
+          muted: 'Muted',
+          beep: 'Beep',
+          start_conference_on_enter: 'StartConferenceOnEnter',
+          end_conference_on_exit: 'EndConferenceOnExit',
+          wait_url: 'WaitUrl',
+          wait_method: 'WaitMethod',
+          early_media: 'EarlyMedia',
+          max_participants: 'MaxParticipants',
+          conference_record: 'ConferenceRecord',
+          conference_trim: 'ConferenceTrim',
+          conference_status_callback: 'ConferenceStatusCallback',
+          conference_status_callback_method: 'ConferenceStatusCallbackMethod',
+          conference_status_callback_event: 'ConferenceStatusCallbackEvent',
+          recording_channels: 'RecordingChannels',
+          recording_status_callback: 'RecordingStatusCallback',
+          recording_status_callback_method: 'RecordingStatusCallbackMethod',
+          sip_auth_username: 'SipAuthUsername',
+          sip_auth_password: 'SipAuthPassword',
+          region: 'Region',
+          conference_recording_status_callback: 'ConferenceRecordingStatusCallback',
+          conference_recording_status_callback_method: 'ConferenceRecordingStatusCallbackMethod',
+          recording_status_callback_event: 'RecordingStatusCallbackEvent',
+          conference_recording_status_callback_event: 'ConferenceRecordingStatusCallbackEvent',
+          coaching: 'Coaching',
+          call_sid_to_coach: 'CallSidToCoach',
+          jitter_buffer_size: 'JitterBufferSize',
+          byoc: 'Byoc',
+          caller_id: 'CallerId',
+          call_reason: 'CallReason',
+          recording_track: 'RecordingTrack',
+          recording_configuration_id: 'RecordingConfigurationId',
+          time_limit: 'TimeLimit',
+          machine_detection: 'MachineDetection',
+          machine_detection_timeout: 'MachineDetectionTimeout',
+          machine_detection_speech_threshold: 'MachineDetectionSpeechThreshold',
+          machine_detection_speech_end_threshold: 'MachineDetectionSpeechEndThreshold',
+          machine_detection_silence_timeout: 'MachineDetectionSilenceTimeout',
+          amd_status_callback: 'AmdStatusCallback',
+          amd_status_callback_method: 'AmdStatusCallbackMethod',
+          trim: 'Trim',
+          call_token: 'CallToken',
+          passports: 'Passports',
+          client_notification_url: 'ClientNotificationUrl',
+          caller_display_name: 'CallerDisplayName',
+          emergency_caller_position: 'EmergencyCallerPosition',
+          emergency_caller_location: 'EmergencyCallerLocation',
+          emergency_name: 'EmergencyName',
+          emergency_address: 'EmergencyAddress',
+          emergency_zip_code: 'EmergencyZipCode',
+          emergency_city: 'EmergencyCity',
+          emergency_state: 'EmergencyState',
+          emergency_country: 'EmergencyCountry'
         }.freeze
         REQUIRED_FIELDS = %i[
           from
@@ -172,7 +171,7 @@ module OctridevTwilio
           end,
           amd_status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::ConferencesParticipants::CreateConferencesParticipantsAmdStatusCallbackMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -321,22 +320,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListConferencesParticipantsResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          participants: "participants",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          participants: 'participants'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           participants: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountConferenceParticipant.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -368,7 +366,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsConferenceRecordingStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -378,7 +376,7 @@ module OctridevTwilio
       module UpdateConferencesParticipantsHoldMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -388,7 +386,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsConferenceStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -398,7 +396,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -408,7 +406,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsWaitMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -418,7 +416,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsAmdStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -428,7 +426,7 @@ module OctridevTwilio
       module UpdateConferencesParticipantsAnnounceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -438,7 +436,7 @@ module OctridevTwilio
       module CreateConferencesParticipantsRecordingStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -448,7 +446,7 @@ module OctridevTwilio
       module UpdateConferencesParticipantsWaitMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end

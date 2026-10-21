@@ -27,7 +27,6 @@ module OctridevTwilio
         call_sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -37,19 +36,19 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Conferences/",
+            '/Conferences/',
             SdkClient.encode_path_segment(conference_sid),
-            "/Participants/",
+            '/Participants/',
             SdkClient.encode_path_segment(call_sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountConferenceParticipant,
           decoder: :json,
           operation_id: 'fetch_conferences_participants',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -126,7 +125,6 @@ module OctridevTwilio
         call_sid_to_coach: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -147,13 +145,13 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Conferences/",
+            '/Conferences/',
             SdkClient.encode_path_segment(conference_sid),
-            "/Participants/",
+            '/Participants/',
             SdkClient.encode_path_segment(call_sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
@@ -168,13 +166,13 @@ module OctridevTwilio
             'BeepOnExit' => beep_on_exit,
             'EndConferenceOnExit' => end_conference_on_exit,
             'Coaching' => coaching,
-            'CallSidToCoach' => call_sid_to_coach,
+            'CallSidToCoach' => call_sid_to_coach
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountConferenceParticipant,
           decoder: :json,
           operation_id: 'update_conferences_participants',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
 
@@ -196,7 +194,6 @@ module OctridevTwilio
         call_sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -206,18 +203,18 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Conferences/",
+            '/Conferences/',
             SdkClient.encode_path_segment(conference_sid),
-            "/Participants/",
+            '/Participants/',
             SdkClient.encode_path_segment(call_sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_conferences_participants',
-          request_options: request_options,
+          request_options: request_options
         ).data
       end
     end

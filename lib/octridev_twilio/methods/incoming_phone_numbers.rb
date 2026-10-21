@@ -9,571 +9,350 @@ module OctridevTwilio
   module Methods
     # Defines the IncomingPhoneNumbers SDK namespace.
     module IncomingPhoneNumbers
-      # Internal model hydration metadata.
-      class SdkInternalUpdateIncomingPhoneNumbersMetadata
-        FIELDS = {
-          account_sid: "AccountSid",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          bundle_sid: "BundleSid",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          sms_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersSmsFallbackMethod.from_value(value)
-          end,
-          sms_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersSmsMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersStatusCallbackMethod.from_value(value)
-          end,
-          voice_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersVoiceFallbackMethod.from_value(value)
-          end,
-          voice_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::UpdateIncomingPhoneNumbersVoiceMethod.from_value(value)
-          end,
-          emergency_status: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberEnumEmergencyStatus.from_value(value)
-          end,
-          voice_receive_mode: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberEnumVoiceReceiveMode.from_value(value)
-          end,
-        }.freeze
+      # Updates the configuration of an incoming phone number. Supply only the settings you want to change, such as the SMS or voice handlers and their callback methods. An application SID takes precedence over the corresponding URL settings.
+      #
+      # Update an incoming-phone-number instance.
+      #
+      # @param account_sid [String] The SID of the Account that created the
+      #   IncomingPhoneNumber resource to update. For more information, see Exchanging
+      #   Numbers Between Subaccounts.
+      # @param sid [String] The Twilio-provided string that uniquely identifies the
+      #   IncomingPhoneNumber resource to update.
+      # @param account_sid2 [String] The SID of the Account that created the
+      #   IncomingPhoneNumber resource to update. For more information, see Exchanging
+      #   Numbers Between Subaccounts.
+      # @param api_version [String] The API version to use for incoming calls made
+      #   to the phone number. The default is `2010-04-01`.
+      # @param friendly_name [String] A descriptive string that you created to
+      #   describe this phone number. It can be up to 64 characters long. By default,
+      #   this is a formatted version of the phone number.
+      # @param sms_application_sid [String] The SID of the application that should
+      #   handle SMS messages sent to the number. If an `sms_application_sid` is
+      #   present, we ignore all of the `sms_*_url` urls and use those set on the
+      #   application.
+      # @param sms_fallback_method [UpdateIncomingPhoneNumbersSmsFallbackMethod] The
+      #   HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or
+      #   `POST` and defaults to `POST`.
+      # @param sms_fallback_url [String] The URL that we should call when an error
+      #   occurs while requesting or executing the TwiML defined by `sms_url`.
+      # @param sms_method [UpdateIncomingPhoneNumbersSmsMethod] The HTTP method that
+      #   we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to
+      #   `POST`.
+      # @param sms_url [String] The URL we should call when the phone number
+      #   receives an incoming SMS message.
+      # @param status_callback [String] The URL we should call using the
+      #   `status_callback_method` to send status information to your application.
+      # @param status_callback_method
+      #   [UpdateIncomingPhoneNumbersStatusCallbackMethod] The HTTP method we should
+      #   use to call `status_callback`. Can be: `GET` or `POST` and defaults to
+      #   `POST`.
+      # @param voice_application_sid [String] The SID of the application we should
+      #   use to handle phone calls to the phone number. If a `voice_application_sid`
+      #   is present, we ignore all of the voice urls and use only those set on the
+      #   application. Setting a `voice_application_sid` will automatically delete
+      #   your `trunk_sid` and vice versa.
+      # @param voice_caller_id_lookup [Boolean] Whether to lookup the caller's name
+      #   from the CNAM database and post it to your app. Can be: `true` or `false`
+      #   and defaults to `false`.
+      # @param voice_fallback_method [UpdateIncomingPhoneNumbersVoiceFallbackMethod]
+      #   The HTTP method that we should use to call `voice_fallback_url`. Can be:
+      #   `GET` or `POST` and defaults to `POST`.
+      # @param voice_fallback_url [String] The URL that we should call when an error
+      #   occurs retrieving or executing the TwiML requested by `url`.
+      # @param voice_method [UpdateIncomingPhoneNumbersVoiceMethod] The HTTP method
+      #   that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults
+      #   to `POST`.
+      # @param voice_url [String] The URL that we should call to answer a call to
+      #   the phone number. The `voice_url` will not be called if a
+      #   `voice_application_sid` or a `trunk_sid` is set.
+      # @param emergency_status [IncomingPhoneNumberEnumEmergencyStatus] The
+      #   parameter displays if emergency calling is enabled for this number. Active
+      #   numbers may place emergency calls by dialing valid emergency numbers for the
+      #   country.
+      # @param emergency_address_sid [String] The SID of the emergency address
+      #   configuration to use for emergency calling from this phone number.
+      # @param trunk_sid [String] The SID of the Trunk we should use to handle phone
+      #   calls to the phone number. If a `trunk_sid` is present, we ignore all of the
+      #   voice urls and voice applications and use only those set on the Trunk.
+      #   Setting a `trunk_sid` will automatically delete your `voice_application_sid`
+      #   and vice versa.
+      # @param identity_sid [String] The SID of the Identity resource that we should
+      #   associate with the phone number. Some regions require an identity to meet
+      #   local regulations.
+      # @param address_sid [String] The SID of the Address resource we should
+      #   associate with the phone number. Some regions require addresses to meet
+      #   local regulations.
+      # @param bundle_sid [String] The SID of the Bundle resource that you associate
+      #   with the phone number. Some regions require a Bundle to meet local
+      #   Regulations.
+      def self.update_incoming_phone_numbers(
+        config:,
+        account_sid:,
+        sid:,
+        account_sid2: NOT_GIVEN,
+        api_version: NOT_GIVEN,
+        friendly_name: NOT_GIVEN,
+        sms_application_sid: NOT_GIVEN,
+        sms_fallback_method: NOT_GIVEN,
+        sms_fallback_url: NOT_GIVEN,
+        sms_method: NOT_GIVEN,
+        sms_url: NOT_GIVEN,
+        status_callback: NOT_GIVEN,
+        status_callback_method: NOT_GIVEN,
+        voice_application_sid: NOT_GIVEN,
+        voice_caller_id_lookup: NOT_GIVEN,
+        voice_fallback_method: NOT_GIVEN,
+        voice_fallback_url: NOT_GIVEN,
+        voice_method: NOT_GIVEN,
+        voice_url: NOT_GIVEN,
+        emergency_status: NOT_GIVEN,
+        emergency_address_sid: NOT_GIVEN,
+        trunk_sid: NOT_GIVEN,
+        voice_receive_mode: NOT_GIVEN,
+        identity_sid: NOT_GIVEN,
+        address_sid: NOT_GIVEN,
+        bundle_sid: NOT_GIVEN,
+        request_options: nil
+      )
+
+        __sdk_validate_update_incoming_phone_numbers(account_sid: account_sid, sid: sid, account_sid2: account_sid2, sms_application_sid: sms_application_sid, sms_fallback_url: sms_fallback_url, sms_url: sms_url, status_callback: status_callback, voice_application_sid: voice_application_sid, voice_fallback_url: voice_fallback_url, voice_url: voice_url, emergency_address_sid: emergency_address_sid, trunk_sid: trunk_sid, identity_sid: identity_sid, address_sid: address_sid, bundle_sid: bundle_sid)
+
+        SdkClient.request(
+          'POST',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/IncomingPhoneNumbers/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          body: __sdk_body_update_incoming_phone_numbers_part1(account_sid2: account_sid2, api_version: api_version, friendly_name: friendly_name, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url, emergency_status: emergency_status, emergency_address_sid: emergency_address_sid).merge(
+            __sdk_body_update_incoming_phone_numbers_part2(trunk_sid: trunk_sid, voice_receive_mode: voice_receive_mode, identity_sid: identity_sid, address_sid: address_sid, bundle_sid: bundle_sid)),
+          content_type: 'application/x-www-form-urlencoded',
+          return_type: ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumber,
+          decoder: :json,
+          operation_id: 'update_incoming_phone_numbers',
+          request_options: request_options,
+        ).data
       end
 
-      # API model for UpdateIncomingPhoneNumbers.
-      class UpdateIncomingPhoneNumbers
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUpdateIncomingPhoneNumbersMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUpdateIncomingPhoneNumbersMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUpdateIncomingPhoneNumbersMetadata::DECODERS
+      def self.__sdk_validate_update_incoming_phone_numbers(
+        account_sid:,
+        sid:,
+        account_sid2:,
+        sms_application_sid:,
+        sms_fallback_url:,
+        sms_url:,
+        status_callback:,
+        voice_application_sid:,
+        voice_fallback_url:,
+        voice_url:,
+        emergency_address_sid:,
+        trunk_sid:,
+        identity_sid:,
+        address_sid:,
+        bundle_sid:
+      )
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
-        attr_reader :voice_receive_mode
-        # @return [String] The SID of the Account that created the IncomingPhoneNumber resource to update. For more information, see Exchanging Numbers Between Subaccounts.
-        attr_reader :account_sid
-        # @return [String] The API version to use for incoming calls made to the phone number. The default is `2010-04-01`.
-        attr_reader :api_version
-        # @return [String] A descriptive string that you created to describe this phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
-        attr_reader :friendly_name
-        # @return [String] The SID of the application that should handle SMS messages sent to the number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
-        attr_reader :sms_application_sid
-        # @return [UpdateIncomingPhoneNumbersSmsFallbackMethod] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_fallback_method
-        # @return [String] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
-        attr_reader :sms_fallback_url
-        # @return [UpdateIncomingPhoneNumbersSmsMethod] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_method
-        # @return [String] The URL we should call when the phone number receives an incoming SMS message.
-        attr_reader :sms_url
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application.
-        attr_reader :status_callback
-        # @return [UpdateIncomingPhoneNumbersStatusCallbackMethod] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :status_callback_method
-        # @return [String] The SID of the application we should use to handle phone calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
-        attr_reader :voice_application_sid
-        # @return [Boolean] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
-        attr_reader :voice_caller_id_lookup
-        # @return [UpdateIncomingPhoneNumbersVoiceFallbackMethod] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_fallback_method
-        # @return [String] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
-        attr_reader :voice_fallback_url
-        # @return [UpdateIncomingPhoneNumbersVoiceMethod] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_method
-        # @return [String] The URL that we should call to answer a call to the phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
-        attr_reader :voice_url
-        # @return [IncomingPhoneNumberEnumEmergencyStatus] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
-        attr_reader :emergency_status
-        # @return [String] The SID of the emergency address configuration to use for emergency calling from this phone number.
-        attr_reader :emergency_address_sid
-        # @return [String] The SID of the Trunk we should use to handle phone calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
-        attr_reader :trunk_sid
-        # @return [String] The SID of the Identity resource that we should associate with the phone number. Some regions require an identity to meet local regulations.
-        attr_reader :identity_sid
-        # @return [String] The SID of the Address resource we should associate with the phone number. Some regions require addresses to meet local regulations.
-        attr_reader :address_sid
-        # @return [String] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
-        attr_reader :bundle_sid
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^PN[0-9a-fA-F]{32}$')
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
+        Validation.if_given(account_sid2) do
+          Validation.validate_length('AccountSid', account_sid2, min: 34, max: 34)
+          Validation.validate_pattern('AccountSid', account_sid2, '^AC[0-9a-fA-F]{32}$')
         end
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        Validation.if_given(sms_application_sid) do
+          Validation.validate_length('SmsApplicationSid', sms_application_sid, min: 34, max: 34)
+          Validation.validate_pattern('SmsApplicationSid', sms_application_sid, '^AP[0-9a-fA-F]{32}$')
         end
 
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
+        Validation.if_given(sms_fallback_url) { Validation.validate_uri('SmsFallbackUrl', sms_fallback_url) }
 
-      # Internal model hydration metadata.
-      class SdkInternalListIncomingPhoneNumbersResponseMetadata
-        FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          incoming_phone_numbers: lambda do |value|
-            value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumber.from_hash(item) }
-          end,
-        }.freeze
-      end
+        Validation.if_given(sms_url) { Validation.validate_uri('SmsUrl', sms_url) }
 
-      # API model for ListIncomingPhoneNumbersResponse.
-      class ListIncomingPhoneNumbersResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalListIncomingPhoneNumbersResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalListIncomingPhoneNumbersResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalListIncomingPhoneNumbersResponseMetadata::DECODERS
+        Validation.if_given(status_callback) { Validation.validate_uri('StatusCallback', status_callback) }
 
-        attr_reader :end_, :first_page_uri, :next_page_uri, :page, :page_size, :previous_page_uri,
-                    :start, :uri, :incoming_phone_numbers
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
+        Validation.if_given(voice_application_sid) do
+          Validation.validate_length('VoiceApplicationSid', voice_application_sid, min: 34, max: 34)
+          Validation.validate_pattern('VoiceApplicationSid', voice_application_sid, '^AP[0-9a-fA-F]{32}$')
         end
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
+        Validation.if_given(voice_fallback_url) do
+          Validation.validate_uri('VoiceFallbackUrl', voice_fallback_url)
         end
 
-        def to_h
-          SdkModel.to_h(self, FIELDS)
+        Validation.if_given(voice_url) { Validation.validate_uri('VoiceUrl', voice_url) }
+
+        Validation.if_given(emergency_address_sid) do
+          Validation.validate_length('EmergencyAddressSid', emergency_address_sid, min: 34, max: 34)
+          Validation.validate_pattern('EmergencyAddressSid', emergency_address_sid, '^AD[0-9a-fA-F]{32}$')
+        end
+
+        Validation.if_given(trunk_sid) do
+          Validation.validate_length('TrunkSid', trunk_sid, min: 34, max: 34)
+          Validation.validate_pattern('TrunkSid', trunk_sid, '^TK[0-9a-fA-F]{32}$')
+        end
+
+        Validation.if_given(identity_sid) do
+          Validation.validate_length('IdentitySid', identity_sid, min: 34, max: 34)
+          Validation.validate_pattern('IdentitySid', identity_sid, '^RI[0-9a-fA-F]{32}$')
+        end
+
+        Validation.if_given(address_sid) do
+          Validation.validate_length('AddressSid', address_sid, min: 34, max: 34)
+          Validation.validate_pattern('AddressSid', address_sid, '^AD[0-9a-fA-F]{32}$')
+        end
+
+        Validation.if_given(bundle_sid) do
+          Validation.validate_length('BundleSid', bundle_sid, min: 34, max: 34)
+          Validation.validate_pattern('BundleSid', bundle_sid, '^BU[0-9a-fA-F]{32}$')
         end
       end
+      private_class_method :__sdk_validate_update_incoming_phone_numbers
 
-      # Internal model hydration metadata.
-      class SdkInternalCreateIncomingPhoneNumbersMetadata
-        FIELDS = {
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
-          phone_number: "PhoneNumber",
-          area_code: "AreaCode",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          sms_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersSmsFallbackMethod.from_value(value)
-          end,
-          sms_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersSmsMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersStatusCallbackMethod.from_value(value)
-          end,
-          voice_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersVoiceFallbackMethod.from_value(value)
-          end,
-          voice_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersVoiceMethod.from_value(value)
-          end,
-          emergency_status: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberEnumEmergencyStatus.from_value(value)
-          end,
-          voice_receive_mode: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberEnumVoiceReceiveMode.from_value(value)
-          end,
-        }.freeze
+      def self.__sdk_body_update_incoming_phone_numbers_part1(
+        account_sid2:,
+        api_version:,
+        friendly_name:,
+        sms_application_sid:,
+        sms_fallback_method:,
+        sms_fallback_url:,
+        sms_method:,
+        sms_url:,
+        status_callback:,
+        status_callback_method:,
+        voice_application_sid:,
+        voice_caller_id_lookup:,
+        voice_fallback_method:,
+        voice_fallback_url:,
+        voice_method:,
+        voice_url:,
+        emergency_status:,
+        emergency_address_sid:
+      )
+        {
+          'AccountSid' => account_sid2,
+          'ApiVersion' => api_version,
+          'FriendlyName' => friendly_name,
+          'SmsApplicationSid' => sms_application_sid,
+          'SmsFallbackMethod' => sms_fallback_method,
+          'SmsFallbackUrl' => sms_fallback_url,
+          'SmsMethod' => sms_method,
+          'SmsUrl' => sms_url,
+          'StatusCallback' => status_callback,
+          'StatusCallbackMethod' => status_callback_method,
+          'VoiceApplicationSid' => voice_application_sid,
+          'VoiceCallerIdLookup' => voice_caller_id_lookup,
+          'VoiceFallbackMethod' => voice_fallback_method,
+          'VoiceFallbackUrl' => voice_fallback_url,
+          'VoiceMethod' => voice_method,
+          'VoiceUrl' => voice_url,
+          'EmergencyStatus' => emergency_status,
+          'EmergencyAddressSid' => emergency_address_sid,
+        }
+      end
+      private_class_method :__sdk_body_update_incoming_phone_numbers_part1
+
+      def self.__sdk_body_update_incoming_phone_numbers_part2(
+        trunk_sid:,
+        voice_receive_mode:,
+        identity_sid:,
+        address_sid:,
+        bundle_sid:
+      )
+        {
+          'TrunkSid' => trunk_sid,
+          'VoiceReceiveMode' => voice_receive_mode,
+          'IdentitySid' => identity_sid,
+          'AddressSid' => address_sid,
+          'BundleSid' => bundle_sid,
+        }
+      end
+      private_class_method :__sdk_body_update_incoming_phone_numbers_part2
+
+      # Retrieves an incoming phone number belonging to an account. Use the account SID and the phone number's SID to identify the resource.
+      #
+      # Fetch an incoming-phone-number belonging to the account used to make the request.
+      #
+      # @param account_sid [String] The SID of the Account that created the
+      #   IncomingPhoneNumber resource to fetch.
+      # @param sid [String] The Twilio-provided string that uniquely identifies the
+      #   IncomingPhoneNumber resource to fetch.
+      def self.fetch_incoming_phone_numbers(
+        config:,
+        account_sid:,
+        sid:,
+        request_options: nil
+      )
+
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
+
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^PN[0-9a-fA-F]{32}$')
+
+        SdkClient.request(
+          'GET',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/IncomingPhoneNumbers/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          return_type: ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumber,
+          decoder: :json,
+          operation_id: 'fetch_incoming_phone_numbers',
+          request_options: request_options,
+        ).data
       end
 
-      # API model for CreateIncomingPhoneNumbers.
-      class CreateIncomingPhoneNumbers
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCreateIncomingPhoneNumbersMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCreateIncomingPhoneNumbersMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCreateIncomingPhoneNumbersMetadata::DECODERS
+      # Delete a phone-numbers belonging to the account used to make the request.
+      #
+      # @param account_sid [String] The SID of the Account that created the
+      #   IncomingPhoneNumber resources to delete.
+      # @param sid [String] The Twilio-provided string that uniquely identifies the
+      #   IncomingPhoneNumber resource to delete.
+      def self.delete_incoming_phone_numbers(
+        config:,
+        account_sid:,
+        sid:,
+        request_options: nil
+      )
 
-        attr_reader :voice_receive_mode
-        # @return [String] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
-        attr_reader :api_version
-        # @return [String] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the new phone number.
-        attr_reader :friendly_name
-        # @return [String] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
-        attr_reader :sms_application_sid
-        # @return [CreateIncomingPhoneNumbersSmsFallbackMethod] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_fallback_method
-        # @return [String] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
-        attr_reader :sms_fallback_url
-        # @return [CreateIncomingPhoneNumbersSmsMethod] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_method
-        # @return [String] The URL we should call when the new phone number receives an incoming SMS message.
-        attr_reader :sms_url
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application.
-        attr_reader :status_callback
-        # @return [CreateIncomingPhoneNumbersStatusCallbackMethod] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :status_callback_method
-        # @return [String] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
-        attr_reader :voice_application_sid
-        # @return [Boolean] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
-        attr_reader :voice_caller_id_lookup
-        # @return [CreateIncomingPhoneNumbersVoiceFallbackMethod] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_fallback_method
-        # @return [String] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
-        attr_reader :voice_fallback_url
-        # @return [CreateIncomingPhoneNumbersVoiceMethod] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_method
-        # @return [String] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
-        attr_reader :voice_url
-        # @return [IncomingPhoneNumberEnumEmergencyStatus] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
-        attr_reader :emergency_status
-        # @return [String] The SID of the emergency address configuration to use for emergency calling from the new phone number.
-        attr_reader :emergency_address_sid
-        # @return [String] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
-        attr_reader :trunk_sid
-        # @return [String] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
-        attr_reader :identity_sid
-        # @return [String] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
-        attr_reader :address_sid
-        # @return [String] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
-        attr_reader :bundle_sid
-        # @return [String] The phone number to purchase specified in E.164 format. E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
-        attr_reader :phone_number
-        # @return [String] The desired area code for your new incoming phone number. Can be any three-digit, US or Canada area code. We will provision an available phone number within this area code for you. **You must provide an `area_code` or a `phone_number`.** (US and Canada only).
-        attr_reader :area_code
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^PN[0-9a-fA-F]{32}$')
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalListIncomingPhoneNumbersLocalResponseMetadata
-        FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          incoming_phone_numbers: lambda do |value|
-            value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for ListIncomingPhoneNumbersLocalResponse.
-      class ListIncomingPhoneNumbersLocalResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalListIncomingPhoneNumbersLocalResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalListIncomingPhoneNumbersLocalResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalListIncomingPhoneNumbersLocalResponseMetadata::DECODERS
-
-        attr_reader :end_, :first_page_uri, :next_page_uri, :page, :page_size, :previous_page_uri,
-                    :start, :uri, :incoming_phone_numbers
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCreateIncomingPhoneNumbersLocalMetadata
-        FIELDS = {
-          phone_number: "PhoneNumber",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          phone_number
-        ].freeze
-        DECODERS = {
-          sms_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersLocalSmsFallbackMethod.from_value(value)
-          end,
-          sms_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersLocalSmsMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersLocalStatusCallbackMethod.from_value(value)
-          end,
-          voice_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersLocalVoiceFallbackMethod.from_value(value)
-          end,
-          voice_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersLocalVoiceMethod.from_value(value)
-          end,
-          emergency_status: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberLocalEnumEmergencyStatus.from_value(value)
-          end,
-          voice_receive_mode: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberLocalEnumVoiceReceiveMode.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for CreateIncomingPhoneNumbersLocal.
-      class CreateIncomingPhoneNumbersLocal
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCreateIncomingPhoneNumbersLocalMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCreateIncomingPhoneNumbersLocalMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCreateIncomingPhoneNumbersLocalMetadata::DECODERS
-
-        attr_reader :voice_receive_mode
-        # @return [String] The phone number to purchase specified in E.164 format. E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
-        attr_reader :phone_number
-        # @return [String] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
-        attr_reader :api_version
-        # @return [String] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
-        attr_reader :friendly_name
-        # @return [String] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
-        attr_reader :sms_application_sid
-        # @return [CreateIncomingPhoneNumbersLocalSmsFallbackMethod] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_fallback_method
-        # @return [String] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
-        attr_reader :sms_fallback_url
-        # @return [CreateIncomingPhoneNumbersLocalSmsMethod] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :sms_method
-        # @return [String] The URL we should call when the new phone number receives an incoming SMS message.
-        attr_reader :sms_url
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application.
-        attr_reader :status_callback
-        # @return [CreateIncomingPhoneNumbersLocalStatusCallbackMethod] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :status_callback_method
-        # @return [String] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
-        attr_reader :voice_application_sid
-        # @return [Boolean] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
-        attr_reader :voice_caller_id_lookup
-        # @return [CreateIncomingPhoneNumbersLocalVoiceFallbackMethod] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_fallback_method
-        # @return [String] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
-        attr_reader :voice_fallback_url
-        # @return [CreateIncomingPhoneNumbersLocalVoiceMethod] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
-        attr_reader :voice_method
-        # @return [String] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
-        attr_reader :voice_url
-        # @return [String] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
-        attr_reader :identity_sid
-        # @return [String] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
-        attr_reader :address_sid
-        # @return [IncomingPhoneNumberLocalEnumEmergencyStatus] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
-        attr_reader :emergency_status
-        # @return [String] The SID of the emergency address configuration to use for emergency calling from the new phone number.
-        attr_reader :emergency_address_sid
-        # @return [String] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
-        attr_reader :trunk_sid
-        # @return [String] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
-        attr_reader :bundle_sid
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalListIncomingPhoneNumbersMobileResponseMetadata
-        FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          incoming_phone_numbers: "incoming_phone_numbers",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          incoming_phone_numbers: lambda do |value|
-            value&.map { |item| ::OctridevTwilio::ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberMobile.from_hash(item) }
-          end,
-        }.freeze
-      end
-
-      # API model for ListIncomingPhoneNumbersMobileResponse.
-      class ListIncomingPhoneNumbersMobileResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalListIncomingPhoneNumbersMobileResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalListIncomingPhoneNumbersMobileResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalListIncomingPhoneNumbersMobileResponseMetadata::DECODERS
-
-        attr_reader :end_, :first_page_uri, :next_page_uri, :page, :page_size, :previous_page_uri,
-                    :start, :uri, :incoming_phone_numbers
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Internal model hydration metadata.
-      class SdkInternalCreateIncomingPhoneNumbersMobileMetadata
-        FIELDS = {
-          phone_number: "PhoneNumber",
-          api_version: "ApiVersion",
-          friendly_name: "FriendlyName",
-          sms_application_sid: "SmsApplicationSid",
-          sms_fallback_method: "SmsFallbackMethod",
-          sms_fallback_url: "SmsFallbackUrl",
-          sms_method: "SmsMethod",
-          sms_url: "SmsUrl",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          voice_application_sid: "VoiceApplicationSid",
-          voice_caller_id_lookup: "VoiceCallerIdLookup",
-          voice_fallback_method: "VoiceFallbackMethod",
-          voice_fallback_url: "VoiceFallbackUrl",
-          voice_method: "VoiceMethod",
-          voice_url: "VoiceUrl",
-          identity_sid: "IdentitySid",
-          address_sid: "AddressSid",
-          emergency_status: "EmergencyStatus",
-          emergency_address_sid: "EmergencyAddressSid",
-          trunk_sid: "TrunkSid",
-          voice_receive_mode: "VoiceReceiveMode",
-          bundle_sid: "BundleSid",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          phone_number
-        ].freeze
-        DECODERS = {
-          sms_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersMobileSmsFallbackMethod.from_value(value)
-          end,
-          sms_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersMobileSmsMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersMobileStatusCallbackMethod.from_value(value)
-          end,
-          voice_fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersMobileVoiceFallbackMethod.from_value(value)
-          end,
-          voice_method: lambda do |value|
-            ::OctridevTwilio::Methods::IncomingPhoneNumbers::CreateIncomingPhoneNumbersMobileVoiceMethod.from_value(value)
-          end,
-          emergency_status: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberMobileEnumEmergencyStatus.from_value(value)
-          end,
-          voice_receive_mode: lambda do |value|
-            ::OctridevTwilio::IncomingPhoneNumberMobileEnumVoiceReceiveMode.from_value(value)
-          end,
-        }.freeze
+        SdkClient.request(
+          'DELETE',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/IncomingPhoneNumbers/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'delete_incoming_phone_numbers',
+          request_options: request_options,
+        ).data
       end
     end
   end
 end
 
-require_relative 'incoming_phone_numbers_part_2'
-require_relative 'incoming_phone_numbers_part_3'
-require_relative 'incoming_phone_numbers_part_4'
-require_relative 'incoming_phone_numbers_part_5'
-require_relative 'incoming_phone_numbers_part_6'
+require_relative 'incoming_phone_numbers_types'
+require_relative 'incoming_phone_numbers_create_incoming_phone_numbers_mobile'
+require_relative 'incoming_phone_numbers_2010_04_01'
+require_relative 'incoming_phone_numbers_local_json'
+require_relative 'incoming_phone_numbers_mobile_json'
+require_relative 'incoming_phone_numbers_toll_free_json'

@@ -95,7 +95,7 @@ module OctridevTwilio
   CreateCallsStreams = Methods::CallsStreams::CreateCallsStreams
   UpdateCallsStreams = Methods::CallsStreams::UpdateCallsStreams
   CreateCallsUserDefinedMessages = Methods::CallsUserDefinedMessages::CreateCallsUserDefinedMessages
-  CreateCallsUserDefinedMessageSubscriptions = Methods::CallsUserDefinedMessageSubscriptions::CreateCallsUserDefinedMessageSubscriptions
+  CreateCallUserDefinedMessageSubscription = Methods::CallsUserDefinedMessageSubscriptions::CreateCallUserDefinedMessageSubscription
   CreateCalls = Methods::Calls::CreateCalls
   ListCallsResponse = Methods::Calls::ListCallsResponse
   UpdateCalls = Methods::Calls::UpdateCalls
@@ -1543,7 +1543,7 @@ module OctridevTwilio
       method: NOT_GIVEN,
       request_options: nil
     )
-      ::OctridevTwilio::Methods::CallsUserDefinedMessageSubscriptions.create_calls_user_defined_message_subscriptions(
+      ::OctridevTwilio::Methods::CallsUserDefinedMessageSubscriptions.create_call_user_defined_message_subscription(
         config: @config,
         account_sid: account_sid,
         call_sid: call_sid,

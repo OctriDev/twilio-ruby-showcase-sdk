@@ -9,367 +9,173 @@ module OctridevTwilio
   module Methods
     # Defines the Calls SDK namespace.
     module Calls
-      # Internal model hydration metadata.
-      class SdkInternalCreateCallsMetadata
-        FIELDS = {
-          to: "To",
-          from: "From",
-          method: "Method",
-          fallback_url: "FallbackUrl",
-          fallback_method: "FallbackMethod",
-          status_callback: "StatusCallback",
-          status_callback_event: "StatusCallbackEvent",
-          status_callback_method: "StatusCallbackMethod",
-          send_digits: "SendDigits",
-          timeout: "Timeout",
-          record: "Record",
-          recording_channels: "RecordingChannels",
-          recording_status_callback: "RecordingStatusCallback",
-          recording_status_callback_method: "RecordingStatusCallbackMethod",
-          recording_configuration_id: "RecordingConfigurationId",
-          sip_auth_username: "SipAuthUsername",
-          sip_auth_password: "SipAuthPassword",
-          machine_detection: "MachineDetection",
-          machine_detection_timeout: "MachineDetectionTimeout",
-          recording_status_callback_event: "RecordingStatusCallbackEvent",
-          trim: "Trim",
-          caller_id: "CallerId",
-          machine_detection_speech_threshold: "MachineDetectionSpeechThreshold",
-          machine_detection_speech_end_threshold: "MachineDetectionSpeechEndThreshold",
-          machine_detection_silence_timeout: "MachineDetectionSilenceTimeout",
-          async_amd: "AsyncAmd",
-          async_amd_status_callback: "AsyncAmdStatusCallback",
-          async_amd_status_callback_method: "AsyncAmdStatusCallbackMethod",
-          passports: "Passports",
-          byoc: "Byoc",
-          call_reason: "CallReason",
-          call_token: "CallToken",
-          recording_track: "RecordingTrack",
-          time_limit: "TimeLimit",
-          client_notification_url: "ClientNotificationUrl",
-          url: "Url",
-          twiml: "Twiml",
-          application_sid: "ApplicationSid",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-          to
-          from
-        ].freeze
-        DECODERS = {
-          method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::CreateCallsMethod.from_value(value)
-          end,
-          fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::CreateCallsFallbackMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::CreateCallsStatusCallbackMethod.from_value(value)
-          end,
-          recording_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::CreateCallsRecordingStatusCallbackMethod.from_value(value)
-          end,
-          async_amd_status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::CreateCallsAsyncAmdStatusCallbackMethod.from_value(value)
-          end,
-        }.freeze
+      # Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+      #
+      # @param account_sid [String] The SID of the Account that created the Call
+      #   resource(s) to delete.
+      # @param sid [String] The Twilio-provided Call SID that uniquely identifies
+      #   the Call resource to delete
+      def self.delete_calls(
+        config:,
+        account_sid:,
+        sid:,
+        request_options: nil
+      )
+
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
+
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^CA[0-9a-fA-F]{32}$')
+
+        SdkClient.request(
+          'DELETE',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/Calls/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          decoder: :empty,
+          operation_id: 'delete_calls',
+          request_options: request_options,
+        ).data
       end
 
-      # API model for CreateCalls.
-      class CreateCalls
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalCreateCallsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalCreateCallsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalCreateCallsMetadata::DECODERS
+      # Retrieves a specific call from an account. Provide the account SID and call SID to identify the call whose details you need. The response includes call status and timing information when available.
+      #
+      # Fetch the call specified by the provided Call SID
+      #
+      # @param account_sid [String] The SID of the Account that created the Call
+      #   resource(s) to fetch.
+      # @param sid [String] The SID of the Call resource to fetch.
+      def self.fetch_calls(
+        config:,
+        account_sid:,
+        sid:,
+        request_options: nil
+      )
 
-        # @return [String] The phone number, SIP address, or client identifier to call.
-        attr_reader :to
-        # @return [String] The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified outgoing caller id for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
-        attr_reader :from
-        # @return [CreateCallsMethod] The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :method
-        # @return [String] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :fallback_url
-        # @return [CreateCallsFallbackMethod] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :fallback_method
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
-        attr_reader :status_callback
-        # @return [Array_of_String] The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for monitoring call progress. If an `application_sid` is present, this parameter is ignored.
-        attr_reader :status_callback_event
-        # @return [CreateCallsStatusCallbackMethod] The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :status_callback_method
-        # @return [String] The string of keys to dial after connecting to the number, with a maximum length of 32 digits. Valid digits in the string include any digit (`0`-`9`), '`A`', '`B`', '`C`', '`D`', '`#`', and '`*`'. You can also use '`w`' to insert a half-second pause and '`W`' to insert a one-second pause. For example, to pause for one second after connecting and then dial extension 1234 followed by the # key, set this parameter to `W1234#`. Be sure to URL-encode this string because the '`#`'…
-        attr_reader :send_digits
-        # @return [Integer] The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
-        attr_reader :timeout
-        # @return [Boolean] Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.
-        attr_reader :record
-        # @return [String] The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.
-        attr_reader :recording_channels
-        # @return [String] The URL that we call when the recording is available to be accessed.
-        attr_reader :recording_status_callback
-        # @return [CreateCallsRecordingStatusCallbackMethod] The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
-        attr_reader :recording_status_callback_method
-        # @return [String] The identifier of the configuration to be used when creating and processing the recording
-        attr_reader :recording_configuration_id
-        # @return [String] The username used to authenticate the caller making a SIP call.
-        attr_reader :sip_auth_username
-        # @return [String] The password required to authenticate the user account specified in `sip_auth_username`.
-        attr_reader :sip_auth_password
-        # @return [String] Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see Answering Machine Detection.
-        attr_reader :machine_detection
-        # @return [Integer] The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
-        attr_reader :machine_detection_timeout
-        # @return [Array_of_String] The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate multiple values with a space.
-        attr_reader :recording_status_callback_event
-        # @return [String] Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
-        attr_reader :trim
-        # @return [String] The phone number, SIP address, or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
-        attr_reader :caller_id
-        # @return [Integer] The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
-        attr_reader :machine_detection_speech_threshold
-        # @return [Integer] The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
-        attr_reader :machine_detection_speech_end_threshold
-        # @return [Integer] The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
-        attr_reader :machine_detection_silence_timeout
-        # @return [String] Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.
-        attr_reader :async_amd
-        # @return [String] The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
-        attr_reader :async_amd_status_callback
-        # @return [CreateCallsAsyncAmdStatusCallbackMethod] The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
-        attr_reader :async_amd_status_callback_method
-        # @return [String] The STIR/SHAKEN passport for this call, provided as a base64 encoded string. Multiple passports (at max 5) are comma separated and provided as base64 encoded string
-        attr_reader :passports
-        # @return [String] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
-        attr_reader :byoc
-        # @return [String] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
-        attr_reader :call_reason
-        # @return [String] A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
-        attr_reader :call_token
-        # @return [String] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
-        attr_reader :recording_track
-        # @return [Integer] The maximum duration of the call in seconds. Constraints depend on account and configuration.
-        attr_reader :time_limit
-        # @return [String] The URL that we should use to deliver `push call notification`.
-        attr_reader :client_notification_url
-        # @return [String] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the Url Parameter section in Making Calls.
-        attr_reader :url
-        # @return [String] TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.
-        attr_reader :twiml
-        # @return [String] The SID of the Application resource that will handle the call, if the call will be handled by an application.
-        attr_reader :application_sid
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^CA[0-9a-fA-F]{32}$')
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
+        SdkClient.request(
+          'GET',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/Calls/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          return_type: ::OctridevTwilio::ApiV2010AccountCall,
+          decoder: :json,
+          operation_id: 'fetch_calls',
+          request_options: request_options,
+        ).data
       end
 
-      # Internal model hydration metadata.
-      class SdkInternalListCallsResponseMetadata
-        FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          calls: "calls",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          calls: lambda do |value|
-            value&.map { |item| ::OctridevTwilio::ApiV2010AccountCall.from_hash(item) }
-          end,
-        }.freeze
-      end
+      # Updates a call by redirecting it to new TwiML instructions or by terminating it. Provide either a `Url` to retrieve instructions from or `Twiml` instructions directly; these fields are mutually exclusive. Use `Status` to cancel or complete the call, or configure callback and request-method settings for a redirect.
+      #
+      # Initiates a call redirect or terminates a call
+      #
+      # @param account_sid [String] The SID of the Account that created the Call
+      #   resource(s) to update.
+      # @param sid [String] The Twilio-provided string that uniquely identifies the
+      #   Call resource to update
+      # @param url [String] The absolute URL that returns the TwiML instructions for
+      #   the call. We will call this URL using the `method` when the call connects.
+      #   For more information, see the Url Parameter section in Making Calls.
+      # @param method [UpdateCallsMethod] The HTTP method we should use when calling
+      #   the `url`. Can be: `GET` or `POST` and the default is `POST`. If an
+      #   `application_sid` parameter is present, this parameter is ignored.
+      # @param fallback_url [String] The URL that we call using the
+      #   `fallback_method` if an error occurs when requesting or executing the TwiML
+      #   at `url`. If an `application_sid` parameter is present, this parameter is
+      #   ignored.
+      # @param fallback_method [UpdateCallsFallbackMethod] The HTTP method that we
+      #   should use to request the `fallback_url`. Can be: `GET` or `POST` and the
+      #   default is `POST`. If an `application_sid` parameter is present, this
+      #   parameter is ignored.
+      # @param status_callback [String] The URL we should call using the
+      #   `status_callback_method` to send status information to your application. If
+      #   no `status_callback_event` is specified, we will send the `completed`
+      #   status. If an `application_sid` parameter is present, this parameter is
+      #   ignored. URLs must contain a valid hostname (underscores are not permitted).
+      # @param status_callback_method [UpdateCallsStatusCallbackMethod] The HTTP
+      #   method we should use when requesting the `status_callback` URL. Can be:
+      #   `GET` or `POST` and the default is `POST`. If an `application_sid` parameter
+      #   is present, this parameter is ignored.
+      # @param twiml [String] TwiML instructions for the call Twilio will use
+      #   without fetching Twiml from url. Twiml and url parameters are mutually
+      #   exclusive
+      # @param time_limit [Integer] The maximum duration of the call in seconds.
+      #   Constraints depend on account and configuration.
+      def self.update_calls(
+        config:,
+        account_sid:,
+        sid:,
+        url: NOT_GIVEN,
+        method: NOT_GIVEN,
+        status: NOT_GIVEN,
+        fallback_url: NOT_GIVEN,
+        fallback_method: NOT_GIVEN,
+        status_callback: NOT_GIVEN,
+        status_callback_method: NOT_GIVEN,
+        twiml: NOT_GIVEN,
+        time_limit: NOT_GIVEN,
+        request_options: nil
+      )
 
-      # API model for ListCallsResponse.
-      class ListCallsResponse
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalListCallsResponseMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalListCallsResponseMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalListCallsResponseMetadata::DECODERS
+        Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
+        Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
-        attr_reader :end_, :first_page_uri, :next_page_uri, :page, :page_size, :previous_page_uri,
-                    :start, :uri, :calls
+        Validation.validate_length('Sid', sid, min: 34, max: 34)
+        Validation.validate_pattern('Sid', sid, '^CA[0-9a-fA-F]{32}$')
 
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
+        Validation.if_given(url) { Validation.validate_uri('Url', url) }
 
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
+        Validation.if_given(fallback_url) { Validation.validate_uri('FallbackUrl', fallback_url) }
 
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
+        Validation.if_given(status_callback) { Validation.validate_uri('StatusCallback', status_callback) }
 
-      # Internal model hydration metadata.
-      class SdkInternalUpdateCallsMetadata
-        FIELDS = {
-          url: "Url",
-          method: "Method",
-          status: "Status",
-          fallback_url: "FallbackUrl",
-          fallback_method: "FallbackMethod",
-          status_callback: "StatusCallback",
-          status_callback_method: "StatusCallbackMethod",
-          twiml: "Twiml",
-          time_limit: "TimeLimit",
-        }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
-        DECODERS = {
-          method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::UpdateCallsMethod.from_value(value)
-          end,
-          status: lambda do |value|
-            ::OctridevTwilio::CallEnumUpdateStatus.from_value(value)
-          end,
-          fallback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::UpdateCallsFallbackMethod.from_value(value)
-          end,
-          status_callback_method: lambda do |value|
-            ::OctridevTwilio::Methods::Calls::UpdateCallsStatusCallbackMethod.from_value(value)
-          end,
-        }.freeze
-      end
-
-      # API model for UpdateCalls.
-      class UpdateCalls
-        CONSTRUCTION_SURFACE = :named
-        FIELDS = SdkInternalUpdateCallsMetadata::FIELDS
-        REQUIRED_FIELDS = SdkInternalUpdateCallsMetadata::REQUIRED_FIELDS
-        DECODERS = SdkInternalUpdateCallsMetadata::DECODERS
-
-        attr_reader :status
-        # @return [String] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the Url Parameter section in Making Calls.
-        attr_reader :url
-        # @return [UpdateCallsMethod] The HTTP method we should use when calling the `url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :method
-        # @return [String] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :fallback_url
-        # @return [UpdateCallsFallbackMethod] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :fallback_method
-        # @return [String] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
-        attr_reader :status_callback
-        # @return [UpdateCallsStatusCallbackMethod] The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
-        attr_reader :status_callback_method
-        # @return [String] TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive
-        attr_reader :twiml
-        # @return [Integer] The maximum duration of the call in seconds. Constraints depend on account and configuration.
-        attr_reader :time_limit
-
-        def initialize(**attributes)
-          SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-          freeze
-        end
-
-        def self.from_hash(data)
-          SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-        end
-
-        def to_h
-          SdkModel.to_h(self, FIELDS)
-        end
-      end
-
-      # Defines the UpdateCallsStatusCallbackMethod SDK namespace.
-      module UpdateCallsStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateCallsFallbackMethod SDK namespace.
-      module CreateCallsFallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateCallsAsyncAmdStatusCallbackMethod SDK namespace.
-      module CreateCallsAsyncAmdStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UpdateCallsMethod SDK namespace.
-      module UpdateCallsMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the UpdateCallsFallbackMethod SDK namespace.
-      module UpdateCallsFallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateCallsRecordingStatusCallbackMethod SDK namespace.
-      module CreateCallsRecordingStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateCallsMethod SDK namespace.
-      module CreateCallsMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
-      end
-
-      # Defines the CreateCallsStatusCallbackMethod SDK namespace.
-      module CreateCallsStatusCallbackMethod
-        GET = 'GET'
-        POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
-        def self.from_value(value)
-          value
-        end
+        SdkClient.request(
+          'POST',
+          [
+            "/2010-04-01/Accounts/",
+            SdkClient.encode_path_segment(account_sid),
+            "/Calls/",
+            SdkClient.encode_path_segment(sid),
+            ".json"
+          ].join,
+          config: config,
+          body: {
+            'Url' => url,
+            'Method' => method,
+            'Status' => status,
+            'FallbackUrl' => fallback_url,
+            'FallbackMethod' => fallback_method,
+            'StatusCallback' => status_callback,
+            'StatusCallbackMethod' => status_callback_method,
+            'Twiml' => twiml,
+            'TimeLimit' => time_limit,
+          },
+          content_type: 'application/x-www-form-urlencoded',
+          return_type: ::OctridevTwilio::ApiV2010AccountCall,
+          decoder: :json,
+          operation_id: 'update_calls',
+          request_options: request_options,
+        ).data
       end
     end
   end
 end
 
-require_relative 'calls_part_2'
-require_relative 'calls_part_3'
+require_relative 'calls_types'
+require_relative 'calls_2010_04_01'

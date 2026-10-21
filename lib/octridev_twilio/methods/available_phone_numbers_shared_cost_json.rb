@@ -98,25 +98,25 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_list_available_phone_numbers_shared_cost(account_sid: account_sid, page_size: page_size, page: page)
 
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/AvailablePhoneNumbers/',
+            "/AvailablePhoneNumbers/",
             SdkClient.encode_path_segment(country_code),
-            '/SharedCost.json'
+            "/SharedCost.json"
           ].join,
           config: config,
           query: __sdk_query_list_available_phone_numbers_shared_cost_part1(area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled).merge(
-            __sdk_query_list_available_phone_numbers_shared_cost_part2(page_size: page_size, page: page, page_token: page_token)
-          ),
+            __sdk_query_list_available_phone_numbers_shared_cost_part2(page_size: page_size, page: page, page_token: page_token)),
           return_type: ::OctridevTwilio::Methods::AvailablePhoneNumbers::ListAvailablePhoneNumbersSharedCostResponse,
           decoder: :json,
           operation_id: 'list_available_phone_numbers_shared_cost',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -172,7 +172,7 @@ module OctridevTwilio
           'InRateCenter' => QueryValue.new(in_rate_center, style: 'form', explode: true),
           'InLata' => QueryValue.new(in_lata, style: 'form', explode: true),
           'InLocality' => QueryValue.new(in_locality, style: 'form', explode: true),
-          'FaxEnabled' => QueryValue.new(fax_enabled, style: 'form', explode: true)
+          'FaxEnabled' => QueryValue.new(fax_enabled, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_list_available_phone_numbers_shared_cost_part1
@@ -185,7 +185,7 @@ module OctridevTwilio
         {
           'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
           'Page' => QueryValue.new(page, style: 'form', explode: true),
-          'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+          'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
         }
       end
       private_class_method :__sdk_query_list_available_phone_numbers_shared_cost_part2

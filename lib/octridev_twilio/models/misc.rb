@@ -5,15 +5,15 @@
 
 # misc domain models
 module OctridevTwilio
-  # Defines the CallEnumEvent SDK namespace.
-  module CallEnumEvent
-    INITIATED = 'initiated'
-    RINGING = 'ringing'
-    ANSWERED = 'answered'
-    COMPLETED = 'completed'
-    VALUES = %w[initiated ringing answered completed].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the CallEnumEvent SDK namespace.
+module CallEnumEvent
+  INITIATED = 'initiated'
+  RINGING = 'ringing'
+  ANSWERED = 'answered'
+  COMPLETED = 'completed'
+  VALUES = ['initiated', 'ringing', 'answered', 'completed'].freeze
+  def self.from_value(value)
+    value
   end
+end
 end

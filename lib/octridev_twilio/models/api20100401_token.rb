@@ -5,102 +5,105 @@
 
 # api20100401_token domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountTokenIceServersItemMetadata
-    FIELDS = {
-      credential: 'credential',
-      username: 'username',
-      url: 'url',
-      urls: 'urls'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountTokenIceServersItemMetadata
+  FIELDS = {
+    credential: "credential",
+    username: "username",
+    url: "url",
+    urls: "urls",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountTokenIceServersItem.
+# Required object value serialized in the `ice_servers[]` wire field.
+class ApiV2010AccountTokenIceServersItem
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::DECODERS
+
+  # @return [String] Optional `string` value serialized in the `credential` wire field.
+  attr_reader :credential
+  # @return [String] Optional `string` value serialized in the `username` wire field.
+  attr_reader :username
+  # @return [String] Optional `string` value serialized in the `url` wire field.
+  attr_reader :url
+  # @return [String] Optional `string` value serialized in the `urls` wire field.
+  attr_reader :urls
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountTokenIceServersItem.
-  # Required object value serialized in the `ice_servers[]` wire field.
-  class ApiV2010AccountTokenIceServersItem
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountTokenIceServersItemMetadata::DECODERS
-
-    # @return [String] Optional `string` value serialized in the `credential` wire field.
-    attr_reader :credential
-    # @return [String] Optional `string` value serialized in the `username` wire field.
-    attr_reader :username
-    # @return [String] Optional `string` value serialized in the `url` wire field.
-    attr_reader :url
-    # @return [String] Optional `string` value serialized in the `urls` wire field.
-    attr_reader :urls
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountTokenMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      ice_servers: 'ice_servers',
-      password: 'password',
-      ttl: 'ttl',
-      username: 'username'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      ice_servers: lambda do |value|
-        value&.map { |item| ::OctridevTwilio::ApiV2010AccountTokenIceServersItem.from_hash(item) }
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountTokenMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    ice_servers: "ice_servers",
+    password: "password",
+    ttl: "ttl",
+    username: "username",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    ice_servers: lambda do |value|
+      value&.map { |item| ::OctridevTwilio::ApiV2010AccountTokenIceServersItem.from_hash(item) }
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountToken.
+# Typed representation of the `ApiV2010AccountToken` API schema.
+class ApiV2010AccountToken
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountTokenMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountTokenMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountTokenMetadata::DECODERS
+
+  # @return [String] The SID of the Account that created the Token resource.
+  attr_reader :account_sid
+  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [Array_of_ApiV2010AccountTokenIceServersItem] An array representing the ephemeral credentials and the STUN and TURN server URIs.
+  attr_reader :ice_servers
+  # @return [String] The temporary password that the username will use when authenticating with Twilio.
+  attr_reader :password
+  # @return [String] The duration in seconds for which the username and password are valid.
+  attr_reader :ttl
+  # @return [String] The temporary username that uniquely identifies a Token.
+  attr_reader :username
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountToken.
-  # Typed representation of the `ApiV2010AccountToken` API schema.
-  class ApiV2010AccountToken
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountTokenMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountTokenMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountTokenMetadata::DECODERS
-
-    # @return [String] The SID of the Account that created the Token resource.
-    attr_reader :account_sid
-    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [Array_of_ApiV2010AccountTokenIceServersItem] An array representing the ephemeral credentials and the STUN and TURN server URIs.
-    attr_reader :ice_servers
-    # @return [String] The temporary password that the username will use when authenticating with Twilio.
-    attr_reader :password
-    # @return [String] The duration in seconds for which the username and password are valid.
-    attr_reader :ttl
-    # @return [String] The temporary username that uniquely identifies a Token.
-    attr_reader :username
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

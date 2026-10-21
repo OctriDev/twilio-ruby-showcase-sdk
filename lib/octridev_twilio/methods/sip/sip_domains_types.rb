@@ -12,21 +12,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListSipDomainsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          domains: 'domains'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          domains: "domains",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           domains: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountSipSipDomain.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -57,19 +58,19 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateSipDomainsMetadata
         FIELDS = {
-          domain_name: 'DomainName',
-          friendly_name: 'FriendlyName',
-          voice_url: 'VoiceUrl',
-          voice_method: 'VoiceMethod',
-          voice_fallback_url: 'VoiceFallbackUrl',
-          voice_fallback_method: 'VoiceFallbackMethod',
-          voice_status_callback_url: 'VoiceStatusCallbackUrl',
-          voice_status_callback_method: 'VoiceStatusCallbackMethod',
-          sip_registration: 'SipRegistration',
-          emergency_calling_enabled: 'EmergencyCallingEnabled',
-          secure: 'Secure',
-          byoc_trunk_sid: 'ByocTrunkSid',
-          emergency_caller_sid: 'EmergencyCallerSid'
+          domain_name: "DomainName",
+          friendly_name: "FriendlyName",
+          voice_url: "VoiceUrl",
+          voice_method: "VoiceMethod",
+          voice_fallback_url: "VoiceFallbackUrl",
+          voice_fallback_method: "VoiceFallbackMethod",
+          voice_status_callback_url: "VoiceStatusCallbackUrl",
+          voice_status_callback_method: "VoiceStatusCallbackMethod",
+          sip_registration: "SipRegistration",
+          emergency_calling_enabled: "EmergencyCallingEnabled",
+          secure: "Secure",
+          byoc_trunk_sid: "ByocTrunkSid",
+          emergency_caller_sid: "EmergencyCallerSid",
         }.freeze
         REQUIRED_FIELDS = %i[
           domain_name
@@ -83,7 +84,7 @@ module OctridevTwilio
           end,
           voice_status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::SipDomains::CreateSipDomainsVoiceStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -138,21 +139,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateSipDomainsMetadata
         FIELDS = {
-          friendly_name: 'FriendlyName',
-          voice_fallback_method: 'VoiceFallbackMethod',
-          voice_fallback_url: 'VoiceFallbackUrl',
-          voice_method: 'VoiceMethod',
-          voice_status_callback_method: 'VoiceStatusCallbackMethod',
-          voice_status_callback_url: 'VoiceStatusCallbackUrl',
-          voice_url: 'VoiceUrl',
-          sip_registration: 'SipRegistration',
-          domain_name: 'DomainName',
-          emergency_calling_enabled: 'EmergencyCallingEnabled',
-          secure: 'Secure',
-          byoc_trunk_sid: 'ByocTrunkSid',
-          emergency_caller_sid: 'EmergencyCallerSid'
+          friendly_name: "FriendlyName",
+          voice_fallback_method: "VoiceFallbackMethod",
+          voice_fallback_url: "VoiceFallbackUrl",
+          voice_method: "VoiceMethod",
+          voice_status_callback_method: "VoiceStatusCallbackMethod",
+          voice_status_callback_url: "VoiceStatusCallbackUrl",
+          voice_url: "VoiceUrl",
+          sip_registration: "SipRegistration",
+          domain_name: "DomainName",
+          emergency_calling_enabled: "EmergencyCallingEnabled",
+          secure: "Secure",
+          byoc_trunk_sid: "ByocTrunkSid",
+          emergency_caller_sid: "EmergencyCallerSid",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           voice_fallback_method: lambda do |value|
             ::OctridevTwilio::Methods::SipDomains::UpdateSipDomainsVoiceFallbackMethod.from_value(value)
@@ -162,7 +164,7 @@ module OctridevTwilio
           end,
           voice_status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::SipDomains::UpdateSipDomainsVoiceStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -218,7 +220,7 @@ module OctridevTwilio
       module CreateSipDomainsVoiceStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -228,7 +230,7 @@ module OctridevTwilio
       module CreateSipDomainsVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -238,7 +240,7 @@ module OctridevTwilio
       module UpdateSipDomainsVoiceFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -248,7 +250,7 @@ module OctridevTwilio
       module CreateSipDomainsVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -258,7 +260,7 @@ module OctridevTwilio
       module UpdateSipDomainsVoiceStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -268,7 +270,7 @@ module OctridevTwilio
       module UpdateSipDomainsVoiceMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end

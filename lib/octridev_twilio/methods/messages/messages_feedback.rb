@@ -12,13 +12,14 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateMessagesFeedbackMetadata
         FIELDS = {
-          outcome: 'Outcome'
+          outcome: "Outcome",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           outcome: lambda do |value|
             ::OctridevTwilio::MessageFeedbackEnumOutcome.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -65,6 +66,7 @@ module OctridevTwilio
         outcome: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -74,21 +76,21 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Messages/',
+            "/Messages/",
             SdkClient.encode_path_segment(message_sid),
-            '/Feedback.json'
+            "/Feedback.json"
           ].join,
           config: config,
           body: {
-            'Outcome' => outcome
+            'Outcome' => outcome,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountMessageMessageFeedback,
           decoder: :json,
           operation_id: 'create_messages_feedback',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

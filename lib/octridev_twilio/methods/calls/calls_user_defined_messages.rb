@@ -12,13 +12,14 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallsUserDefinedMessagesMetadata
         FIELDS = {
-          content: 'Content',
-          idempotency_key: 'IdempotencyKey'
+          content: "Content",
+          idempotency_key: "IdempotencyKey",
         }.freeze
         REQUIRED_FIELDS = %i[
           content
         ].freeze
-        DECODERS = {}.freeze
+        DECODERS = {
+        }.freeze
       end
 
       # API model for CreateCallsUserDefinedMessages.
@@ -66,6 +67,7 @@ module OctridevTwilio
         idempotency_key: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -75,22 +77,22 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/UserDefinedMessages.json'
+            "/UserDefinedMessages.json"
           ].join,
           config: config,
           body: {
             'Content' => content,
-            'IdempotencyKey' => idempotency_key
+            'IdempotencyKey' => idempotency_key,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallUserDefinedMessage,
           decoder: :json,
           operation_id: 'create_calls_user_defined_messages',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

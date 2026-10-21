@@ -12,19 +12,20 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallsRecordingsMetadata
         FIELDS = {
-          recording_status_callback_event: 'RecordingStatusCallbackEvent',
-          recording_status_callback: 'RecordingStatusCallback',
-          recording_status_callback_method: 'RecordingStatusCallbackMethod',
-          trim: 'Trim',
-          recording_channels: 'RecordingChannels',
-          recording_track: 'RecordingTrack',
-          recording_configuration_id: 'RecordingConfigurationId'
+          recording_status_callback_event: "RecordingStatusCallbackEvent",
+          recording_status_callback: "RecordingStatusCallback",
+          recording_status_callback_method: "RecordingStatusCallbackMethod",
+          trim: "Trim",
+          recording_channels: "RecordingChannels",
+          recording_track: "RecordingTrack",
+          recording_configuration_id: "RecordingConfigurationId",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           recording_status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::CallsRecordings::CreateCallsRecordingsRecordingStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -67,21 +68,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListCallsRecordingsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          recordings: 'recordings'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          recordings: "recordings",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           recordings: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountCallCallRecording.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -112,8 +114,8 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsRecordingsMetadata
         FIELDS = {
-          status: 'Status',
-          pause_behavior: 'PauseBehavior'
+          status: "Status",
+          pause_behavior: "PauseBehavior",
         }.freeze
         REQUIRED_FIELDS = %i[
           status
@@ -121,7 +123,7 @@ module OctridevTwilio
         DECODERS = {
           status: lambda do |value|
             ::OctridevTwilio::CallRecordingEnumStatus.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -155,7 +157,7 @@ module OctridevTwilio
       module CreateCallsRecordingsRecordingStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -208,6 +210,7 @@ module OctridevTwilio
         recording_configuration_id: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -221,11 +224,11 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Recordings.json'
+            "/Recordings.json"
           ].join,
           config: config,
           body: {
@@ -235,13 +238,13 @@ module OctridevTwilio
             'Trim' => trim,
             'RecordingChannels' => recording_channels,
             'RecordingTrack' => recording_track,
-            'RecordingConfigurationId' => recording_configuration_id
+            'RecordingConfigurationId' => recording_configuration_id,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallCallRecording,
           decoder: :json,
           operation_id: 'create_calls_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -283,6 +286,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -302,11 +306,11 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Recordings.json'
+            "/Recordings.json"
           ].join,
           config: config,
           query: {
@@ -315,12 +319,12 @@ module OctridevTwilio
             'DateCreated>' => QueryValue.new(date_created3, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::CallsRecordings::ListCallsRecordingsResponse,
           decoder: :json,
           operation_id: 'list_calls_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -350,6 +354,7 @@ module OctridevTwilio
         pause_behavior: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -359,24 +364,24 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Recordings/',
+            "/Recordings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           body: {
             'Status' => status,
-            'PauseBehavior' => pause_behavior
+            'PauseBehavior' => pause_behavior,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountCallCallRecording,
           decoder: :json,
           operation_id: 'update_calls_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -396,6 +401,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -408,19 +414,19 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Recordings/',
+            "/Recordings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountCallCallRecording,
           decoder: :json,
           operation_id: 'fetch_calls_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -440,6 +446,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -452,18 +459,18 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Calls/',
+            "/Calls/",
             SdkClient.encode_path_segment(call_sid),
-            '/Recordings/',
+            "/Recordings/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_calls_recordings',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

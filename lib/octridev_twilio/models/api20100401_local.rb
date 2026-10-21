@@ -5,120 +5,123 @@
 
 # api20100401_local domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata
-    FIELDS = {
-      mms: 'mms',
-      sms: 'sms',
-      voice: 'voice',
-      fax: 'fax'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata
+  FIELDS = {
+    mms: "mms",
+    sms: "sms",
+    voice: "voice",
+    fax: "fax",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4.
+# The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are: `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
+class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::DECODERS
+
+  # @return [Boolean] Optional `boolean` value serialized in the `mms` wire field.
+  attr_reader :mms
+  # @return [Boolean] Optional `boolean` value serialized in the `sms` wire field.
+  attr_reader :sms
+  # @return [Boolean] Optional `boolean` value serialized in the `voice` wire field.
+  attr_reader :voice
+  # @return [Boolean] Optional `boolean` value serialized in the `fax` wire field.
+  attr_reader :fax
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4.
-  # The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are: `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
-  class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4Metadata::DECODERS
-
-    # @return [Boolean] Optional `boolean` value serialized in the `mms` wire field.
-    attr_reader :mms
-    # @return [Boolean] Optional `boolean` value serialized in the `sms` wire field.
-    attr_reader :sms
-    # @return [Boolean] Optional `boolean` value serialized in the `voice` wire field.
-    attr_reader :voice
-    # @return [Boolean] Optional `boolean` value serialized in the `fax` wire field.
-    attr_reader :fax
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata
-    FIELDS = {
-      friendly_name: 'friendly_name',
-      phone_number: 'phone_number',
-      lata: 'lata',
-      locality: 'locality',
-      rate_center: 'rate_center',
-      latitude: 'latitude',
-      longitude: 'longitude',
-      region: 'region',
-      postal_code: 'postal_code',
-      iso_country: 'iso_country',
-      address_requirements: 'address_requirements',
-      beta: 'beta',
-      capabilities: 'capabilities'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      capabilities: lambda do |value|
-        ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4.from_hash(value)
-      end
-    }.freeze
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
+
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata
+  FIELDS = {
+    friendly_name: "friendly_name",
+    phone_number: "phone_number",
+    lata: "lata",
+    locality: "locality",
+    rate_center: "rate_center",
+    latitude: "latitude",
+    longitude: "longitude",
+    region: "region",
+    postal_code: "postal_code",
+    iso_country: "iso_country",
+    address_requirements: "address_requirements",
+    beta: "beta",
+    capabilities: "capabilities",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    capabilities: lambda do |value|
+      ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4.from_hash(value)
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal.
+# Typed representation of the `ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal` API schema.
+class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::DECODERS
+
+  # @return [String] A formatted version of the phone number.
+  attr_reader :friendly_name
+  # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
+  attr_reader :phone_number
+  # @return [String] The LATA of this phone number. Available for only phone numbers from the US and Canada.
+  attr_reader :lata
+  # @return [String] The locality or city of this phone number's location.
+  attr_reader :locality
+  # @return [String] The rate center of this phone number. Available for only phone numbers from the US and Canada.
+  attr_reader :rate_center
+  # @return [Float] The latitude of this phone number's location. Available for only phone numbers from the US and Canada.
+  attr_reader :latitude
+  # @return [Float] The longitude of this phone number's location. Available for only phone numbers from the US and Canada.
+  attr_reader :longitude
+  # @return [String] The two-letter state or province abbreviation of this phone number's location. Available for only phone numbers from the US and Canada.
+  attr_reader :region
+  # @return [String] The postal or ZIP code of this phone number's location. Available for only phone numbers from the US and Canada.
+  attr_reader :postal_code
+  # @return [String] The ISO country code of this phone number.
+  attr_reader :iso_country
+  # @return [String] The type of Address resource the phone number requires. Can be: `none`, `any`, `local`, or `foreign`. `none` means no address is required. `any` means an address is required, but it can be anywhere in the world. `local` means an address in the phone number's country is required. `foreign` means an address outside of the phone number's country is required.
+  attr_reader :address_requirements
+  # @return [Boolean] Whether the phone number is new to the Twilio platform. Can be: `true` or `false`.
+  attr_reader :beta
+  # @return [ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4] The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are: `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
+  attr_reader :capabilities
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal.
-  # Typed representation of the `ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal` API schema.
-  class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalMetadata::DECODERS
-
-    # @return [String] A formatted version of the phone number.
-    attr_reader :friendly_name
-    # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
-    attr_reader :phone_number
-    # @return [String] The LATA of this phone number. Available for only phone numbers from the US and Canada.
-    attr_reader :lata
-    # @return [String] The locality or city of this phone number's location.
-    attr_reader :locality
-    # @return [String] The rate center of this phone number. Available for only phone numbers from the US and Canada.
-    attr_reader :rate_center
-    # @return [Float] The latitude of this phone number's location. Available for only phone numbers from the US and Canada.
-    attr_reader :latitude
-    # @return [Float] The longitude of this phone number's location. Available for only phone numbers from the US and Canada.
-    attr_reader :longitude
-    # @return [String] The two-letter state or province abbreviation of this phone number's location. Available for only phone numbers from the US and Canada.
-    attr_reader :region
-    # @return [String] The postal or ZIP code of this phone number's location. Available for only phone numbers from the US and Canada.
-    attr_reader :postal_code
-    # @return [String] The ISO country code of this phone number.
-    attr_reader :iso_country
-    # @return [String] The type of Address resource the phone number requires. Can be: `none`, `any`, `local`, or `foreign`. `none` means no address is required. `any` means an address is required, but it can be anywhere in the world. `local` means an address in the phone number's country is required. `foreign` means an address outside of the phone number's country is required.
-    attr_reader :address_requirements
-    # @return [Boolean] Whether the phone number is new to the Twilio platform. Can be: `true` or `false`.
-    attr_reader :beta
-    # @return [ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeXdf36ddd8d4] The set of Boolean properties that indicate whether a phone number can receive calls or messages. Capabilities are: `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`.
-    attr_reader :capabilities
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

@@ -5,97 +5,98 @@
 
 # api20100401_short_code domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountShortCodeMetadata
-    FIELDS = {
-      account_sid: 'account_sid',
-      api_version: 'api_version',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      friendly_name: 'friendly_name',
-      short_code: 'short_code',
-      sid: 'sid',
-      sms_fallback_method: 'sms_fallback_method',
-      sms_fallback_url: 'sms_fallback_url',
-      sms_method: 'sms_method',
-      sms_url: 'sms_url',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {
-      sms_fallback_method: lambda do |value|
-        ::OctridevTwilio::ApiV2010AccountShortCodeSmsFallbackMethod.from_value(value)
-      end,
-      sms_method: lambda do |value|
-        ::OctridevTwilio::ApiV2010AccountShortCodeSmsMethod.from_value(value)
-      end
-    }.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountShortCodeMetadata
+  FIELDS = {
+    account_sid: "account_sid",
+    api_version: "api_version",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    friendly_name: "friendly_name",
+    short_code: "short_code",
+    sid: "sid",
+    sms_fallback_method: "sms_fallback_method",
+    sms_fallback_url: "sms_fallback_url",
+    sms_method: "sms_method",
+    sms_url: "sms_url",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+    sms_fallback_method: lambda do |value|
+      ::OctridevTwilio::ApiV2010AccountShortCodeSmsFallbackMethod.from_value(value)
+    end,
+    sms_method: lambda do |value|
+      ::OctridevTwilio::ApiV2010AccountShortCodeSmsMethod.from_value(value)
+    end,
+  }.freeze
+end
+
+# API model for ApiV2010AccountShortCode.
+# Typed representation of the `ApiV2010AccountShortCode` API schema.
+class ApiV2010AccountShortCode
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountShortCodeMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountShortCodeMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountShortCodeMetadata::DECODERS
+
+  # @return [String] The SID of the Account that created this ShortCode resource.
+  attr_reader :account_sid
+  # @return [String] The API version used to start a new TwiML session when an SMS message is sent to this short code.
+  attr_reader :api_version
+  # @return [String] The date and time in GMT that this resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that this resource was last updated, specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] A string that you assigned to describe this resource. By default, the `FriendlyName` is the short code.
+  attr_reader :friendly_name
+  # @return [String] The short code. e.g., 894546.
+  attr_reader :short_code
+  # @return [String] The unique string that that we created to identify this ShortCode resource.
+  attr_reader :sid
+  # @return [ApiV2010AccountShortCodeSmsFallbackMethod] The HTTP method we use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
+  attr_reader :sms_fallback_method
+  # @return [String] The URL that we call if an error occurs while retrieving or executing the TwiML from `sms_url`.
+  attr_reader :sms_fallback_url
+  # @return [ApiV2010AccountShortCodeSmsMethod] The HTTP method we use to call the `sms_url`. Can be: `GET` or `POST`.
+  attr_reader :sms_method
+  # @return [String] The URL we call when receiving an incoming SMS message to this short code.
+  attr_reader :sms_url
+  # @return [String] The URI of this resource, relative to `api.twilio.com`.
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountShortCode.
-  # Typed representation of the `ApiV2010AccountShortCode` API schema.
-  class ApiV2010AccountShortCode
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountShortCodeMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountShortCodeMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountShortCodeMetadata::DECODERS
-
-    # @return [String] The SID of the Account that created this ShortCode resource.
-    attr_reader :account_sid
-    # @return [String] The API version used to start a new TwiML session when an SMS message is sent to this short code.
-    attr_reader :api_version
-    # @return [String] The date and time in GMT that this resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that this resource was last updated, specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] A string that you assigned to describe this resource. By default, the `FriendlyName` is the short code.
-    attr_reader :friendly_name
-    # @return [String] The short code. e.g., 894546.
-    attr_reader :short_code
-    # @return [String] The unique string that that we created to identify this ShortCode resource.
-    attr_reader :sid
-    # @return [ApiV2010AccountShortCodeSmsFallbackMethod] The HTTP method we use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
-    attr_reader :sms_fallback_method
-    # @return [String] The URL that we call if an error occurs while retrieving or executing the TwiML from `sms_url`.
-    attr_reader :sms_fallback_url
-    # @return [ApiV2010AccountShortCodeSmsMethod] The HTTP method we use to call the `sms_url`. Can be: `GET` or `POST`.
-    attr_reader :sms_method
-    # @return [String] The URL we call when receiving an incoming SMS message to this short code.
-    attr_reader :sms_url
-    # @return [String] The URI of this resource, relative to `api.twilio.com`.
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
 
-  # Defines the ApiV2010AccountShortCodeSmsFallbackMethod SDK namespace.
-  module ApiV2010AccountShortCodeSmsFallbackMethod
-    GET = 'GET'
-    POST = 'POST'
-    VALUES = %w[GET POST].freeze
-    def self.from_value(value)
-      value
-    end
+  def to_h
+    SdkModel.to_h(self, FIELDS)
   end
+end
 
-  # Defines the ApiV2010AccountShortCodeSmsMethod SDK namespace.
-  module ApiV2010AccountShortCodeSmsMethod
-    GET = 'GET'
-    POST = 'POST'
-    VALUES = %w[GET POST].freeze
-    def self.from_value(value)
-      value
-    end
+# Defines the ApiV2010AccountShortCodeSmsFallbackMethod SDK namespace.
+module ApiV2010AccountShortCodeSmsFallbackMethod
+  GET = 'GET'
+  POST = 'POST'
+  VALUES = ['GET', 'POST'].freeze
+  def self.from_value(value)
+    value
   end
+end
+
+# Defines the ApiV2010AccountShortCodeSmsMethod SDK namespace.
+module ApiV2010AccountShortCodeSmsMethod
+  GET = 'GET'
+  POST = 'POST'
+  VALUES = ['GET', 'POST'].freeze
+  def self.from_value(value)
+    value
+  end
+end
 end

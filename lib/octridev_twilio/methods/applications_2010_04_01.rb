@@ -74,6 +74,7 @@ module OctridevTwilio
         public_application_connect_enabled: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -100,9 +101,9 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Applications.json'
+            "/Applications.json"
           ].join,
           config: config,
           body: {
@@ -121,13 +122,13 @@ module OctridevTwilio
             'SmsStatusCallback' => sms_status_callback,
             'MessageStatusCallback' => message_status_callback,
             'FriendlyName' => friendly_name,
-            'PublicApplicationConnectEnabled' => public_application_connect_enabled
+            'PublicApplicationConnectEnabled' => public_application_connect_enabled,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountApplication,
           decoder: :json,
           operation_id: 'create_applications',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -152,6 +153,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -162,21 +164,21 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Applications.json'
+            "/Applications.json"
           ].join,
           config: config,
           query: {
             'FriendlyName' => QueryValue.new(friendly_name, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::Applications::ListApplicationsResponse,
           decoder: :json,
           operation_id: 'list_applications',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

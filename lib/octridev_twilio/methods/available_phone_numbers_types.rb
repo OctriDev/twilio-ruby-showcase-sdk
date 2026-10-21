@@ -12,14 +12,15 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersResponseMetadata
         FIELDS = {
-          countries: 'countries',
-          uri: 'uri'
+          countries: "countries",
+          uri: "uri",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           countries: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountry.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -49,21 +50,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersLocalResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocal.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -94,21 +96,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersMachineToMachineResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumbeX9d6c864292.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -139,21 +142,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersMobileResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberMobile.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -184,21 +188,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersNationalResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberNational.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -229,21 +234,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersSharedCostResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberSharedCost.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -274,21 +280,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersTollFreeResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberTollFree.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -319,21 +326,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListAvailablePhoneNumbersVoipResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          available_phone_numbers: 'available_phone_numbers'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          available_phone_numbers: "available_phone_numbers",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           available_phone_numbers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 

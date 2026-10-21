@@ -23,6 +23,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -32,17 +33,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipDomain,
           decoder: :json,
           operation_id: 'fetch_sip_domains',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -106,6 +107,7 @@ module OctridevTwilio
         emergency_caller_sid: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -135,11 +137,11 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           body: {
@@ -155,13 +157,13 @@ module OctridevTwilio
             'EmergencyCallingEnabled' => emergency_calling_enabled,
             'Secure' => secure,
             'ByocTrunkSid' => byoc_trunk_sid,
-            'EmergencyCallerSid' => emergency_caller_sid
+            'EmergencyCallerSid' => emergency_caller_sid,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipDomain,
           decoder: :json,
           operation_id: 'update_sip_domains',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -179,6 +181,7 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -188,16 +191,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains/',
+            "/SIP/Domains/",
             SdkClient.encode_path_segment(sid),
-            '.json'
+            ".json"
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_sip_domains',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

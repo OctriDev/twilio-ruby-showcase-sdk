@@ -12,44 +12,44 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateCallsMetadata
         FIELDS = {
-          to: 'To',
-          from: 'From',
-          method: 'Method',
-          fallback_url: 'FallbackUrl',
-          fallback_method: 'FallbackMethod',
-          status_callback: 'StatusCallback',
-          status_callback_event: 'StatusCallbackEvent',
-          status_callback_method: 'StatusCallbackMethod',
-          send_digits: 'SendDigits',
-          timeout: 'Timeout',
-          record: 'Record',
-          recording_channels: 'RecordingChannels',
-          recording_status_callback: 'RecordingStatusCallback',
-          recording_status_callback_method: 'RecordingStatusCallbackMethod',
-          recording_configuration_id: 'RecordingConfigurationId',
-          sip_auth_username: 'SipAuthUsername',
-          sip_auth_password: 'SipAuthPassword',
-          machine_detection: 'MachineDetection',
-          machine_detection_timeout: 'MachineDetectionTimeout',
-          recording_status_callback_event: 'RecordingStatusCallbackEvent',
-          trim: 'Trim',
-          caller_id: 'CallerId',
-          machine_detection_speech_threshold: 'MachineDetectionSpeechThreshold',
-          machine_detection_speech_end_threshold: 'MachineDetectionSpeechEndThreshold',
-          machine_detection_silence_timeout: 'MachineDetectionSilenceTimeout',
-          async_amd: 'AsyncAmd',
-          async_amd_status_callback: 'AsyncAmdStatusCallback',
-          async_amd_status_callback_method: 'AsyncAmdStatusCallbackMethod',
-          passports: 'Passports',
-          byoc: 'Byoc',
-          call_reason: 'CallReason',
-          call_token: 'CallToken',
-          recording_track: 'RecordingTrack',
-          time_limit: 'TimeLimit',
-          client_notification_url: 'ClientNotificationUrl',
-          url: 'Url',
-          twiml: 'Twiml',
-          application_sid: 'ApplicationSid'
+          to: "To",
+          from: "From",
+          method: "Method",
+          fallback_url: "FallbackUrl",
+          fallback_method: "FallbackMethod",
+          status_callback: "StatusCallback",
+          status_callback_event: "StatusCallbackEvent",
+          status_callback_method: "StatusCallbackMethod",
+          send_digits: "SendDigits",
+          timeout: "Timeout",
+          record: "Record",
+          recording_channels: "RecordingChannels",
+          recording_status_callback: "RecordingStatusCallback",
+          recording_status_callback_method: "RecordingStatusCallbackMethod",
+          recording_configuration_id: "RecordingConfigurationId",
+          sip_auth_username: "SipAuthUsername",
+          sip_auth_password: "SipAuthPassword",
+          machine_detection: "MachineDetection",
+          machine_detection_timeout: "MachineDetectionTimeout",
+          recording_status_callback_event: "RecordingStatusCallbackEvent",
+          trim: "Trim",
+          caller_id: "CallerId",
+          machine_detection_speech_threshold: "MachineDetectionSpeechThreshold",
+          machine_detection_speech_end_threshold: "MachineDetectionSpeechEndThreshold",
+          machine_detection_silence_timeout: "MachineDetectionSilenceTimeout",
+          async_amd: "AsyncAmd",
+          async_amd_status_callback: "AsyncAmdStatusCallback",
+          async_amd_status_callback_method: "AsyncAmdStatusCallbackMethod",
+          passports: "Passports",
+          byoc: "Byoc",
+          call_reason: "CallReason",
+          call_token: "CallToken",
+          recording_track: "RecordingTrack",
+          time_limit: "TimeLimit",
+          client_notification_url: "ClientNotificationUrl",
+          url: "Url",
+          twiml: "Twiml",
+          application_sid: "ApplicationSid",
         }.freeze
         REQUIRED_FIELDS = %i[
           to
@@ -70,7 +70,7 @@ module OctridevTwilio
           end,
           async_amd_status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::Calls::CreateCallsAsyncAmdStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -175,21 +175,22 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListCallsResponseMetadata
         FIELDS = {
-          end_: 'end',
-          first_page_uri: 'first_page_uri',
-          next_page_uri: 'next_page_uri',
-          page: 'page',
-          page_size: 'page_size',
-          previous_page_uri: 'previous_page_uri',
-          start: 'start',
-          uri: 'uri',
-          calls: 'calls'
+          end_: "end",
+          first_page_uri: "first_page_uri",
+          next_page_uri: "next_page_uri",
+          page: "page",
+          page_size: "page_size",
+          previous_page_uri: "previous_page_uri",
+          start: "start",
+          uri: "uri",
+          calls: "calls",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           calls: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountCall.from_hash(item) }
-          end
+          end,
         }.freeze
       end
 
@@ -220,17 +221,18 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateCallsMetadata
         FIELDS = {
-          url: 'Url',
-          method: 'Method',
-          status: 'Status',
-          fallback_url: 'FallbackUrl',
-          fallback_method: 'FallbackMethod',
-          status_callback: 'StatusCallback',
-          status_callback_method: 'StatusCallbackMethod',
-          twiml: 'Twiml',
-          time_limit: 'TimeLimit'
+          url: "Url",
+          method: "Method",
+          status: "Status",
+          fallback_url: "FallbackUrl",
+          fallback_method: "FallbackMethod",
+          status_callback: "StatusCallback",
+          status_callback_method: "StatusCallbackMethod",
+          twiml: "Twiml",
+          time_limit: "TimeLimit",
         }.freeze
-        REQUIRED_FIELDS = %i[].freeze
+        REQUIRED_FIELDS = %i[
+        ].freeze
         DECODERS = {
           method: lambda do |value|
             ::OctridevTwilio::Methods::Calls::UpdateCallsMethod.from_value(value)
@@ -243,7 +245,7 @@ module OctridevTwilio
           end,
           status_callback_method: lambda do |value|
             ::OctridevTwilio::Methods::Calls::UpdateCallsStatusCallbackMethod.from_value(value)
-          end
+          end,
         }.freeze
       end
 
@@ -290,7 +292,7 @@ module OctridevTwilio
       module UpdateCallsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -300,7 +302,7 @@ module OctridevTwilio
       module CreateCallsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -310,7 +312,7 @@ module OctridevTwilio
       module CreateCallsAsyncAmdStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -320,7 +322,7 @@ module OctridevTwilio
       module UpdateCallsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -330,7 +332,7 @@ module OctridevTwilio
       module UpdateCallsFallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -340,7 +342,7 @@ module OctridevTwilio
       module CreateCallsRecordingStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -350,7 +352,7 @@ module OctridevTwilio
       module CreateCallsMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end
@@ -360,7 +362,7 @@ module OctridevTwilio
       module CreateCallsStatusCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = %w[GET POST].freeze
+        VALUES = ['GET', 'POST'].freeze
         def self.from_value(value)
           value
         end

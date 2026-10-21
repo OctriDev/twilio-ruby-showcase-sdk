@@ -27,6 +27,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -37,20 +38,20 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains.json'
+            "/SIP/Domains.json"
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::SipDomains::ListSipDomainsResponse,
           decoder: :json,
           operation_id: 'list_sip_domains',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -110,6 +111,7 @@ module OctridevTwilio
         emergency_caller_sid: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -136,9 +138,9 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/SIP/Domains.json'
+            "/SIP/Domains.json"
           ].join,
           config: config,
           body: {
@@ -154,13 +156,13 @@ module OctridevTwilio
             'EmergencyCallingEnabled' => emergency_calling_enabled,
             'Secure' => secure,
             'ByocTrunkSid' => byoc_trunk_sid,
-            'EmergencyCallerSid' => emergency_caller_sid
+            'EmergencyCallerSid' => emergency_caller_sid,
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipDomain,
           decoder: :json,
           operation_id: 'create_sip_domains',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

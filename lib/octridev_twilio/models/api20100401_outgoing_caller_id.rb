@@ -5,55 +5,57 @@
 
 # api20100401_outgoing_caller_id domain models
 module OctridevTwilio
-  # Internal model hydration metadata.
-  class SdkInternalApiV2010AccountOutgoingCallerIdMetadata
-    FIELDS = {
-      sid: 'sid',
-      date_created: 'date_created',
-      date_updated: 'date_updated',
-      friendly_name: 'friendly_name',
-      account_sid: 'account_sid',
-      phone_number: 'phone_number',
-      uri: 'uri'
-    }.freeze
-    REQUIRED_FIELDS = %i[].freeze
-    DECODERS = {}.freeze
+# Internal model hydration metadata.
+class SdkInternalApiV2010AccountOutgoingCallerIdMetadata
+  FIELDS = {
+    sid: "sid",
+    date_created: "date_created",
+    date_updated: "date_updated",
+    friendly_name: "friendly_name",
+    account_sid: "account_sid",
+    phone_number: "phone_number",
+    uri: "uri",
+  }.freeze
+  REQUIRED_FIELDS = %i[
+  ].freeze
+  DECODERS = {
+  }.freeze
+end
+
+# API model for ApiV2010AccountOutgoingCallerId.
+# Typed representation of the `ApiV2010AccountOutgoingCallerId` API schema.
+class ApiV2010AccountOutgoingCallerId
+  CONSTRUCTION_SURFACE = :named
+  FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::FIELDS
+  REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::REQUIRED_FIELDS
+  DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::DECODERS
+
+  # @return [String] The unique string that that we created to identify the OutgoingCallerId resource.
+  attr_reader :sid
+  # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
+  attr_reader :date_created
+  # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
+  attr_reader :date_updated
+  # @return [String] The string that you assigned to describe the resource.
+  attr_reader :friendly_name
+  # @return [String] The SID of the Account that created the OutgoingCallerId resource.
+  attr_reader :account_sid
+  # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
+  attr_reader :phone_number
+  # @return [String] The URI of the resource, relative to `api.twilio.com`.
+  attr_reader :uri
+
+  def initialize(**attributes)
+    SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
+    freeze
   end
 
-  # API model for ApiV2010AccountOutgoingCallerId.
-  # Typed representation of the `ApiV2010AccountOutgoingCallerId` API schema.
-  class ApiV2010AccountOutgoingCallerId
-    CONSTRUCTION_SURFACE = :named
-    FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::FIELDS
-    REQUIRED_FIELDS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::REQUIRED_FIELDS
-    DECODERS = SdkInternalApiV2010AccountOutgoingCallerIdMetadata::DECODERS
-
-    # @return [String] The unique string that that we created to identify the OutgoingCallerId resource.
-    attr_reader :sid
-    # @return [String] The date and time in GMT that the resource was created specified in RFC 2822 format.
-    attr_reader :date_created
-    # @return [String] The date and time in GMT that the resource was last updated specified in RFC 2822 format.
-    attr_reader :date_updated
-    # @return [String] The string that you assigned to describe the resource.
-    attr_reader :friendly_name
-    # @return [String] The SID of the Account that created the OutgoingCallerId resource.
-    attr_reader :account_sid
-    # @return [String] The phone number in E.164 format, which consists of a + followed by the country code and subscriber number.
-    attr_reader :phone_number
-    # @return [String] The URI of the resource, relative to `api.twilio.com`.
-    attr_reader :uri
-
-    def initialize(**attributes)
-      SdkModel.assign(self, attributes, FIELDS, REQUIRED_FIELDS)
-      freeze
-    end
-
-    def self.from_hash(data)
-      SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
-    end
-
-    def to_h
-      SdkModel.to_h(self, FIELDS)
-    end
+  def self.from_hash(data)
+    SdkModel.from_hash(self, data, FIELDS, REQUIRED_FIELDS, DECODERS)
   end
+
+  def to_h
+    SdkModel.to_h(self, FIELDS)
+  end
+end
 end

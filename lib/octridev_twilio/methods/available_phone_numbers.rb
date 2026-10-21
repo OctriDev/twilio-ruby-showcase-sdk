@@ -21,23 +21,24 @@ module OctridevTwilio
         country_code:,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/AvailablePhoneNumbers/',
+            "/AvailablePhoneNumbers/",
             SdkClient.encode_path_segment(country_code),
-            '.json'
+            ".json"
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountAvailablePhoneNumberCountry,
           decoder: :json,
           operation_id: 'fetch_available_phone_numbers',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

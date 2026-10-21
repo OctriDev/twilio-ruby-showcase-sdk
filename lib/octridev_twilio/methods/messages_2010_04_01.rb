@@ -140,24 +140,24 @@ module OctridevTwilio
         content_sid: NOT_GIVEN,
         request_options: nil
       )
+
         __sdk_validate_create_messages(account_sid: account_sid, status_callback: status_callback, application_sid: application_sid, send_at: send_at, messaging_service_sid: messaging_service_sid, content_sid: content_sid)
 
         SdkClient.request(
           'POST',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Messages.json'
+            "/Messages.json"
           ].join,
           config: config,
           body: __sdk_body_create_messages_part1(to: to, status_callback: status_callback, application_sid: application_sid, max_price: max_price, provide_feedback: provide_feedback, attempt: attempt, validity_period: validity_period, force_delivery: force_delivery, content_retention: content_retention, address_retention: address_retention, smart_encoded: smart_encoded, persistent_action: persistent_action, traffic_type: traffic_type, shorten_urls: shorten_urls, schedule_type: schedule_type, send_at: send_at, send_as_mms: send_as_mms, content_variables: content_variables).merge(
-            __sdk_body_create_messages_part2(message_intent: message_intent, risk_check: risk_check, from: from, fallback_from: fallback_from, messaging_service_sid: messaging_service_sid, body: body, media_url: media_url, content_sid: content_sid)
-          ),
+            __sdk_body_create_messages_part2(message_intent: message_intent, risk_check: risk_check, from: from, fallback_from: fallback_from, messaging_service_sid: messaging_service_sid, body: body, media_url: media_url, content_sid: content_sid)),
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountMessage,
           decoder: :json,
           operation_id: 'create_messages',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
 
@@ -231,7 +231,7 @@ module OctridevTwilio
           'ScheduleType' => schedule_type,
           'SendAt' => send_at,
           'SendAsMms' => send_as_mms,
-          'ContentVariables' => content_variables
+          'ContentVariables' => content_variables,
         }
       end
       private_class_method :__sdk_body_create_messages_part1
@@ -254,7 +254,7 @@ module OctridevTwilio
           'MessagingServiceSid' => messaging_service_sid,
           'Body' => body,
           'MediaUrl' => media_url,
-          'ContentSid' => content_sid
+          'ContentSid' => content_sid,
         }
       end
       private_class_method :__sdk_body_create_messages_part2
@@ -303,6 +303,7 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
+
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -319,9 +320,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            '/2010-04-01/Accounts/',
+            "/2010-04-01/Accounts/",
             SdkClient.encode_path_segment(account_sid),
-            '/Messages.json'
+            "/Messages.json"
           ].join,
           config: config,
           query: {
@@ -332,12 +333,12 @@ module OctridevTwilio
             'DateSent>' => QueryValue.new(date_sent3, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
           },
           return_type: ::OctridevTwilio::Methods::Messages::ListMessagesResponse,
           decoder: :json,
           operation_id: 'list_messages',
-          request_options: request_options
+          request_options: request_options,
         ).data
       end
     end

@@ -52,40 +52,46 @@ module OctridevTwilio
       n = value.length
       if min && n < min
         raise SdkValidationError.new(field, 'length',
-          "Validation failed for '#{field}': length must be >= #{min}")
+                                     "Validation failed for '#{field}': length must be >= #{min}")
       end
-      if max && n > max
-        raise SdkValidationError.new(field, 'length',
-          "Validation failed for '#{field}': length must be <= #{max}")
-      end
+      return unless max && n > max
+
+      raise SdkValidationError.new(field, 'length',
+                                   "Validation failed for '#{field}': length must be <= #{max}")
     end
 
     def self.validate_pattern(field, value, pattern)
       return if value =~ Regexp.new(pattern)
+
       raise SdkValidationError.new(field, 'pattern',
-        "Validation failed for '#{field}': must match pattern #{pattern}")
+                                   "Validation failed for '#{field}': must match pattern #{pattern}")
     end
 
     def self.validate_uri(field, value)
-      uri = URI.parse(value) rescue nil
+      uri = begin
+        URI.parse(value)
+      rescue StandardError
+        nil
+      end
       # An absolute URI needs a scheme but no host.
       return if uri&.scheme
+
       raise SdkValidationError.new(field, 'format:uri',
-        "Validation failed for '#{field}': must be a valid URI")
+                                   "Validation failed for '#{field}': must be a valid URI")
     end
 
     def self.validate_date(field, value)
       return if value =~ /\A\d{4}-\d{2}-\d{2}\z/
+
       raise SdkValidationError.new(field, 'format:date',
-        "Validation failed for '#{field}': must be a valid date (YYYY-MM-DD)")
+                                   "Validation failed for '#{field}': must be a valid date (YYYY-MM-DD)")
     end
 
     def self.validate_date_time(field, value)
       Time.iso8601(value)
     rescue ArgumentError
       raise SdkValidationError.new(field, 'format:date-time',
-        "Validation failed for '#{field}': must be a valid ISO 8601 date-time")
+                                   "Validation failed for '#{field}': must be a valid ISO 8601 date-time")
     end
-
   end
 end

@@ -12,22 +12,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListSipCredentialListsResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          credential_lists: "credential_lists",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          credential_lists: 'credential_lists'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           credential_lists: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountSipSipCredentialList.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -62,13 +61,12 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateSipCredentialListsMetadata
         FIELDS = {
-          friendly_name: "FriendlyName",
+          friendly_name: 'FriendlyName'
         }.freeze
         REQUIRED_FIELDS = %i[
           friendly_name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for CreateSipCredentialLists.
@@ -102,13 +100,12 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateSipCredentialListsMetadata
         FIELDS = {
-          friendly_name: "FriendlyName",
+          friendly_name: 'FriendlyName'
         }.freeze
         REQUIRED_FIELDS = %i[
           friendly_name
         ].freeze
-        DECODERS = {
-        }.freeze
+        DECODERS = {}.freeze
       end
 
       # API model for UpdateSipCredentialLists.
@@ -157,7 +154,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -168,20 +164,20 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/CredentialLists.json"
+            '/SIP/CredentialLists.json'
           ].join,
           config: config,
           query: {
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::SipCredentialLists::ListSipCredentialListsResponse,
           decoder: :json,
           operation_id: 'list_sip_credential_lists',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -199,26 +195,25 @@ module OctridevTwilio
         friendly_name:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/CredentialLists.json"
+            '/SIP/CredentialLists.json'
           ].join,
           config: config,
           body: {
-            'FriendlyName' => friendly_name,
+            'FriendlyName' => friendly_name
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipCredentialList,
           decoder: :json,
           operation_id: 'create_sip_credential_lists',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -236,7 +231,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -246,17 +240,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/CredentialLists/",
+            '/SIP/CredentialLists/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipCredentialList,
           decoder: :json,
           operation_id: 'fetch_sip_credential_lists',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -277,7 +271,6 @@ module OctridevTwilio
         friendly_name:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -287,21 +280,21 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/CredentialLists/",
+            '/SIP/CredentialLists/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
-            'FriendlyName' => friendly_name,
+            'FriendlyName' => friendly_name
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountSipSipCredentialList,
           decoder: :json,
           operation_id: 'update_sip_credential_lists',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -319,7 +312,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -329,16 +321,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/SIP/CredentialLists/",
+            '/SIP/CredentialLists/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_sip_credential_lists',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
     end

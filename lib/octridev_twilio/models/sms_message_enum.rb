@@ -5,48 +5,48 @@
 
 # sms_message_enum domain models
 module OctridevTwilio
-# Defines the SmsMessageEnumDirection SDK namespace.
-module SmsMessageEnumDirection
-  INBOUND = 'inbound'
-  OUTBOUND_API = 'outbound-api'
-  OUTBOUND_CALL = 'outbound-call'
-  OUTBOUND_REPLY = 'outbound-reply'
-  VALUES = ['inbound', 'outbound-api', 'outbound-call', 'outbound-reply'].freeze
-  def self.from_value(value)
-    value
+  # Defines the SmsMessageEnumDirection SDK namespace.
+  module SmsMessageEnumDirection
+    INBOUND = 'inbound'
+    OUTBOUND_API = 'outbound-api'
+    OUTBOUND_CALL = 'outbound-call'
+    OUTBOUND_REPLY = 'outbound-reply'
+    VALUES = %w[inbound outbound-api outbound-call outbound-reply].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the SmsMessageEnumStatus SDK namespace.
-module SmsMessageEnumStatus
-  QUEUED = 'queued'
-  SENDING = 'sending'
-  SENT = 'sent'
-  FAILED = 'failed'
-  DELIVERED = 'delivered'
-  UNDELIVERED = 'undelivered'
-  RECEIVING = 'receiving'
-  RECEIVED = 'received'
-  ACCEPTED = 'accepted'
-  SCHEDULED = 'scheduled'
-  READ = 'read'
-  PARTIALLY_DELIVERED = 'partially_delivered'
-  CANCELED = 'canceled'
-  VALUES = [
-    'queued', 'sending', 'sent', 'failed', 'delivered', 'undelivered', 'receiving', 'received',
-    'accepted', 'scheduled', 'read', 'partially_delivered', 'canceled'
-  ].freeze
-  def self.from_value(value)
-    value
+  # Defines the SmsMessageEnumStatus SDK namespace.
+  module SmsMessageEnumStatus
+    QUEUED = 'queued'
+    SENDING = 'sending'
+    SENT = 'sent'
+    FAILED = 'failed'
+    DELIVERED = 'delivered'
+    UNDELIVERED = 'undelivered'
+    RECEIVING = 'receiving'
+    RECEIVED = 'received'
+    ACCEPTED = 'accepted'
+    SCHEDULED = 'scheduled'
+    READ = 'read'
+    PARTIALLY_DELIVERED = 'partially_delivered'
+    CANCELED = 'canceled'
+    VALUES = %w[
+      queued sending sent failed delivered undelivered receiving received
+      accepted scheduled read partially_delivered canceled
+    ].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 
-# Defines the SmsMessageEnumUpdateStatus SDK namespace.
-module SmsMessageEnumUpdateStatus
-  CANCELED = 'canceled'
-  VALUES = ['canceled'].freeze
-  def self.from_value(value)
-    value
+  # Defines the SmsMessageEnumUpdateStatus SDK namespace.
+  module SmsMessageEnumUpdateStatus
+    CANCELED = 'canceled'
+    VALUES = ['canceled'].freeze
+    def self.from_value(value)
+      value
+    end
   end
-end
 end

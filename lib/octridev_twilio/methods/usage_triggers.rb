@@ -12,16 +12,15 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalUpdateUsageTriggersMetadata
         FIELDS = {
-          callback_method: "CallbackMethod",
-          callback_url: "CallbackUrl",
-          friendly_name: "FriendlyName",
+          callback_method: 'CallbackMethod',
+          callback_url: 'CallbackUrl',
+          friendly_name: 'FriendlyName'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           callback_method: lambda do |value|
             ::OctridevTwilio::Methods::UsageTriggers::UpdateUsageTriggersCallbackMethod.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -60,13 +59,13 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalCreateUsageTriggersMetadata
         FIELDS = {
-          callback_url: "CallbackUrl",
-          trigger_value: "TriggerValue",
-          usage_category: "UsageCategory",
-          callback_method: "CallbackMethod",
-          friendly_name: "FriendlyName",
-          recurring: "Recurring",
-          trigger_by: "TriggerBy",
+          callback_url: 'CallbackUrl',
+          trigger_value: 'TriggerValue',
+          usage_category: 'UsageCategory',
+          callback_method: 'CallbackMethod',
+          friendly_name: 'FriendlyName',
+          recurring: 'Recurring',
+          trigger_by: 'TriggerBy'
         }.freeze
         REQUIRED_FIELDS = %i[
           callback_url
@@ -82,7 +81,7 @@ module OctridevTwilio
           end,
           trigger_by: lambda do |value|
             ::OctridevTwilio::UsageTriggerEnumTriggerField.from_value(value)
-          end,
+          end
         }.freeze
       end
 
@@ -129,22 +128,21 @@ module OctridevTwilio
       # Internal model hydration metadata.
       class SdkInternalListUsageTriggersResponseMetadata
         FIELDS = {
-          end_: "end",
-          first_page_uri: "first_page_uri",
-          next_page_uri: "next_page_uri",
-          page: "page",
-          page_size: "page_size",
-          previous_page_uri: "previous_page_uri",
-          start: "start",
-          uri: "uri",
-          usage_triggers: "usage_triggers",
+          end_: 'end',
+          first_page_uri: 'first_page_uri',
+          next_page_uri: 'next_page_uri',
+          page: 'page',
+          page_size: 'page_size',
+          previous_page_uri: 'previous_page_uri',
+          start: 'start',
+          uri: 'uri',
+          usage_triggers: 'usage_triggers'
         }.freeze
-        REQUIRED_FIELDS = %i[
-        ].freeze
+        REQUIRED_FIELDS = %i[].freeze
         DECODERS = {
           usage_triggers: lambda do |value|
             value&.map { |item| ::OctridevTwilio::ApiV2010AccountUsageUsageTrigger.from_hash(item) }
-          end,
+          end
         }.freeze
       end
 
@@ -180,7 +178,7 @@ module OctridevTwilio
       module UpdateUsageTriggersCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -190,7 +188,7 @@ module OctridevTwilio
       module CreateUsageTriggersCallbackMethod
         GET = 'GET'
         POST = 'POST'
-        VALUES = ['GET', 'POST'].freeze
+        VALUES = %w[GET POST].freeze
         def self.from_value(value)
           value
         end
@@ -210,7 +208,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -220,17 +217,17 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Triggers/",
+            '/Usage/Triggers/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           return_type: ::OctridevTwilio::ApiV2010AccountUsageUsageTrigger,
           decoder: :json,
           operation_id: 'fetch_usage_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -258,7 +255,6 @@ module OctridevTwilio
         friendly_name: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -270,23 +266,23 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Triggers/",
+            '/Usage/Triggers/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           body: {
             'CallbackMethod' => callback_method,
             'CallbackUrl' => callback_url,
-            'FriendlyName' => friendly_name,
+            'FriendlyName' => friendly_name
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountUsageUsageTrigger,
           decoder: :json,
           operation_id: 'update_usage_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -302,7 +298,6 @@ module OctridevTwilio
         sid:,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -312,16 +307,16 @@ module OctridevTwilio
         SdkClient.request(
           'DELETE',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Triggers/",
+            '/Usage/Triggers/',
             SdkClient.encode_path_segment(sid),
-            ".json"
+            '.json'
           ].join,
           config: config,
           decoder: :empty,
           operation_id: 'delete_usage_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -363,7 +358,6 @@ module OctridevTwilio
         trigger_by: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -372,9 +366,9 @@ module OctridevTwilio
         SdkClient.request(
           'POST',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Triggers.json"
+            '/Usage/Triggers.json'
           ].join,
           config: config,
           body: {
@@ -384,13 +378,13 @@ module OctridevTwilio
             'CallbackMethod' => callback_method,
             'FriendlyName' => friendly_name,
             'Recurring' => recurring,
-            'TriggerBy' => trigger_by,
+            'TriggerBy' => trigger_by
           },
           content_type: 'application/x-www-form-urlencoded',
           return_type: ::OctridevTwilio::ApiV2010AccountUsageUsageTrigger,
           decoder: :json,
           operation_id: 'create_usage_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
 
@@ -424,7 +418,6 @@ module OctridevTwilio
         page_token: NOT_GIVEN,
         request_options: nil
       )
-
         Validation.validate_length('AccountSid', account_sid, min: 34, max: 34)
         Validation.validate_pattern('AccountSid', account_sid, '^AC[0-9a-fA-F]{32}$')
 
@@ -435,9 +428,9 @@ module OctridevTwilio
         SdkClient.request(
           'GET',
           [
-            "/2010-04-01/Accounts/",
+            '/2010-04-01/Accounts/',
             SdkClient.encode_path_segment(account_sid),
-            "/Usage/Triggers.json"
+            '/Usage/Triggers.json'
           ].join,
           config: config,
           query: {
@@ -446,12 +439,12 @@ module OctridevTwilio
             'UsageCategory' => QueryValue.new(usage_category, style: 'form', explode: true),
             'PageSize' => QueryValue.new(page_size, style: 'form', explode: true),
             'Page' => QueryValue.new(page, style: 'form', explode: true),
-            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true),
+            'PageToken' => QueryValue.new(page_token, style: 'form', explode: true)
           },
           return_type: ::OctridevTwilio::Methods::UsageTriggers::ListUsageTriggersResponse,
           decoder: :json,
           operation_id: 'list_usage_triggers',
-          request_options: request_options,
+          request_options: request_options
         ).result
       end
     end
